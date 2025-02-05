@@ -1,12 +1,11 @@
 package main.shop;
 
+import main.user.UserDTO;
+
 public interface ShopService {
 
-	public void shopInsert();					//쇼핑몰 등록
-	public void shopUpdate(ShopDTO shopDTO);	//쇼핑몰 수정
-	public void shopDelete(ShopDTO shopDTO);	//쇼핑몰 삭제
-	public void shopList();						//쇼핑몰 리스트
-	public void shopPayment();					//쇼핑몰 결제
-	public void shopCart();						//쇼핑몰 장바구니
-	
+	void shopList(UserDTO userDTO);				//쇼핑몰 상품 페이지
+	void shopPayment(ShopDTO shopDTO);			//쇼핑몰 결제
+	void shopPaymentProcess(ShopDTO shopDTO);	//상품 결제 시스템
+
 }
