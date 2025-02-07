@@ -1,5 +1,7 @@
 package main.user;
 
+import java.sql.Date;
+
 public class UserDTO {
 	private String userId; // 가입할 아이디
 	private String userName; // 가입할 이름
@@ -10,7 +12,9 @@ public class UserDTO {
 	private String userAdmin; // 관리자 여부
 	private int userCreditRating; // 신용등급
 	private int userTotal; // 누적금액
-
+	private Date userCreate;	//회원생성일
+	private Date updateCreate;	//회원수정일
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -82,5 +86,24 @@ public class UserDTO {
 	public void setUserTotal(int userTotal) {
 		this.userTotal = userTotal;
 	}
+
+	public Date getUserCreate() {
+		return userCreate;
+	}
+
+	public void setUserCreate(Date userCreate) {
+		this.userCreate = userCreate;
+	}
+
+	public Date getUpdateCreate() {
+		return updateCreate;
+	}
+
+	public void setUpdateCreate(Date updateCreate) {
+		this.updateCreate = updateCreate;
+	}
+	
+	
+	
 
 }

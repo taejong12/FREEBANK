@@ -3,71 +3,70 @@ package main.board;
 import java.sql.Date;
 
 public class BoardDTO {
-   private String title;
-   private String memberid;
-   private Date date;  // 작성 날짜
-   private String detail;
-   private Date modifieddate;  // 수정 날짜
+	private int id; // 게시판 번호
+	private String title; // 제목
+	private String content; // 내용
+	private Date created; // 생성 날짜
+	private Date update; // 수정 날짜
+	private String author; // 작성자(관리자 id)
 
-   // 기본 생성자
-   public BoardDTO() {
-       // 현재 날짜로 초기화
-       this.date = new Date(System.currentTimeMillis());  // 작성 날짜
-       this.modifieddate = new Date(System.currentTimeMillis());  // 수정 날짜
-   }
+	// 관리자 아이디
+	private String boardAdminId;
 
- 
-   public String getTitle() {
-       return title;
-   }
+	public int getId() {
+		return id;
+	}
 
-   public void setTitle(String title) {
-       this.title = title;
-   }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-   public String getMemberid() {
-       return memberid;
-   }
+	public String getTitle() {
+		return title;
+	}
 
-   public void setMemberid(String memberid) {
-       this.memberid = memberid;
-   }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-   public Date getDate() {
-       return date;
-   }
+	public String getContent() {
+		return content;
+	}
 
-   public void setDate(Date date) {
-       this.date = date;
-   }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-   public String getDetail() {
-       return detail;
-   }
+	public Date getCreated() {
+		return created;
+	}
 
-   public void setDetail(String detail) {
-       this.detail = detail;
-   }
+	public void setCreated(Date created) {
+		this.created = created;
+	}
 
-   public Date getModifieddate() {
-       return modifieddate;
-   }
+	public Date getUpdate() {
+		return update;
+	}
 
-   public void setModifieddate(Date modifieddate) {
-       this.modifieddate = modifieddate;
-   }
+	public void setUpdate(Date update) {
+		this.update = update;
+	}
 
-   // 디버깅을 위한 toString() 메서드
-   @Override
-   public String toString() {
-       return "FreeBankBoard{" +
-               "title='" + title + '\'' +
-               ", memberid='" + memberid + '\'' +
-               ", date=" + date +
-               ", detail='" + detail + '\'' +
-               ", modifieddate=" + modifieddate +
-               '}';
-       }
+	public String getBoardAdminId() {
+		return boardAdminId;
+	}
+
+	public void setBoardAdminId(String boardAdminId) {
+		this.boardAdminId = boardAdminId;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
 }
-
-

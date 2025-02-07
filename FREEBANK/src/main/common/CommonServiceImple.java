@@ -14,7 +14,7 @@ public class CommonServiceImple implements CommonService{
 		System.out.println("선택: ");
 	}
 
-	//일반 유저 메뉴
+	//일반 회원 메뉴
 	public void loginMainMenu() {
 		System.out.println("####FREEBANK 메인페이지####");
 		System.out.println("1.공지사항");
@@ -37,7 +37,4 @@ public class CommonServiceImple implements CommonService{
 		System.out.println("0.종료");
 		System.out.println("선택: ");
 	}
-	
-	
-	
 }
