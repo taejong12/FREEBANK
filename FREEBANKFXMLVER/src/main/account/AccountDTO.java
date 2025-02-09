@@ -3,10 +3,12 @@ package main.account;
 import java.sql.Date;
 
 public class AccountDTO {
-	private String accountAccount; // 계좌번호
-	private int accountBalance; // 계좌잔고
-	private Date accountCreate; // 계좌생성날짜
-	private String accountId; // 회원아이디
+	
+	//FREEBANKACCOUNT(계좌) 테이블 컬럼
+	private String accountAccount; // 계좌_번호(PK)
+	private int accountBalance; // 계좌_잔고(기본값: 0)
+	private Date accountCreate; // 계좌_생성일(기본값: 현재날짜)
+	private String accountId; // 회원_아이디(FK)
 
 	public String getAccountAccount() {
 		return accountAccount;

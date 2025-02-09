@@ -3,18 +3,20 @@ package main.user;
 import java.sql.Date;
 
 public class UserDTO {
-	private String userId; // 가입할 아이디
-	private String userName; // 가입할 이름
-	private String userPwd; // 가입할 비밀번호
-	private int userAge; // 나이
-	private String userSex; // 성별
-	private String userEmail; // 이메일
-	private String userAdmin; // 관리자 여부
-	private int userCreditRating; // 신용등급
-	private int userTotal; // 누적금액
-	private Date userCreate;	//회원생성일
-	private Date updateCreate;	//회원수정일
 	
+	//FREEBANKUSER(회원) 테이블 컬럼
+	private String userId; // 회원_아이디(PK)
+	private String userName; // 회원_이름
+	private String userPwd; // 회원_비밀번호
+	private int userAge; // 회원_나이
+	private String userSex; // 회원_성별(X:남, Y:여)
+	private String userEmail; // 회원_이메일
+	private String userAdmin; // 회원_관리자여부(일반회원:N, 관리자:Y)(기본값: N)
+	private int userCreditRating; // 회원_신용등급(기본값: 5)
+	private int userTotal; // 회원_누적금액(기본값: 0)
+	private Date userCreate; // 회원_생성일(기본값: 현재날짜)
+	private Date updateCreate; // 회원_수정일(기본값: 현재날짜)
+
 	public String getUserId() {
 		return userId;
 	}
@@ -102,8 +104,5 @@ public class UserDTO {
 	public void setUpdateCreate(Date updateCreate) {
 		this.updateCreate = updateCreate;
 	}
-	
-	
-	
 
 }
