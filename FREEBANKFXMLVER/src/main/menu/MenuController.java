@@ -3,6 +3,8 @@ package main.menu;
 import javafx.scene.Parent;
 import main.account.AccountService;
 import main.account.AccountServiceImpl;
+import main.shop.ShopService;
+import main.shop.ShopServiceImpl;
 import main.user.UserDTO;
 import main.user.UserService;
 import main.user.UserServiceImpl;
@@ -14,6 +16,7 @@ public class MenuController {
 	UserService us = new UserServiceImpl();
 	MenuService ms = new MenuServiceImple();
 	AccountService as = new AccountServiceImpl();
+	ShopService ss = new ShopServiceImpl();
 
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -39,9 +42,11 @@ public class MenuController {
 
 	}
 
+	//쇼핑몰
 	public void shop() {
-		System.out.println("메인메뉴 쇼핑몰버튼");
-
+		System.out.println("메인메뉴 쇼핑몰이동");
+		ss.shopListPage(root, userDTO);
+		
 	}
 
 	public void login() {
@@ -69,7 +74,8 @@ public class MenuController {
 
 	public void logout() {
 		System.out.println("로그아웃");
-		ms.mainMenu(root);
+		userDTO = new UserDTO();
+		ms.mainMenu(root, userDTO);
 	}
 
 	// 이거는 로그인한 후 체크 하면서 화면 전환이 이루어져야 하니까 최초만 메인메뉴 띙주고

@@ -166,7 +166,12 @@ public class AccountDAO {
 			pstmt.setInt(1, accountDTO.getAccountBalance());
 			pstmt.setString(2, accountDTO.getAccountAccount());
 
-			pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
+			
+			if(result >=1) {
+				System.out.println("입/출금 처리 완료");
+			}
+			
 
 		} catch (Exception e) {
 			System.out.println("계좌 잔고 업데이트 실패");
@@ -231,5 +236,5 @@ public class AccountDAO {
 		
 		return accountList;
 	}
-	
+
 }

@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 			// 확인 버튼을 누를 때까지 대기
 			alert.showAndWait();
 		} else if (userId.equals(userDTO.getUserId()) && userPwd.equals(userDTO.getUserPwd())) {
-			if ("y".equals(userDTO.getUserAdmin())) {
+			if ("Y".equals(userDTO.getUserAdmin())) {
 				System.out.println("관리자로 로그인하셨습니다.");
 				return userDTO;
 			} else {
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 		return new UserDTO();
 	}
 
-	@Override
+	//회원가입
 	public void insertUser(Parent root) {
 
 		UserDTO userDTO = new UserDTO();
@@ -144,7 +144,7 @@ public class UserServiceImpl implements UserService {
 
 		Stage loginScreen = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/loginScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/loginScreen.fxml"));
 
 		try {
 
@@ -168,7 +168,7 @@ public class UserServiceImpl implements UserService {
 	public void joinScreen(Parent root) {
 		Stage joinScreen = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/joinScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/joinScreen.fxml"));
 
 		try {
 

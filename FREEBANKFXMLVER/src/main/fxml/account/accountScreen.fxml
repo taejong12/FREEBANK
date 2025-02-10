@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="계좌해지" onAction="#deleteAccount">
+            <Button mnemonicParsing="false" text="계좌해지" onAction="#deleteAccountScreen">
                <font>
                   <Font size="18.0" />
                </font>

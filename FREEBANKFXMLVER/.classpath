@@ -6,46 +6,46 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.base.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.controls.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.controls.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.fxml.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.fxml.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.graphics.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.graphics.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.media.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.media.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.swing.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.swing.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx.web.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.web.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/javafx-swt.jar">
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx-swt.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taejong/Desktop/dev/javafx-sdk-17.0.14/lib/ojdbc17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dbxow/Downloads/ojdbc17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

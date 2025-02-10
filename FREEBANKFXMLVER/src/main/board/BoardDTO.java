@@ -2,11 +2,14 @@ package main.board;
 
 import java.sql.Date;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class BoardDTO {
 
-	//FREEBANKBOARD(게시판) 테이블 컬럼
+	// FREEBANKBOARD(게시판) 테이블 컬럼
 	private int boardId; // 게시판_고유번호(PK)
-	private String boardITitle; // 게시판_제목
+	private String boardTitle; // 게시판_제목
 	private String boardAuthor; // 게시판_작성자
 	private String boardContent; // 게시판_내용
 	private Date boardCreated; // 게시판_작성일(기본값: 현재날짜)
@@ -20,12 +23,12 @@ public class BoardDTO {
 		this.boardId = boardId;
 	}
 
-	public String getBoardITitle() {
-		return boardITitle;
+	public String getBoardTitle() {
+		return boardTitle;
 	}
 
-	public void setBoardITitle(String boardITitle) {
-		this.boardITitle = boardITitle;
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
 	}
 
 	public String getBoardAuthor() {
