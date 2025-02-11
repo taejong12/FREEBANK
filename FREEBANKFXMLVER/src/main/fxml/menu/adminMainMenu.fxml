@@ -34,7 +34,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#adminShopPage" text="쇼핑몰 관리페이지">
+            <Button mnemonicParsing="false" onAction="#adminShopPage" text="상품 관리페이지">
                <font>
                   <Font size="18.0" />
                </font>

@@ -5,6 +5,8 @@ import java.util.List;
 import javafx.scene.Parent;
 import main.account.AccountDTO;
 import main.board.BoardDTO;
+import main.shop.PurchaseListDTO;
+import main.shop.ShopDTO;
 import main.user.UserDTO;
 
 public interface AdminService {
@@ -13,7 +15,7 @@ public interface AdminService {
 
 	void adminAccountPage(Parent root, UserDTO userDTO); // 계좌 관리 페이지
 
-	void adminShopPage(Parent root, UserDTO userDTO); // 쇼핑몰 관리 페이지
+	void adminShopPage(Parent root, UserDTO userDTO); // 상품 관리 페이지
 
 	void adminUserPage(Parent root, UserDTO userDTO); // 회원 관리 페이지
 
@@ -37,10 +39,26 @@ public interface AdminService {
 
 	void insertAdminShopPage(Parent root, UserDTO userDTO); // 상품 등록페이지 출력
 
-	void updateAdminShopPage(Parent root, UserDTO userDTO); // 상품 조회(수정/삭제)페이지 출력
+	void adminShopListPage(Parent root, UserDTO userDTO); // 상품 조회(수정/삭제)페이지 출력
 
 	void adminUserListPage(Parent root, UserDTO userDTO); // 회원 목록페이지 출력
 
 	void adminPLPage(Parent root, UserDTO userDTO); // 구매내역 목록페이지 출력
+
+	List<UserDTO> selectAdminUserListAll(); // 회원 목록 조회
+
+	void insertAdminShop(Parent root, UserDTO userDTO); // 상품등록하기
+
+	List<ShopDTO> selectAdminShopListAll(); // 상품 목록 조회
+
+	void adminShopDetailPage(Parent root, ShopDTO shopDTO, UserDTO userDTO); // 상품 상세 페이지 출력
+
+	void updateAdminShopPage(Parent root, UserDTO userDTO, ShopDTO shopDTO); // 상품 수정페이지 출력
+
+	void deleteAdminShop(ShopDTO shopDTO); // 상품 삭제하기
+
+	void updateAdminShop(Parent root, ShopDTO shopDTO, UserDTO userDTO); // 상품 수정하기
+
+	List<PurchaseListDTO> selectAdminPLListAll(); // 구매내역 목록조회
 
 }

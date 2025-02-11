@@ -15,7 +15,10 @@ public class UserDTO {
 	private int userCreditRating; // 회원_신용등급(기본값: 5)
 	private int userTotal; // 회원_누적금액(기본값: 0)
 	private Date userCreate; // 회원_생성일(기본값: 현재날짜)
-	private Date updateCreate; // 회원_수정일(기본값: 현재날짜)
+	private Date userUpdate; // 회원_수정일(기본값: 현재날짜)
+
+	// 회원 수정/삭제 체크
+	private String userInfoUDCheck;
 
 	public String getUserId() {
 		return userId;
@@ -97,12 +100,20 @@ public class UserDTO {
 		this.userCreate = userCreate;
 	}
 
-	public Date getUpdateCreate() {
-		return updateCreate;
+	public Date getUserUpdate() {
+		return userUpdate;
 	}
 
-	public void setUpdateCreate(Date updateCreate) {
-		this.updateCreate = updateCreate;
+	public void setUserUpdate(Date userUpdate) {
+		this.userUpdate = userUpdate;
+	}
+
+	public String getUserInfoUDCheck() {
+		return userInfoUDCheck;
+	}
+
+	public void setUserInfoUDCheck(String userInfoUDCheck) {
+		this.userInfoUDCheck = userInfoUDCheck;
 	}
 
 }

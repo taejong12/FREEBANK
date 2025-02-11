@@ -26,17 +26,17 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="2" GridPane.rowIndex="7">
          <children>
-            <Button mnemonicParsing="false" text="상품수정 페이지">
+            <Button mnemonicParsing="false" text="상품수정 페이지" onAction="#updateAdminShopPage">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="상품삭제하기">
+            <Button mnemonicParsing="false" text="상품삭제하기" onAction="#deleteAdminShop">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="취소">
+            <Button mnemonicParsing="false" text="취소" onAction="#adminShopListPage">
                <font>
                   <Font size="18.0" />
                </font>
@@ -78,37 +78,37 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopId" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopName" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopContents" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopPrice" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopAdminId" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopCreate" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Text strokeType="OUTSIDE" fx:id="adminDetailShopUpdate" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <font>
             <Font size="18.0" />
          </font>

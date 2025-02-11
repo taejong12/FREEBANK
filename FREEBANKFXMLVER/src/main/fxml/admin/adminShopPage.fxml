@@ -25,7 +25,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#updateAdminShopPage" text="상품조회(수정/삭제) 페이지">
+            <Button mnemonicParsing="false" onAction="#adminShopListPage" text="상품조회(수정/삭제) 페이지">
                <font>
                   <Font size="18.0" />
                </font>

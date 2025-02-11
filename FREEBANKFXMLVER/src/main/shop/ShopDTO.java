@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ShopDTO {
 
-	// FREEBANKSHOP(쇼핑몰) 상품 테이블 컬럼
+	// FREEBANKSHOP(상품) 상품 테이블 컬럼
 	private int shopId; // 상품_고유번호(PK)
 	private String shopName; // 상품_이름
 	private String shopContents; // 상품_설명
@@ -99,5 +99,4 @@ public class ShopDTO {
 	public void setShopTotalPayment(int shopTotalPayment) {
 		this.shopTotalPayment = shopTotalPayment;
 	}
-
 }

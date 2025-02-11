@@ -19,19 +19,19 @@
    <children>
       <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="30.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
          <children>
-            <Button mnemonicParsing="false" onAction="#shopPage" text="쇼핑몰" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#shopListPage" text="상품목록 페이지" textAlignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#loginPage" text="로그인" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#loginPage" text="로그인페이지" textAlignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#joinPage" text="회원가입" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#joinPage" text="회원가입페이지" textAlignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
          </children>

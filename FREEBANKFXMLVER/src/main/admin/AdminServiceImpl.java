@@ -1,5 +1,6 @@
 package main.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.account.AccountDTO;
 import main.board.BoardDTO;
+import main.shop.PurchaseListDTO;
+import main.shop.ShopDTO;
 import main.user.UserDTO;
 
 public class AdminServiceImpl implements AdminService {
@@ -74,7 +77,7 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
-	// 쇼핑몰 관리페이지 출력
+	// 상품 관리페이지 출력
 	public void adminShopPage(Parent root, UserDTO userDTO) {
 		Stage adminShopPage = (Stage) root.getScene().getWindow();
 
@@ -90,13 +93,13 @@ public class AdminServiceImpl implements AdminService {
 			adminShopPageCtrl.setUser(userDTO);
 
 			adminShopPage.setScene(new Scene(adminShopPageRoot));
-			adminShopPage.setTitle("공지사항 관리페이지");
+			adminShopPage.setTitle("상품 관리페이지");
 			adminShopPage.show();
 
 			adminShopPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("공지사항 관리페이지 출력 실패");
+			System.out.println("상품 관리페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -127,7 +130,6 @@ public class AdminServiceImpl implements AdminService {
 			System.out.println("회원 관리페이지 출력 실패");
 			e.printStackTrace();
 		}
-
 	}
 
 	// 관리자 공지사항 등록 화면
@@ -394,25 +396,27 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 상품 조회(수정/삭제)페이지 출력
-	public void updateAdminShopPage(Parent root, UserDTO userDTO) {
-		Stage updateAdminShopPage = (Stage) root.getScene().getWindow();
+	public void adminShopListPage(Parent root, UserDTO userDTO) {
+		Stage adminShopListPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/updateAdminShopPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminShopListPage.fxml"));
 
 		try {
 
-			Parent updateAdminShopPageRoot = loader.load();
+			Parent adminShopListPageRoot = loader.load();
 
-			AdminController updateAdminShopPageCtrl = loader.getController();
+			AdminController adminShopListPageCtrl = loader.getController();
 
-			updateAdminShopPageCtrl.setRoot(updateAdminShopPageRoot);
-			updateAdminShopPageCtrl.setUser(userDTO);
+			adminShopListPageCtrl.setRoot(adminShopListPageRoot);
+			adminShopListPageCtrl.setUser(userDTO);
+			// 상품 목록 조회
+			adminShopListPageCtrl.selectAdminShopList();
 
-			updateAdminShopPage.setScene(new Scene(updateAdminShopPageRoot));
-			updateAdminShopPage.setTitle("상품 조회페이지");
-			updateAdminShopPage.show();
+			adminShopListPage.setScene(new Scene(adminShopListPageRoot));
+			adminShopListPage.setTitle("상품 조회페이지");
+			adminShopListPage.show();
 
-			updateAdminShopPageCtrl.showUserInfo();
+			adminShopListPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
 			System.out.println("상품 조회페이지 출력 실패");
@@ -435,6 +439,8 @@ public class AdminServiceImpl implements AdminService {
 
 			adminUserListPageCtrl.setRoot(adminUserListPageRoot);
 			adminUserListPageCtrl.setUser(userDTO);
+			// 회원 목록 출력
+			adminUserListPageCtrl.selectAdminUserListAll();
 
 			adminUserListPage.setScene(new Scene(adminUserListPageRoot));
 			adminUserListPage.setTitle("회원 목록페이지");
@@ -463,6 +469,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminPLPageCtrl.setRoot(adminPLPageRoot);
 			adminPLPageCtrl.setUser(userDTO);
+			adminPLPageCtrl.selectAdminPLListAll();
 
 			adminPLPage.setScene(new Scene(adminPLPageRoot));
 			adminPLPage.setTitle("구매내역 목록페이지");
@@ -475,6 +482,203 @@ public class AdminServiceImpl implements AdminService {
 			e.printStackTrace();
 		}
 
+	}
+
+	// 회원 목록 조회
+	public List<UserDTO> selectAdminUserListAll() {
+		return ad.selectAdminUserListAll();
+	}
+
+	// 상품등록하기
+	public void insertAdminShop(Parent root, UserDTO userDTO) {
+
+		// 상품이름
+		TextField textShopName = (TextField) root.lookup("#shopName");
+		String shopName = textShopName.getText();
+
+		// 상품설명
+		TextField textShopContents = (TextField) root.lookup("#shopContents");
+		String shopContents = textShopContents.getText();
+
+		// 상품가격
+		TextField textShopPrice = (TextField) root.lookup("#shopPrice");
+		int shopPrice = Integer.parseInt(textShopPrice.getText());
+
+		ShopDTO shopDTO = new ShopDTO();
+		shopDTO.setShopUserId(userDTO.getUserId());
+		shopDTO.setShopName(shopName);
+		shopDTO.setShopContents(shopContents);
+		shopDTO.setShopPrice(shopPrice);
+
+		int result = ad.insertAdminShop(shopDTO);
+
+		if (result >= 1) {
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+
+			alertInfo.setTitle("상품등록완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("상품등록완료");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertInfo.showAndWait();
+
+		} else {
+
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("상품등록실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("상품등록실패");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertError.showAndWait();
+		}
+	}
+
+	// 상품 상세페이지 출력
+	public void adminShopDetailPage(Parent root, ShopDTO shopDTO, UserDTO userDTO) {
+
+		System.out.println("상품 상세페이지 이동: " + shopDTO.getShopName());
+
+		Stage adminShopDetailPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminShopDetailPage.fxml"));
+
+		try {
+
+			Parent adminShopDetailPageRoot = loader.load();
+
+			AdminController adminShopDetailPageCtrl = loader.getController();
+
+			adminShopDetailPageCtrl.setRoot(adminShopDetailPageRoot);
+			adminShopDetailPageCtrl.setUser(userDTO);
+			adminShopDetailPageCtrl.setShop(shopDTO);
+			// 상품 상세페이지 정보
+			adminShopDetailPageCtrl.adminDetailShopInfo();
+
+			adminShopDetailPage.setScene(new Scene(adminShopDetailPageRoot));
+			adminShopDetailPage.setTitle("상품 상세페이지");
+			adminShopDetailPage.show();
+
+			adminShopDetailPageCtrl.showUserInfo();
+
+		} catch (Exception e) {
+			System.out.println("상품 상세페이지 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 상품 목록 조회
+	public List<ShopDTO> selectAdminShopListAll() {
+		return ad.selectAdminShopListAll();
+	}
+
+	// 상품 수정페이지 출력
+	public void updateAdminShopPage(Parent root, UserDTO userDTO, ShopDTO shopDTO) {
+		Stage updateAdminShopPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/updateAdminShopPage.fxml"));
+
+		try {
+
+			Parent updateAdminShopPageRoot = loader.load();
+
+			AdminController updateAdminShopPageCtrl = loader.getController();
+
+			updateAdminShopPageCtrl.setRoot(updateAdminShopPageRoot);
+			updateAdminShopPageCtrl.setUser(userDTO);
+			updateAdminShopPageCtrl.setShop(shopDTO);
+			// 상품 수정페이지 정보
+			updateAdminShopPageCtrl.updateAdminDetailShopInfo();
+
+			updateAdminShopPage.setScene(new Scene(updateAdminShopPageRoot));
+			updateAdminShopPage.setTitle("상품 수정페이지");
+			updateAdminShopPage.show();
+
+			updateAdminShopPageCtrl.showUserInfo();
+
+		} catch (Exception e) {
+			System.out.println("상품 수정페이지 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 상품 삭제하기
+	public void deleteAdminShop(ShopDTO shopDTO) {
+
+		int result = ad.deleteAdminShop(shopDTO.getShopId());
+
+		if (result >= 1) {
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+
+			alertInfo.setTitle("상품삭제완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("상품삭제완료");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertInfo.showAndWait();
+
+		} else {
+
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("상품삭제실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("상품삭제실패");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertError.showAndWait();
+		}
+	}
+
+	// 상품 수정하기
+	public void updateAdminShop(Parent root, ShopDTO shopDTO, UserDTO userDTO) {
+
+		// 상품이름
+		TextField textShopName = (TextField) root.lookup("#adminDetailShopNameTextField");
+		String shopName = textShopName.getText();
+
+		// 상품설명
+		TextField textShopContents = (TextField) root.lookup("#adminDetailShopContentsTextField");
+		String shopContents = textShopContents.getText();
+
+		// 상품가격
+		TextField textShopPrice = (TextField) root.lookup("#adminDetailShopPriceTextField");
+		int shopPrice = Integer.parseInt(textShopPrice.getText());
+
+		shopDTO.setShopUserId(userDTO.getUserId());
+		shopDTO.setShopName(shopName);
+		shopDTO.setShopContents(shopContents);
+		shopDTO.setShopPrice(shopPrice);
+
+		int result = ad.updateAdminShop(shopDTO);
+
+		if (result >= 1) {
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+
+			alertInfo.setTitle("상품수정완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("상품수정완료");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertInfo.showAndWait();
+
+		} else {
+
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("상품수정실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("상품수정실패");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertError.showAndWait();
+		}
+
+	}
+
+	// 구매내역 목록조회
+	public List<PurchaseListDTO> selectAdminPLListAll() {
+		return ad.selectAdminPLListAll();
 	}
 
 }

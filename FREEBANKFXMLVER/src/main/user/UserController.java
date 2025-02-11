@@ -1,10 +1,23 @@
 package main.user;
 
+import java.sql.Date;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
+import main.account.AccountDTO;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
+import main.shop.PurchaseListDTO;
 
 public class UserController {
 
@@ -13,9 +26,53 @@ public class UserController {
 	MenuService ms = new MenuServiceImple();
 	UserDTO userDTO = new UserDTO();
 
+	// 회원 상세페이지 컬럼
+	@FXML
+	private Text userIdText;
+	@FXML
+	private Text userCreditRatingText;
+	@FXML
+	private Text userTotalText;
+	@FXML
+	private Text userCreateText;
+	@FXML
+	private Text userUpdateText;
+
+	@FXML
+	private TextField userNameTextField;
+	@FXML
+	private TextField userAgeTextField;
+	@FXML
+	private TextField userSexTextField;
+	@FXML
+	private TextField userEmailTextField;
+
+	// 회원 구매내역 목록
+	@FXML
+	TableView<PurchaseListDTO> userPurchaseListTable;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> userPurchaseListIdColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> userPurchaseListUserIdColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> userPurchaseListAccountColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> userPurchaseListShopIdColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> userPurchaseListShopNameColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> userPurchaseListTotalpaymentColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> userPurchaseListTotalshopcountColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> userPurchaseListCreateColumn;
+
 	public void setRoot(Parent loginRoot) {
 		this.root = loginRoot;
+	}
 
+	public void setUser(UserDTO userDTO) {
+		this.userDTO = userDTO;
 	}
 
 	// 회원가입 버튼
@@ -68,7 +125,98 @@ public class UserController {
 	// 메인페이지로 이동(비로그인 상태)
 	public void mainMenu() {
 		System.out.println("메인페이지로 이동");
+		userDTO = new UserDTO();
 		ms.mainMenu(root, userDTO);
+	}
+
+	// 회원메뉴페이지
+	public void loginMainMenu() {
+		System.out.println("일반회원메뉴페이지로 이동");
+		ms.loginMainMenu(root, userDTO);
+	}
+
+	// 회원구매내역 목록페이지 출력
+	public void userPLListPage() {
+		System.out.println("회원구매내역 목록페이지로 이동");
+		us.userPLListPage(root, userDTO);
+	}
+
+	// 회원정보페이지 출력
+	public void userInfoDetailPage() {
+		System.out.println("회원정보페이지로 이동");
+		us.userInfoDetailPage(root, userDTO);
+	}
+
+	// 마이페이지 출력
+	public void userInfoPage() {
+		System.out.println("마이페이지로 이동");
+		us.userInfoPage(root, userDTO);
+	}
+
+	// 회원수정(회원인증)
+	public void updateUserInfoCheck() {
+		System.out.println("회원수정하기");
+		userDTO.setUserInfoUDCheck("U");
+		userIdPwdCheckPage();
+	}
+
+	// 회원삭제(회원인증)
+	public void deleteUserInfoCheck() {
+		System.out.println("회원삭제하기");
+		userDTO.setUserInfoUDCheck("D");
+		userIdPwdCheckPage();
+	}
+
+	// 회원정보수정/삭제 아이디/비밀번호 체크 (인증페이지)
+	public void userIdPwdCheckPage() {
+		System.out.println("회원수정/삭제 아이디/비밀번호 체크 인증페이지");
+		us.userIdPwdCheckPage(root, userDTO);
+	}
+
+	// 회원정보 출력
+	public void selectUserInfo() {
+		userIdText.setText(String.valueOf(userDTO.getUserId()));
+		userNameTextField.setText(userDTO.getUserName());
+		userAgeTextField.setText(String.valueOf(userDTO.getUserAge()));
+		userSexTextField.setText(String.valueOf(userDTO.getUserSex()));
+		userEmailTextField.setText(userDTO.getUserEmail());
+		userCreditRatingText.setText(String.valueOf(userDTO.getUserCreditRating()));
+		userTotalText.setText(String.valueOf(userDTO.getUserTotal()));
+		userCreateText.setText(String.valueOf(userDTO.getUserCreate()));
+		userUpdateText.setText(String.valueOf(userDTO.getUserUpdate()));
+	}
+
+	// 회원 수정/삭제 인증하기
+	public void userInfoCheck() {
+		boolean userUDCheck = us.userInfoCheck(root, userDTO);
+		if (userUDCheck) {
+			// 수정/삭제 완료
+			System.out.println("수정/삭제 완료");
+			mainMenu();
+		} else {
+			// 마이페이지로 이동
+			userInfoPage();
+		}
+	}
+
+	// 회원 구매내역 출력
+	public void selectUserPLList() {
+
+		List<PurchaseListDTO> purchaseListByUserId = us.selectUserPLByID(userDTO.getUserId());
+
+		ObservableList<PurchaseListDTO> purchaseListList = FXCollections.observableArrayList(purchaseListByUserId);
+		
+		userPurchaseListIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListId"));
+		userPurchaseListUserIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListUserId"));
+		userPurchaseListAccountColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListAccount"));
+		userPurchaseListShopIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListShopId"));
+		userPurchaseListShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListShopName"));
+		userPurchaseListTotalpaymentColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalpayment"));
+		userPurchaseListTotalshopcountColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalshopcount"));
+		userPurchaseListCreateColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListCreate"));
+
+
+		userPurchaseListTable.setItems(purchaseListList);
 	}
 
 }

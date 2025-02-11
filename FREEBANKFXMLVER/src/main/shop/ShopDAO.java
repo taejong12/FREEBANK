@@ -24,7 +24,7 @@ public class ShopDAO {
 		}
 	}
 
-	// 쇼핑몰 리스트
+	// 상품 리스트
 	public List<ShopDTO> selectShopList() {
 		List<ShopDTO> shopList = new ArrayList<ShopDTO>();
 
@@ -53,10 +53,37 @@ public class ShopDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("조회할 상품이 존재하지 않습니다.");
+			System.out.println("상품목록 조회실패");
 			e.printStackTrace();
 		}
 		return shopList;
+	}
+
+	// 구매내역 추가
+	public void insertShopPLInfo(PurchaseListDTO purchaseListDTO) {
+
+		String sql = "insert into FREEBANKPURCHASELIST(FREEBANKPURCHASELIST_USERID, FREEBANKPURCHASELIST_ACCOUNT, FREEBANKPURCHASELIST_SHOPID, FREEBANKPURCHASELIST_SHOPNAME, FREEBANKPURCHASELIST_TOTALPAYMENT, FREEBANKPURCHASELIST_TOTALSHOPCOUNT) values(?,?,?,?,?,?)";
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, purchaseListDTO.getPurchaseListUserId());
+			pstmt.setString(2, purchaseListDTO.getPurchaseListAccount());
+			pstmt.setInt(3, purchaseListDTO.getPurchaseListShopId());
+			pstmt.setString(4, purchaseListDTO.getPurchaseListShopName());
+			pstmt.setInt(5, purchaseListDTO.getPurchaseListTotalpayment());
+			pstmt.setInt(6, purchaseListDTO.getPurchaseListTotalshopcount());
+
+			int result = pstmt.executeUpdate();
+
+			if (result >= 1) {
+				System.out.println("구매내역 추가완료");
+			}
+
+		} catch (Exception e) {
+			System.out.println("구매내역 추가실패");
+			e.printStackTrace();
+		}
+
 	}
 
 }

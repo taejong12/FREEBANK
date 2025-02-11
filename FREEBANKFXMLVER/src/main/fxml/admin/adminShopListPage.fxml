@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.admin.AdminController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,23 +20,22 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
+      <TableView fx:id="adminShopListTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
         <columns>
-          <TableColumn prefWidth="100.0" text="구매내역번호" />
-          <TableColumn prefWidth="100.0" text="회원아이디" />
-            <TableColumn prefWidth="100.0" text="계좌번호" />
-            <TableColumn prefWidth="100.0" text="상품번호" />
-            <TableColumn prefWidth="100.0" text="상품이름" />
-            <TableColumn prefWidth="100.0" text="총결제금액" />
-            <TableColumn prefWidth="100.0" text="총상품갯수" />
-            <TableColumn prefWidth="100.0" text="결제일" />
+            <TableColumn fx:id="shopIdColumn" prefWidth="100.0" text="상품번호" />
+          <TableColumn fx:id="shopNameColumn" prefWidth="100.0" text="상품이름" />
+            <TableColumn fx:id="shopContentsColumn" prefWidth="100.0" text="상품설명" />
+          <TableColumn fx:id="shopPriceColumn" prefWidth="100.0" text="가격" />
+            <TableColumn fx:id="shopAdminIdColumn" prefWidth="100.0" text="관리자아이디" />
+            <TableColumn fx:id="shopCreateColumn" prefWidth="100.0" text="등록일" />
+            <TableColumn fx:id="shopUpdateColumn" prefWidth="100.0" text="수정일" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" text="이전페이지">
+            <Button mnemonicParsing="false" onAction="#adminShopPage" text="이전페이지">
                <font>
-                  <Font size="18.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
          </children>

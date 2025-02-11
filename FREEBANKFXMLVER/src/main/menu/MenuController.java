@@ -36,10 +36,10 @@ public class MenuController {
 		}
 	}
 
-	// 쇼핑몰 페이지 출력
-	public void shopPage() {
-		System.out.println("쇼핑몰 페이지로 이동");
-		ss.shopPage(root, userDTO);
+	// 상품목록 페이지 출력
+	public void shopListPage() {
+		System.out.println("상품목록 페이지로 이동");
+		ss.shopListPage(root, userDTO);
 	}
 
 	// 로그인 페이지 출력
@@ -63,6 +63,7 @@ public class MenuController {
 	// 마이페이지 출력
 	public void userInfoPage() {
 		System.out.println("마이페이지로 이동");
+		us.userInfoPage(root, userDTO);
 	}
 
 	// 로그아웃(비로그인 메인페이지로 이동)

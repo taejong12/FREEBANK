@@ -1,5 +1,6 @@
 package main.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import main.account.AccountDTO;
 import main.board.BoardDTO;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
+import main.shop.PurchaseListDTO;
 import main.shop.ShopDTO;
 import main.user.UserDTO;
 
@@ -29,6 +31,7 @@ public class AdminController {
 	MenuService ms = new MenuServiceImple();
 	BoardDTO boardDTO;
 	AccountDTO accountDTO;
+	ShopDTO shopDTO;
 
 	// 공지사항 목록 화면 컬럼
 	@FXML
@@ -73,6 +76,74 @@ public class AdminController {
 	private TableColumn<AccountDTO, String> accountCreateColumn;
 	@FXML
 	private TableColumn<AccountDTO, String> accountIdColumn;
+
+	// 회원 목록 출력
+	@FXML
+	TableView<UserDTO> userListTable;
+	@FXML
+	private TableColumn<UserDTO, String> userIdColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userNameColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userPwdColumn;
+	@FXML
+	private TableColumn<UserDTO, Integer> userAgeColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userSexColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userEmailColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userAdminColumn;
+	@FXML
+	private TableColumn<UserDTO, Integer> userCreditRatingColumn;
+	@FXML
+	private TableColumn<UserDTO, Integer> userTotalColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userCreateColumn;
+	@FXML
+	private TableColumn<UserDTO, String> userUpdateColumn;
+
+	// 상품 목록 출력 테이블
+	@FXML
+	TableView<ShopDTO> adminShopListTable;
+	@FXML
+	private TableColumn<ShopDTO, Integer> shopIdColumn;
+	@FXML
+	private TableColumn<ShopDTO, String> shopNameColumn;
+	@FXML
+	private TableColumn<ShopDTO, String> shopContentsColumn;
+	@FXML
+	private TableColumn<ShopDTO, Integer> shopPriceColumn;
+	@FXML
+	private TableColumn<ShopDTO, String> shopAdminIdColumn;
+	@FXML
+	private TableColumn<ShopDTO, String> shopCreateColumn;
+	@FXML
+	private TableColumn<ShopDTO, String> shopUpdateColumn;
+
+	// 상품 상세페이지 컬럼
+	@FXML
+	private Text adminDetailShopId;
+	@FXML
+	private Text adminDetailShopName;
+	@FXML
+	private Text adminDetailShopContents;
+	@FXML
+	private Text adminDetailShopPrice;
+	@FXML
+	private Text adminDetailShopAdminId;
+	@FXML
+	private Text adminDetailShopCreate;
+	@FXML
+	private Text adminDetailShopUpdate;
+
+	// 상품 수정페이지 컬럼 textfield 추가
+	@FXML
+	private TextField adminDetailShopNameTextField;
+	@FXML
+	private TextField adminDetailShopContentsTextField;
+	@FXML
+	private TextField adminDetailShopPriceTextField;
 
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -199,9 +270,9 @@ public class AdminController {
 		as.adminAccountPage(root, userDTO);
 	}
 
-	// 쇼핑몰 관리페이지 출력
+	// 상품 관리페이지 출력
 	public void adminShopPage() {
-		System.out.println("쇼핑몰 관리페이지로 이동");
+		System.out.println("상품 관리페이지로 이동");
 		as.adminShopPage(root, userDTO);
 	}
 
@@ -272,10 +343,10 @@ public class AdminController {
 		as.insertAdminShopPage(root, userDTO);
 	}
 
-	// 상품 조회(수정/삭제)페이지 출력
-	public void updateAdminShopPage() {
-		System.out.println("상품 조회페이지로 이동");
-		as.updateAdminShopPage(root, userDTO);
+	// 상품 목록(수정/삭제)페이지 출력
+	public void adminShopListPage() {
+		System.out.println("상품 목록페이지로 이동");
+		as.adminShopListPage(root, userDTO);
 	}
 
 	// 회원 목록페이지 출력
@@ -288,6 +359,159 @@ public class AdminController {
 	public void adminPLPage() {
 		System.out.println("구매내역 목록페이지로 이동");
 		as.adminPLPage(root, userDTO);
+	}
+
+	// 모든 회원 정보 조회
+	public void selectAdminUserListAll() {
+		System.out.println("회원 목록 조회");
+		List<UserDTO> selectUserList = as.selectAdminUserListAll();
+
+		ObservableList<UserDTO> userList = FXCollections.observableArrayList(selectUserList);
+
+		userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
+		userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
+		userPwdColumn.setCellValueFactory(new PropertyValueFactory<>("userPwd"));
+		userAgeColumn.setCellValueFactory(new PropertyValueFactory<>("userAge"));
+		userSexColumn.setCellValueFactory(new PropertyValueFactory<>("userSex"));
+		userEmailColumn.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+		userAdminColumn.setCellValueFactory(new PropertyValueFactory<>("userAdmin"));
+		userCreditRatingColumn.setCellValueFactory(new PropertyValueFactory<>("userCreditRating"));
+		userTotalColumn.setCellValueFactory(new PropertyValueFactory<>("userTotal"));
+		userCreateColumn.setCellValueFactory(new PropertyValueFactory<>("userCreate"));
+		userUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("userUpdate"));
+
+		userListTable.setItems(userList);
+	}
+
+	// 상품등록하기
+	public void insertAdminShop() {
+		System.out.println("상품 등록하기");
+		as.insertAdminShop(root, userDTO);
+		// 상품 관리 페이지 출력
+		adminShopPage();
+	}
+
+	// 상품 목록 조회
+	public void selectAdminShopList() {
+		System.out.println("상품 목록 조회");
+		List<ShopDTO> selectShopList = as.selectAdminShopListAll();
+
+		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
+
+		shopIdColumn.setCellValueFactory(new PropertyValueFactory<>("shopId"));
+		shopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+		shopContentsColumn.setCellValueFactory(new PropertyValueFactory<>("shopContents"));
+		shopPriceColumn.setCellValueFactory(new PropertyValueFactory<>("shopPrice"));
+		shopAdminIdColumn.setCellValueFactory(new PropertyValueFactory<>("shopAdminId"));
+		shopCreateColumn.setCellValueFactory(new PropertyValueFactory<>("shopCreate"));
+		shopUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("shopUpdate"));
+
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		shopNameColumn.setCellFactory(new Callback<TableColumn<ShopDTO, String>, TableCell<ShopDTO, String>>() {
+			public TableCell<ShopDTO, String> call(TableColumn<ShopDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							ShopDTO shopDTO = getTableView().getItems().get(getIndex());
+							as.adminShopDetailPage(root, shopDTO, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+
+		adminShopListTable.setItems(shopList);
+	}
+
+	// 상품정보저장
+	public void setShop(ShopDTO shopDTO) {
+		this.shopDTO = shopDTO;
+	}
+
+	// 상품 상세페이지 정보
+	public void adminDetailShopInfo() {
+
+		adminDetailShopId.setText(String.valueOf(shopDTO.getShopId()));
+		adminDetailShopName.setText(shopDTO.getShopName());
+		adminDetailShopContents.setText(shopDTO.getShopContents());
+		adminDetailShopPrice.setText(String.valueOf(shopDTO.getShopPrice()));
+		adminDetailShopAdminId.setText(shopDTO.getShopAdminId());
+		adminDetailShopCreate.setText(String.valueOf(shopDTO.getShopCreate()));
+		adminDetailShopUpdate.setText(String.valueOf(shopDTO.getShopUpdate()));
+
+		System.out.println("상품번호: " + adminDetailShopId.getText());
+		System.out.println("상품이름: " + adminDetailShopName.getText());
+		System.out.println("상품설명: " + adminDetailShopContents.getText());
+		System.out.println("상품가격: " + adminDetailShopPrice.getText());
+		System.out.println("상품관리자아이디: " + adminDetailShopAdminId.getText());
+		System.out.println("상품등록일: " + adminDetailShopCreate.getText());
+		System.out.println("상품수정일: " + adminDetailShopUpdate.getText());
+	}
+
+	// 상품 수정페이지 출력
+	public void updateAdminShopPage() {
+		System.out.println("상품수정 페이지로 이동");
+		as.updateAdminShopPage(root, userDTO, shopDTO);
+	}
+
+	// 상품삭제하기
+	public void deleteAdminShop() {
+		System.out.println("상품 삭제하기");
+		as.deleteAdminShop(shopDTO);
+		// 상품 목록 페이지
+		adminShopListPage();
+	}
+
+	// 상품 수정하기
+	public void updateAdminShop() {
+		System.out.println("상품 수정하기");
+		as.updateAdminShop(root, shopDTO, userDTO);
+		// 상품 목록 페이지
+		adminShopListPage();
+	}
+
+	// 상품 수정페이지 정보
+	public void updateAdminDetailShopInfo() {
+		adminDetailShopId.setText(String.valueOf(shopDTO.getShopId()));
+		adminDetailShopNameTextField.setText(shopDTO.getShopName());
+		adminDetailShopContentsTextField.setText(shopDTO.getShopContents());
+		adminDetailShopPriceTextField.setText(String.valueOf(shopDTO.getShopPrice()));
+		adminDetailShopAdminId.setText(shopDTO.getShopAdminId());
+		adminDetailShopCreate.setText(String.valueOf(shopDTO.getShopCreate()));
+		adminDetailShopUpdate.setText(String.valueOf(shopDTO.getShopUpdate()));
+
+		System.out.println("상품번호: " + adminDetailShopId.getText());
+		System.out.println("상품이름: " + adminDetailShopNameTextField.getText());
+		System.out.println("상품설명: " + adminDetailShopContentsTextField.getText());
+		System.out.println("상품가격: " + adminDetailShopPriceTextField.getText());
+		System.out.println("상품관리자아이디: " + adminDetailShopAdminId.getText());
+		System.out.println("상품등록일: " + adminDetailShopCreate.getText());
+		System.out.println("상품수정일: " + adminDetailShopUpdate.getText());
+	}
+
+	// 구매내역 목록조회
+	public void selectAdminPLListAll() {
+
+		List<PurchaseListDTO> selectPLList = as.selectAdminPLListAll();
+
+	}
+
+	// 사진 저장(미정)
+	public void insertShopImage() {
+
 	}
 
 }

@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import main.shop.PurchaseListDTO;
 
 public class UserDAO {
 
@@ -68,6 +72,8 @@ public class UserDAO {
 				userDTO.setUserAdmin(rs.getString(7));
 				userDTO.setUserCreditRating(rs.getInt(8));
 				userDTO.setUserTotal(rs.getInt(9));
+				userDTO.setUserCreate(rs.getDate(10));
+				userDTO.setUserUpdate(rs.getDate(11));
 			}
 
 		} catch (Exception e) {
@@ -77,6 +83,81 @@ public class UserDAO {
 
 		return userDTO;
 
+	}
+
+	// 회원정보수정
+	public int updateUserInfo(UserDTO userDTO) {
+		int result = 0;
+
+		String sql = "update FREEBANKUSER set FREEBANKUSER_NAME=?, FREEBANKUSER_AGE=?, FREEBANKUSER_SEX=?, FREEBANKUSER_EMAIL=?, FREEBANKUSER_UPDATE=SYSDATE where FREEBANKUSER_ID=?";
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userDTO.getUserName());
+			pstmt.setInt(2, userDTO.getUserAge());
+			pstmt.setString(3, userDTO.getUserSex());
+			pstmt.setString(4, userDTO.getUserEmail());
+			pstmt.setString(5, userDTO.getUserId());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("회원정보 수정실패");
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	// 회원탈퇴
+	public int deleteUserInfo(UserDTO userDTO) {
+		int result = 0;
+
+		String sql = "delete from FREEBANKUSER where FREEBANKUSER_ID=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userDTO.getUserId());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("회원탈퇴실패");
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	// 회원 구매내역 조회
+	public List<PurchaseListDTO> selectUserPLByID(String userId) {
+		List<PurchaseListDTO> pLList = new ArrayList<PurchaseListDTO>();
+
+		String sql = "select * from FREEBANKPURCHASELIST where FREEBANKPURCHASELIST_USERID=? order by FREEBANKPURCHASELIST_ID desc";
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				PurchaseListDTO purchaseListDTO = new PurchaseListDTO();
+				purchaseListDTO.setPurchaseListId(rs.getInt(1));
+				purchaseListDTO.setPurchaseListUserId(rs.getString(2));
+				purchaseListDTO.setPurchaseListAccount(rs.getString(3));
+				purchaseListDTO.setPurchaseListShopId(rs.getInt(4));
+				purchaseListDTO.setPurchaseListShopName(rs.getString(5));
+				purchaseListDTO.setPurchaseListTotalpayment(rs.getInt(6));
+				purchaseListDTO.setPurchaseListTotalshopcount(rs.getInt(7));
+				purchaseListDTO.setPurchaseListCreate(rs.getDate(8));
+				pLList.add(purchaseListDTO);
+			}
+
+		} catch (Exception e) {
+			System.out.println("구매내역 목록조회 실패");
+			e.printStackTrace();
+		}
+
+		return pLList;
 	}
 
 }
