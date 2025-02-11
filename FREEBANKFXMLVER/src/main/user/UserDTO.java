@@ -3,8 +3,8 @@ package main.user;
 import java.sql.Date;
 
 public class UserDTO {
-	
-	//FREEBANKUSER(회원) 테이블 컬럼
+
+	// FREEBANKUSER(회원) 테이블 컬럼
 	private String userId; // 회원_아이디(PK)
 	private String userName; // 회원_이름
 	private String userPwd; // 회원_비밀번호

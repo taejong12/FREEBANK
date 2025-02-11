@@ -18,17 +18,18 @@ public class UserController {
 
 	}
 
+	// 회원가입 버튼
 	public void insertJoin() {
 		System.out.println("회원가입 작성완료 버튼");
-		// loginScreen
 		us.insertUser(root);
-
-		us.loginScreen(root);
+		// 메인페이지로 이동(비로그인 상태)
+		mainMenu();
 	}
 
+	// 일반회원/관리자 메뉴
 	public void loginMainMenu(UserDTO userDTO) {
 		System.out.println("로그인성공");
-		
+
 		if (userDTO.getUserAdmin().equals("N")) {
 			System.out.println("일반회원메뉴");
 			ms.loginMainMenu(root, userDTO);
@@ -36,20 +37,21 @@ public class UserController {
 			System.out.println("관리자메뉴");
 			ms.adminMainMenu(root, userDTO);
 		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("로그인 에러");
-			alert.setHeaderText(null);
-			alert.setContentText("로그인 에러");
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("로그인 에러");
+			alertError.setHeaderText(null);
+			alertError.setContentText("로그인 에러");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertError.showAndWait();
 		}
 	}
 
+	// 로그인 버튼
 	public void loginCheck() {
 		System.out.println("로그인 일치여부 확인 메서드");
-		// 일치하면 loginMainMenu 화면으로 고고
 
+		// 유저 정보 조회
 		UserDTO userDTO = us.selectUserInfoById(root);
 
 		if (userDTO.getUserId() != null) {
@@ -57,13 +59,15 @@ public class UserController {
 		}
 	}
 
-	public void join() {
-		System.out.println("회원가입 페이지로 가기");
-		us.joinScreen(root);
+	// 회원가입 페이지 출력
+	public void joinPage() {
+		System.out.println("회원가입 페이지로 이동");
+		us.joinPage(root);
 	}
 
+	// 메인페이지로 이동(비로그인 상태)
 	public void mainMenu() {
-		System.out.println("메인화면 가기");
+		System.out.println("메인페이지로 이동");
 		ms.mainMenu(root, userDTO);
 	}
 

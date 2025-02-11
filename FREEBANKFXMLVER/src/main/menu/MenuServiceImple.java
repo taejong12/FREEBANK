@@ -5,17 +5,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.admin.AdminController;
-import main.user.UserController;
 import main.user.UserDTO;
 
 public class MenuServiceImple implements MenuService {
 
 	Parent root;
 
-	// 비로그인 화면
+	// 메인페이지 출력
 	public void mainMenu(Parent root, UserDTO userDTO) {
 
-		Stage mainMenuScreen = (Stage) root.getScene().getWindow();
+		Stage mainMenu = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/menu/mainMenu.fxml"));
 
@@ -28,22 +27,22 @@ public class MenuServiceImple implements MenuService {
 			mainMenuCtrl.setRoot(mainMenuRoot);
 			mainMenuCtrl.setUser(userDTO);
 
-			mainMenuScreen.setScene(new Scene(mainMenuRoot));
-			mainMenuScreen.setTitle("메인페이지");
-			mainMenuScreen.show();
+			mainMenu.setScene(new Scene(mainMenuRoot));
+			mainMenu.setTitle("메인페이지");
+			mainMenu.show();
 
 			mainMenuCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("메인페이지 화면 출력 에러");
+			System.out.println("메인페이지 출력 에러");
 			e.printStackTrace();
 		}
 
 	}
 
-	// 일반회원 화면
+	// 일반회원 메인페이지 출력
 	public void loginMainMenu(Parent root, UserDTO userDTO) {
-		Stage loginMainMenuScreen = (Stage) root.getScene().getWindow();
+		Stage loginMainMenu = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/menu/loginMainMenu.fxml"));
 
@@ -56,22 +55,22 @@ public class MenuServiceImple implements MenuService {
 			loginMainMenuCtrl.setRoot(loginMainMenuRoot);
 			loginMainMenuCtrl.setUser(userDTO);
 
-			loginMainMenuScreen.setScene(new Scene(loginMainMenuRoot));
-			loginMainMenuScreen.setTitle("일반회원메인페이지");
-			loginMainMenuScreen.show();
+			loginMainMenu.setScene(new Scene(loginMainMenuRoot));
+			loginMainMenu.setTitle("일반회원 메인페이지");
+			loginMainMenu.show();
 
 			loginMainMenuCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("일반회원 화면 출력 에러");
+			System.out.println("일반회원 메인페이지 출력 에러");
 			e.printStackTrace();
 		}
 
 	}
 
-	// 관리자메뉴화면
+	// 관리자 메인페이지 출력
 	public void adminMainMenu(Parent root, UserDTO userDTO) {
-		Stage adminMainMenuScreen = (Stage) root.getScene().getWindow();
+		Stage adminMainMenu = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/menu/adminMainMenu.fxml"));
 
@@ -84,14 +83,14 @@ public class MenuServiceImple implements MenuService {
 			adminMainMenuCtrl.setRoot(adminMainMenuRoot);
 			adminMainMenuCtrl.setUser(userDTO);
 
-			adminMainMenuScreen.setScene(new Scene(adminMainMenuRoot));
-			adminMainMenuScreen.setTitle("관리자메인페이지");
-			adminMainMenuScreen.show();
+			adminMainMenu.setScene(new Scene(adminMainMenuRoot));
+			adminMainMenu.setTitle("관리자 메인페이지");
+			adminMainMenu.show();
 
 			adminMainMenuCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("관리자메뉴 출력 에러");
+			System.out.println("관리자 메인페이지 출력 에러");
 			e.printStackTrace();
 		}
 

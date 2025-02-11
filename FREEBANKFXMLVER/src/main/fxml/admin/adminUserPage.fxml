@@ -20,17 +20,17 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="2" GridPane.rowSpan="3">
          <children>
-            <Button mnemonicParsing="false" text="회원목록조회">
+            <Button mnemonicParsing="false" onAction="#adminUserListPage" text="회원 목록페이지" >
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="구매내역목록조회">
+            <Button mnemonicParsing="false" onAction="#adminPLPage" text="구매내역 목록페이지">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="이전페이지">
+            <Button mnemonicParsing="false" onAction="#adminMainMenu" text="이전페이지">
                <font>
                   <Font size="18.0" />
                </font>

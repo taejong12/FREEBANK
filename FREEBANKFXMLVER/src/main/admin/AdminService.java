@@ -35,4 +35,12 @@ public interface AdminService {
 
 	List<AccountDTO> selectAccountListAll(); // 계좌목록 가져오기
 
+	void insertAdminShopPage(Parent root, UserDTO userDTO); // 상품 등록페이지 출력
+
+	void updateAdminShopPage(Parent root, UserDTO userDTO); // 상품 조회(수정/삭제)페이지 출력
+
+	void adminUserListPage(Parent root, UserDTO userDTO); // 회원 목록페이지 출력
+
+	void adminPLPage(Parent root, UserDTO userDTO); // 구매내역 목록페이지 출력
+
 }

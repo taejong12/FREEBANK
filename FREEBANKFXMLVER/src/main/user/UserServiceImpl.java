@@ -13,19 +13,7 @@ public class UserServiceImpl implements UserService {
 
 	UserDAO ud = new UserDAO();
 
-	@Override
-	public UserDTO userLogin() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public UserDTO userLogout() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
+	// 유저 정보 조회 / 로그인 일치여부 확인
 	public UserDTO selectUserInfoById(Parent root) {
 
 		TextField id = (TextField) root.lookup("#userId");
@@ -36,32 +24,32 @@ public class UserServiceImpl implements UserService {
 
 		UserDTO userDTO = ud.selectUserInfoById(userId);
 
-		Alert alert = new Alert(AlertType.ERROR);
+		Alert alertError = new Alert(AlertType.ERROR);
 
 		if (userDTO.getUserId() == null) {
 
-			alert.setTitle("로그인 실패");
-			alert.setHeaderText(null);
-			alert.setContentText("아이디/비밀번호가 존재하지 않습니다.");
+			alertError.setTitle("로그인 실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("아이디/비밀번호가 존재하지 않습니다.");
 
 			// 로그인 입력 필드 초기화
 			id.clear();
 			pwd.clear();
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertError.showAndWait();
 		} else if (userDTO.getUserId() != null && !(userDTO.getUserPwd().equals(userPwd))) {
 
-			alert.setTitle("로그인 실패");
-			alert.setHeaderText(null);
-			alert.setContentText("아이디/비밀번호가 일치하지 않습니다.");
+			alertError.setTitle("로그인 실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("아이디/비밀번호가 일치하지 않습니다.");
 
 			// 로그인 입력 필드 초기화
 			id.clear();
 			pwd.clear();
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertError.showAndWait();
 		} else if (userId.equals(userDTO.getUserId()) && userPwd.equals(userDTO.getUserPwd())) {
 			if ("Y".equals(userDTO.getUserAdmin())) {
 				System.out.println("관리자로 로그인하셨습니다.");
@@ -75,7 +63,7 @@ public class UserServiceImpl implements UserService {
 		return new UserDTO();
 	}
 
-	//회원가입
+	// 회원가입하기
 	public void insertUser(Parent root) {
 
 		UserDTO userDTO = new UserDTO();
@@ -120,69 +108,79 @@ public class UserServiceImpl implements UserService {
 		userDTO.setUserPwd(userPwd);
 		userDTO.setUserName(userName);
 		userDTO.setUserAge(userAge);
+		// 수정필요
 		userDTO.setUserSex("X");
 		userDTO.setUserEmail(userEmail);
 
-		ud.insertUser(userDTO);
+		int result = ud.insertUser(userDTO);
+
+		if (result >= 1) {
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+			alertInfo.setTitle("회원가입 완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("회원가입 완료");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertInfo.showAndWait();
+		} else {
+			Alert alertError = new Alert(AlertType.ERROR);
+
+			alertError.setTitle("회원가입 실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("회원가입 실패");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertError.showAndWait();
+		}
 
 	}
 
-	@Override
-	public UserDTO updateUser(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// 로그인 페이지 출력
+	public void loginPage(Parent root) {
 
-	@Override
-	public UserDTO deleteUser(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Stage loginPage = (Stage) root.getScene().getWindow();
 
-	// 로그인화면이동
-	public void loginScreen(Parent root) {
-
-		Stage loginScreen = (Stage) root.getScene().getWindow();
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/loginScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/loginPage.fxml"));
 
 		try {
 
-			Parent loginRoot = loader.load();
+			Parent loginPageRoot = loader.load();
 
-			UserController userCtrl = loader.getController();
+			UserController loginPageCtrl = loader.getController();
 
-			userCtrl.setRoot(loginRoot);
-			loginScreen.setScene(new Scene(loginRoot));
-			loginScreen.setTitle("로그인페이지");
-			loginScreen.show();
+			loginPageCtrl.setRoot(loginPageRoot);
+
+			loginPage.setScene(new Scene(loginPageRoot));
+			loginPage.setTitle("로그인 페이지");
+			loginPage.show();
 
 		} catch (Exception e) {
-			System.out.println("로그인 화면 출력 에러");
+			System.out.println("로그인 페이지 출력 에러");
 			e.printStackTrace();
 		}
 
 	}
 
-	// 회원가입화면이동
-	public void joinScreen(Parent root) {
-		Stage joinScreen = (Stage) root.getScene().getWindow();
+	// 회원가입 페이지 출력
+	public void joinPage(Parent root) {
+		Stage joinPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/joinScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/joinPage.fxml"));
 
 		try {
 
-			Parent joinRoot = loader.load();
+			Parent joinPageRoot = loader.load();
 
-			UserController userCtrl = loader.getController();
+			UserController joinPageCtrl = loader.getController();
 
-			userCtrl.setRoot(joinRoot);
-			joinScreen.setScene(new Scene(joinRoot));
-			joinScreen.setTitle("회원가입페이지");
-			joinScreen.show();
+			joinPageCtrl.setRoot(joinPageRoot);
+
+			joinPage.setScene(new Scene(joinPageRoot));
+			joinPage.setTitle("회원가입 페이지");
+			joinPage.show();
 
 		} catch (Exception e) {
-			System.out.println("회원가입화면 출력 에러");
+			System.out.println("회원가입페이지 출력 에러");
 			e.printStackTrace();
 		}
 	}

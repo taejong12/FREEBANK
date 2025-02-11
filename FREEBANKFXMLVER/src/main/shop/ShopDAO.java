@@ -24,7 +24,7 @@ public class ShopDAO {
 		}
 	}
 
-	//쇼핑몰 리스트
+	// 쇼핑몰 리스트
 	public List<ShopDTO> selectShopList() {
 		List<ShopDTO> shopList = new ArrayList<ShopDTO>();
 

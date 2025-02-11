@@ -22,8 +22,9 @@ public class ShopController {
 	UserDTO userDTO;
 	MenuService ms = new MenuServiceImple();
 	ShopService ss = new ShopServiceImpl();
-	ShopDTO shopDTO; 
-	
+	ShopDTO shopDTO;
+
+	// 상품 목록 바인딩
 	@FXML
 	TableView<ShopDTO> shopListTable;
 	@FXML
@@ -35,7 +36,6 @@ public class ShopController {
 
 	public void setRoot(Parent root) {
 		this.root = root;
-
 	}
 
 	// UserDTO를 설정하는 메서드 추가
@@ -62,10 +62,9 @@ public class ShopController {
 			System.out.println("로그인 정보 없음");
 		}
 	}
-	
+
 	public void setShop(ShopDTO shop) {
 		this.shopDTO = shop;
-		
 	}
 
 	// 쇼핑몰 리스트
@@ -86,9 +85,9 @@ public class ShopController {
 
 					{
 						link.setOnAction(event -> {
-                            ShopDTO shop = getTableView().getItems().get(getIndex());
-                            ss.shopDetail(root, shop, userDTO);
-                        });
+							ShopDTO shop = getTableView().getItems().get(getIndex());
+							ss.shopDetailPage(root, shop, userDTO);
+						});
 					}
 
 					@Override
@@ -108,12 +107,10 @@ public class ShopController {
 		shopListTable.setItems(shopList);
 	}
 
-	// 비로그인페이지
+	// 메인페이지 출력(비로그인)
 	public void mainMenu() {
-		System.out.println("이전페이지 이동");
+		System.out.println("메인페이지로 이동");
 		ms.mainMenu(root, userDTO);
 	}
-
-	
 
 }

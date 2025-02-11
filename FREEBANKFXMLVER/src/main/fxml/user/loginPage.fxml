@@ -38,7 +38,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#join" text="회원가입">
+            <Button mnemonicParsing="false" onAction="#joinPage" text="회원가입">
                <font>
                   <Font size="18.0" />
                </font>

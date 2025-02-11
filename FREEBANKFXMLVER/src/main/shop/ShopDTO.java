@@ -2,9 +2,6 @@ package main.shop;
 
 import java.sql.Date;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class ShopDTO {
 
 	// FREEBANKSHOP(쇼핑몰) 상품 테이블 컬럼

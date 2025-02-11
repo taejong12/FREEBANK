@@ -7,7 +7,7 @@ public class BoardController {
 
 	Parent root;
 	UserDTO userDTO;
-	
+
 	public void setRoot(Parent root) {
 		this.root = root;
 
@@ -25,6 +25,5 @@ public class BoardController {
 			System.out.println("로그인 정보 없음");
 		}
 	}
-	
-	
+
 }

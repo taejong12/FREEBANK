@@ -30,7 +30,7 @@ public class AdminController {
 	BoardDTO boardDTO;
 	AccountDTO accountDTO;
 
-	//공지사항 목록 화면 컬럼
+	// 공지사항 목록 화면 컬럼
 	@FXML
 	TableView<BoardDTO> boardListTable;
 	@FXML
@@ -42,7 +42,7 @@ public class AdminController {
 	@FXML
 	private TableColumn<BoardDTO, String> boardContentColumn;
 
-	//공지사항 상세보기 페이지 컬럼
+	// 공지사항 상세보기 페이지 컬럼
 	@FXML
 	private Text adminDetailBoardId;
 	@FXML
@@ -56,13 +56,13 @@ public class AdminController {
 	@FXML
 	private Text adminDetailBoardUpdate;
 
-	//공지사항 수정하기 페이지 컬럼
+	// 공지사항 수정하기 페이지 컬럼
 	@FXML
 	private TextField boardTitle;
 	@FXML
 	private TextField boardContent;
-	
-	//계좌 목록 화면 컬럼
+
+	// 계좌 목록 화면 컬럼
 	@FXML
 	TableView<AccountDTO> accountListTable;
 	@FXML
@@ -73,11 +73,9 @@ public class AdminController {
 	private TableColumn<AccountDTO, String> accountCreateColumn;
 	@FXML
 	private TableColumn<AccountDTO, String> accountIdColumn;
-	
-	
+
 	public void setRoot(Parent root) {
 		this.root = root;
-
 	}
 
 	// UserDTO를 설정하는 메서드 추가
@@ -106,7 +104,7 @@ public class AdminController {
 		ObservableList<BoardDTO> boardList = FXCollections.observableArrayList(selectBoardList);
 
 		boardIdColumn.setCellValueFactory(new PropertyValueFactory<>("boardId"));
-		boardAuthorColumn.setCellValueFactory(new PropertyValueFactory<>("boardId"));
+		boardAuthorColumn.setCellValueFactory(new PropertyValueFactory<>("boardAuthor"));
 		boardContentColumn.setCellValueFactory(new PropertyValueFactory<>("boardContent"));
 		boardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
 
@@ -138,7 +136,6 @@ public class AdminController {
 		});
 
 		boardListTable.setItems(boardList);
-
 	}
 
 	// 공지사항 상세보기 출력 정보
@@ -156,7 +153,6 @@ public class AdminController {
 		System.out.println("공지사항 내용: " + adminDetailBoardContent.getText());
 		System.out.println("공지사항 작성일: " + adminDetailBoardCreated.getText());
 		System.out.println("공지사항 수정일: " + adminDetailBoardUpdate.getText());
-
 	}
 
 	// 공지사항 수정 정보 불러오기
@@ -174,13 +170,13 @@ public class AdminController {
 		System.out.println("공지사항 수정일: " + adminDetailBoardUpdate.getText());
 		System.out.println("공지사항 제목: " + boardTitle.getText());
 		System.out.println("공지사항 내용: " + boardContent.getText());
-
 	}
-	
-	//계좌목록 출력하기 
+
+	// 계좌목록 출력하기
 	public void selectAdminAccountList() {
-		List<AccountDTO> selectAccountList =  as.selectAccountListAll();
-		
+
+		List<AccountDTO> selectAccountList = as.selectAccountListAll();
+
 		ObservableList<AccountDTO> accountList = FXCollections.observableArrayList(selectAccountList);
 
 		accountAccountColumn.setCellValueFactory(new PropertyValueFactory<>("accountAccount"));
@@ -189,48 +185,54 @@ public class AdminController {
 		accountIdColumn.setCellValueFactory(new PropertyValueFactory<>("accountId"));
 
 		accountListTable.setItems(accountList);
-		
 	}
 
+	// 공지사항 관리페이지 출력
 	public void adminBoardPage() {
-		System.out.println("공지사항 관리 페이지 가기");
+		System.out.println("공지사항 관리페이지로 이동");
 		as.adminBoardPage(root, userDTO);
 	}
 
+	// 계좌 관리페이지 출력
 	public void adminAccountPage() {
-		System.out.println("계좌 관리 페이지 가기");
+		System.out.println("계좌 관리페이지로 이동");
 		as.adminAccountPage(root, userDTO);
 	}
 
+	// 쇼핑몰 관리페이지 출력
 	public void adminShopPage() {
-		System.out.println("쇼핑몰 관리 페이지 가기");
+		System.out.println("쇼핑몰 관리페이지로 이동");
 		as.adminShopPage(root, userDTO);
 	}
 
+	// 회원 관리페이지 출력
 	public void adminUserPage() {
-		System.out.println("회원 관리 페이지 가기");
+		System.out.println("회원 관리페이지로 이동");
 		as.adminUserPage(root, userDTO);
 	}
 
+	// 관리자 로그아웃(메인페이지(비로그인))
 	public void adminLogout() {
 		System.out.println("관리자 로그아웃");
 		userDTO = new UserDTO();
 		ms.mainMenu(root, userDTO);
 	}
 
-	// 공지사항 등록 페이지
+	// 공지사항 등록페이지 출력
 	public void insertAdminBoardPage() {
+		System.out.println("공지사항 등록페이지로 이동");
 		as.insertAdminBoardPage(root, userDTO);
 	}
 
-	// 공지사항목록(수정/삭제) 페이지
+	// 공지사항 목록페이지(수정/삭제) 출력
 	public void selectAdminBoardListPage() {
+		System.out.println("공지사항 목록페이지(수정/삭제)로 이동");
 		as.selectAdminBoardListPage(root, userDTO);
 	}
 
-	// 관리자 메인페이지 돌아가기(이전페이지)
+	// 관리자 메인페이지 출력(이전페이지)
 	public void adminMainMenu() {
-		System.out.println("메인메뉴가기");
+		System.out.println("메인메뉴로 이동");
 		ms.adminMainMenu(root, userDTO);
 	}
 
@@ -238,12 +240,13 @@ public class AdminController {
 	public void insertAdminBoard() {
 		System.out.println("공지사항 등록");
 		as.insertAdminBoard(root, userDTO);
+		// 공지사항 관리페이지 출력
 		adminBoardPage();
 	}
 
-	// 공지사항 수정 페이지 이동하기
+	// 공지사항 수정페이지 출력
 	public void updateAdminBoardPage() {
-		System.out.println("공지사항 수정 페이지 이동");
+		System.out.println("공지사항 수정페이지로 이동");
 		as.updateAdminBoardPage(root, userDTO, boardDTO);
 	}
 
@@ -251,6 +254,7 @@ public class AdminController {
 	public void deleteAdminBoard() {
 		System.out.println("공지사항 삭제하기");
 		as.deleteAdminBoard(boardDTO);
+		// 공지사항 목록페이지(수정/삭제) 출력
 		selectAdminBoardListPage();
 	}
 
@@ -258,7 +262,32 @@ public class AdminController {
 	public void updateAdminBoard() {
 		System.out.println("공지사항 수정하기");
 		as.updateAdminBoard(root, userDTO, boardDTO);
+		// 공지사항 목록페이지(수정/삭제) 출력
 		selectAdminBoardListPage();
+	}
+
+	// 상품 등록페이지 출력
+	public void insertAdminShopPage() {
+		System.out.println("상품 등록페이지로 이동");
+		as.insertAdminShopPage(root, userDTO);
+	}
+
+	// 상품 조회(수정/삭제)페이지 출력
+	public void updateAdminShopPage() {
+		System.out.println("상품 조회페이지로 이동");
+		as.updateAdminShopPage(root, userDTO);
+	}
+
+	// 회원 목록페이지 출력
+	public void adminUserListPage() {
+		System.out.println("회원 목록페이지로 이동");
+		as.adminUserListPage(root, userDTO);
+	}
+
+	// 구매내역 목록페이지 출력
+	public void adminPLPage() {
+		System.out.println("구매내역 목록페이지로 이동");
+		as.adminPLPage(root, userDTO);
 	}
 
 }

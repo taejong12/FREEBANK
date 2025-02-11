@@ -1,6 +1,5 @@
 package main.admin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXMLLoader;
@@ -12,14 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.account.AccountDTO;
 import main.board.BoardDTO;
-import main.shop.ShopController;
 import main.user.UserDTO;
 
 public class AdminServiceImpl implements AdminService {
 
 	AdminDAO ad = new AdminDAO();
 
-	// 공지사항 관리페이지
+	// 공지사항 관리페이지 출력
 	public void adminBoardPage(Parent root, UserDTO userDTO) {
 		Stage adminBoardPage = (Stage) root.getScene().getWindow();
 
@@ -35,19 +33,19 @@ public class AdminServiceImpl implements AdminService {
 			adminBoardPageCtrl.setUser(userDTO);
 
 			adminBoardPage.setScene(new Scene(adminBoardPageRoot));
-			adminBoardPage.setTitle("공지사항 관리 페이지");
+			adminBoardPage.setTitle("공지사항 관리페이지");
 			adminBoardPage.show();
 
 			adminBoardPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("공지사항 관리 페이지 에러");
+			System.out.println("공지사항 관리페이지 출력 실패");
 			e.printStackTrace();
 		}
 
 	}
 
-	// 계좌 관리 페이지
+	// 계좌 관리페이지 출력
 	public void adminAccountPage(Parent root, UserDTO userDTO) {
 		Stage adminAccountPage = (Stage) root.getScene().getWindow();
 
@@ -64,19 +62,19 @@ public class AdminServiceImpl implements AdminService {
 			adminAccountPageCtrl.selectAdminAccountList();
 
 			adminAccountPage.setScene(new Scene(adminAccountPageRoot));
-			adminAccountPage.setTitle("계좌 관리 페이지");
+			adminAccountPage.setTitle("계좌 관리페이지");
 			adminAccountPage.show();
 
 			adminAccountPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("계좌 관리 페이지 에러");
+			System.out.println("계좌 관리페이지 출력 실패");
 			e.printStackTrace();
 		}
 
 	}
 
-	// 쇼핑몰 관리 페이지
+	// 쇼핑몰 관리페이지 출력
 	public void adminShopPage(Parent root, UserDTO userDTO) {
 		Stage adminShopPage = (Stage) root.getScene().getWindow();
 
@@ -92,13 +90,13 @@ public class AdminServiceImpl implements AdminService {
 			adminShopPageCtrl.setUser(userDTO);
 
 			adminShopPage.setScene(new Scene(adminShopPageRoot));
-			adminShopPage.setTitle("공지사항 관리 페이지");
+			adminShopPage.setTitle("공지사항 관리페이지");
 			adminShopPage.show();
 
 			adminShopPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("공지사항 관리 페이지 에러");
+			System.out.println("공지사항 관리페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -120,13 +118,13 @@ public class AdminServiceImpl implements AdminService {
 			adminUserPageCtrl.setUser(userDTO);
 
 			adminUserPage.setScene(new Scene(adminUserPageRoot));
-			adminUserPage.setTitle("회원 관리 페이지");
+			adminUserPage.setTitle("회원 관리페이지");
 			adminUserPage.show();
 
 			adminUserPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("회원 관리 페이지 에러");
+			System.out.println("회원 관리페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -148,13 +146,13 @@ public class AdminServiceImpl implements AdminService {
 			insertAdminBoardPageCtrl.setUser(userDTO);
 
 			insertAdminBoardPage.setScene(new Scene(insertAdminBoardPageRoot));
-			insertAdminBoardPage.setTitle("공지사항 등록 페이지");
+			insertAdminBoardPage.setTitle("공지사항 등록페이지");
 			insertAdminBoardPage.show();
 
 			insertAdminBoardPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("공지사항 등록 페이지 에러");
+			System.out.println("공지사항 등록페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -177,13 +175,13 @@ public class AdminServiceImpl implements AdminService {
 			selectAdminBoardListPageCtrl.selectAdminBoardList();
 
 			selectAdminBoardListPage.setScene(new Scene(selectAdminBoardListPageRoot));
-			selectAdminBoardListPage.setTitle("공지사항 목록 페이지");
+			selectAdminBoardListPage.setTitle("공지사항 목록페이지");
 			selectAdminBoardListPage.show();
 
 			selectAdminBoardListPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("공지사항 등록 페이지 에러");
+			System.out.println("공지사항 등록페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -212,21 +210,21 @@ public class AdminServiceImpl implements AdminService {
 		int result = ad.insertAdminBoard(boardDTO);
 
 		if (result >= 1) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("공지사항 등록 완료");
-			alert.setHeaderText(null);
-			alert.setContentText("공지사항 등록 완료");
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+			alertInfo.setTitle("공지사항 등록완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("공지사항 등록완료");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertInfo.showAndWait();
 		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("공지사항 등록 실패");
-			alert.setHeaderText(null);
-			alert.setContentText("공지사항 등록 실패");
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("공지사항 등록실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("공지사항 등록실패");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertError.showAndWait();
 		}
 	}
 
@@ -235,7 +233,7 @@ public class AdminServiceImpl implements AdminService {
 		return ad.selectAdminBoardList();
 	}
 
-	// 공지사항 상세페이지 화면
+	// 공지사항 상세페이지 출력
 	public void adminBoardDetail(Parent root, BoardDTO boardDTO, UserDTO userDTO) {
 
 		System.out.println("공지사항 상세페이지 이동: " + boardDTO.getBoardTitle());
@@ -268,7 +266,7 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
-	// 공지사항 수정하기 페이지
+	// 공지사항 수정페이지 출력
 	public void updateAdminBoardPage(Parent root, UserDTO userDTO, BoardDTO boardDTO) {
 
 		Stage updateAdminBoardPage = (Stage) root.getScene().getWindow();
@@ -305,22 +303,22 @@ public class AdminServiceImpl implements AdminService {
 		int result = ad.deleteAdminBoard(boardDTO.getBoardId());
 
 		if (result >= 1) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("공지사항 삭제완료");
-			alert.setHeaderText(null);
-			alert.setContentText("공지사항 삭제완료");
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+			alertInfo.setTitle("공지사항 삭제완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("공지사항 삭제완료");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertInfo.showAndWait();
 		} else {
 
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("공지사항 삭제실패");
-			alert.setHeaderText(null);
-			alert.setContentText("공지사항 삭제실패");
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("공지사항 삭제실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("공지사항 삭제실패");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertError.showAndWait();
 		}
 	}
 
@@ -342,29 +340,141 @@ public class AdminServiceImpl implements AdminService {
 		int result = ad.updateAdminBoard(boardDTO);
 
 		if (result >= 1) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("공지사항 수정완료");
-			alert.setHeaderText(null);
-			alert.setContentText("공지사항 수정완료");
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+			alertInfo.setTitle("공지사항 수정완료");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("공지사항 수정완료");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertInfo.showAndWait();
 		} else {
 
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("공지사항 수정실패");
-			alert.setHeaderText(null);
-			alert.setContentText("공지사항 수정실패");
+			Alert alertError = new Alert(AlertType.ERROR);
+			alertError.setTitle("공지사항 수정실패");
+			alertError.setHeaderText(null);
+			alertError.setContentText("공지사항 수정실패");
 
 			// 확인 버튼을 누를 때까지 대기
-			alert.showAndWait();
+			alertError.showAndWait();
 		}
 
 	}
 
-	//계좌목록 가져오기
+	// 계좌목록 조회
 	public List<AccountDTO> selectAccountListAll() {
 		return ad.selectAccountListAll();
+	}
+
+	// 상품 등록페이지 출력
+	public void insertAdminShopPage(Parent root, UserDTO userDTO) {
+		Stage insertAdminShopPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/insertAdminShopPage.fxml"));
+
+		try {
+
+			Parent insertAdminShopPageRoot = loader.load();
+
+			AdminController insertAdminShopPageCtrl = loader.getController();
+
+			insertAdminShopPageCtrl.setRoot(insertAdminShopPageRoot);
+			insertAdminShopPageCtrl.setUser(userDTO);
+
+			insertAdminShopPage.setScene(new Scene(insertAdminShopPageRoot));
+			insertAdminShopPage.setTitle("상품 등록페이지");
+			insertAdminShopPage.show();
+
+			insertAdminShopPageCtrl.showUserInfo();
+
+		} catch (Exception e) {
+			System.out.println("상품 등록페이지 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 상품 조회(수정/삭제)페이지 출력
+	public void updateAdminShopPage(Parent root, UserDTO userDTO) {
+		Stage updateAdminShopPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/updateAdminShopPage.fxml"));
+
+		try {
+
+			Parent updateAdminShopPageRoot = loader.load();
+
+			AdminController updateAdminShopPageCtrl = loader.getController();
+
+			updateAdminShopPageCtrl.setRoot(updateAdminShopPageRoot);
+			updateAdminShopPageCtrl.setUser(userDTO);
+
+			updateAdminShopPage.setScene(new Scene(updateAdminShopPageRoot));
+			updateAdminShopPage.setTitle("상품 조회페이지");
+			updateAdminShopPage.show();
+
+			updateAdminShopPageCtrl.showUserInfo();
+
+		} catch (Exception e) {
+			System.out.println("상품 조회페이지 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 회원 목록페이지 출력
+	public void adminUserListPage(Parent root, UserDTO userDTO) {
+		Stage adminUserListPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminUserListPage.fxml"));
+
+		try {
+
+			Parent adminUserListPageRoot = loader.load();
+
+			AdminController adminUserListPageCtrl = loader.getController();
+
+			adminUserListPageCtrl.setRoot(adminUserListPageRoot);
+			adminUserListPageCtrl.setUser(userDTO);
+
+			adminUserListPage.setScene(new Scene(adminUserListPageRoot));
+			adminUserListPage.setTitle("회원 목록페이지");
+			adminUserListPage.show();
+
+			adminUserListPageCtrl.showUserInfo();
+
+		} catch (Exception e) {
+			System.out.println("회원 목록페이지 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 구매내역 목록페이지 출력
+	public void adminPLPage(Parent root, UserDTO userDTO) {
+		Stage adminPLPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminPLPage.fxml"));
+
+		try {
+
+			Parent adminPLPageRoot = loader.load();
+
+			AdminController adminPLPageCtrl = loader.getController();
+
+			adminPLPageCtrl.setRoot(adminPLPageRoot);
+			adminPLPageCtrl.setUser(userDTO);
+
+			adminPLPage.setScene(new Scene(adminPLPageRoot));
+			adminPLPage.setTitle("구매내역 목록페이지");
+			adminPLPage.show();
+
+			adminPLPageCtrl.showUserInfo();
+
+		} catch (Exception e) {
+			System.out.println("구매내역 목록페이지 출력 실패");
+			e.printStackTrace();
+		}
+
 	}
 
 }

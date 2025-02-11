@@ -2,9 +2,6 @@ package main.board;
 
 import java.sql.Date;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class BoardDTO {
 
 	// FREEBANKBOARD(게시판) 테이블 컬럼

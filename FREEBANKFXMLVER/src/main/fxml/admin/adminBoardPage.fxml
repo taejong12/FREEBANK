@@ -18,19 +18,23 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="2" GridPane.rowSpan="3">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="2">
          <children>
-            <Button mnemonicParsing="false" text="공지사항등록" onAction="#insertAdminBoardPage">
+            <Button mnemonicParsing="false" onAction="#insertAdminBoardPage" text="공지사항 등록페이지">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="공지사항목록(수정/삭제)" onAction="#selectAdminBoardListPage">
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <children>
+            <Button mnemonicParsing="false" onAction="#selectAdminBoardListPage" text="공지사항목록(수정/삭제) 페이지">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="이전페이지" onAction="#adminMainMenu">
+            <Button mnemonicParsing="false" onAction="#adminMainMenu" text="이전페이지">
                <font>
                   <Font size="18.0" />
                </font>

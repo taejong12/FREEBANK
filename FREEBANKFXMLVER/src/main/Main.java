@@ -15,7 +15,7 @@ public class Main extends Application {
 
 
 		FXMLLoader loader = new FXMLLoader(
-			getClass().getResource("fxml/mainMenu.fxml"));
+			getClass().getResource("/main/fxml/menu/mainMenu.fxml"));
 		
 		Parent mainRoot = loader.load();
 		

@@ -21,9 +21,11 @@ public class UserDAO {
 			System.out.println("오라클 연결 실패");
 		}
 	}
-	
-	public void insertUser(UserDTO userDTO) {
-		
+
+	public int insertUser(UserDTO userDTO) {
+
+		int result = 0;
+
 		String sql = "insert into FREEBANKUSER(FREEBANKUSER_ID, FREEBANKUSER_NAME, FREEBANKUSER_PWD, FREEBANKUSER_AGE, FREEBANKUSER_SEX, FREEBANKUSER_EMAIL) values(?,?,?,?,?,?)";
 
 		try {
@@ -34,33 +36,28 @@ public class UserDAO {
 			pstmt.setInt(4, userDTO.getUserAge());
 			pstmt.setString(5, userDTO.getUserSex());
 			pstmt.setString(6, userDTO.getUserEmail());
-			
 
-			int result = pstmt.executeUpdate();
-			
-			if(result >=1) {
-				System.out.println("회원가입 완료");
-			}
-			
+			result = pstmt.executeUpdate();
+
 		} catch (Exception e) {
-			System.out.println("UserDAO.insertUser 에러(회원가입)");
+			System.out.println("회원가입 실패");
 			e.printStackTrace();
 		}
 
-		
+		return result;
 	}
 
 	public UserDTO selectUserInfoById(String userId) {
-		
+
 		UserDTO userDTO = new UserDTO();
-		
+
 		String sql = "select * from FREEBANKUSER where FREEBANKUSER_ID = ?";
-		
+
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			ResultSet rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				userDTO.setUserId(rs.getString(1));
 				userDTO.setUserName(rs.getString(2));
@@ -71,18 +68,15 @@ public class UserDAO {
 				userDTO.setUserAdmin(rs.getString(7));
 				userDTO.setUserCreditRating(rs.getInt(8));
 				userDTO.setUserTotal(rs.getInt(9));
-				System.out.println("회원 조회완료");
 			}
 
 		} catch (Exception e) {
-			System.out.println("UserDAO.selectUserInfoById 에러(회원정보조회)");
+			System.out.println("회원 조회 실패");
 			e.printStackTrace();
 		}
-		
+
 		return userDTO;
-		
-		
-		
+
 	}
 
 }

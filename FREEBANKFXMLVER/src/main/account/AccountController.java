@@ -21,6 +21,7 @@ public class AccountController {
 	AccountService as = new AccountServiceImpl();
 	MenuService ms = new MenuServiceImple();
 
+	// 계좌 리스트 바인딩
 	@FXML
 	TableView<AccountDTO> accountTableView;
 	@FXML
@@ -34,7 +35,6 @@ public class AccountController {
 
 	public void setRoot(Parent root) {
 		this.root = root;
-
 	}
 
 	// UserDTO를 설정하는 메서드 추가
@@ -50,18 +50,14 @@ public class AccountController {
 		}
 	}
 
-	// 컨트롤러의 initialize()가 자동으로 실행됨. 초기값
-	//계좌 리스트 호출
-	public void outputAccountList() {
-
-		System.out.println("outputAccountList#########################################");
-		showUserInfo();
+	// 계좌 목록 출력
+	public void selectAccountList() {
 
 		List<AccountDTO> accountListByUserId = as.selectUserAccountByID(userDTO.getUserId());
 
-		// 🔥 TableColumn이 자동 바인딩 안 될 경우 체크
+		// TableColumn이 자동 바인딩 안 될 경우 체크
 		if (accountAccountColumn == null || accountBalanceColumn == null) {
-			System.out.println("❌ TableColumn이 FXML에서 초기화되지 않음!");
+			System.out.println("TableColumn이 FXML에서 초기화되지 않음!");
 			return;
 		}
 
@@ -76,61 +72,70 @@ public class AccountController {
 
 	}
 
+	// 계좌 개설
 	public void insertAccount() {
 		System.out.println("계좌개설 버튼");
 		as.insertAccount(userDTO);
-
 	}
 
-	public void selectAccount() {
-		System.out.println("계좌조회 버튼");
-		as.selectAccountListScreen(root, userDTO);
-
+	// 계좌목록 페이지 출력
+	public void selectAccountListPage() {
+		System.out.println("계좌목록 페이지로 이동");
+		as.selectAccountListPage(root, userDTO);
 	}
 
-	public void updateAccountDeposit() {
-		System.out.println("계좌입금 페이지 가기");
-		as.updateAccountDepositScreen(root, userDTO);
+	// 계좌입금 페이지 출력
+	public void updateAccountDepositPage() {
+		System.out.println("계좌입금 페이지로 이동");
+		as.updateAccountDepositPage(root, userDTO);
 	}
 
-	public void updateAccountWithdrawal() {
-		System.out.println("계좌출금 페이지 가기");
-		as.updateAccountWithdrawalScreen(root, userDTO);
+	// 계좌출금 페이지 출력
+	public void updateAccountWithdrawalPage() {
+		System.out.println("계좌출금 페이지로 이동");
+		as.updateAccountWithdrawalPage(root, userDTO);
 	}
 
+	// 계좌 출금
 	public void accountWithdrawal() {
 		System.out.println("계좌출금하기");
 		as.updateAccountWithdrawal(root, userDTO);
-		account();
+		// 계좌페이지 출력
+		accountPage();
 	}
 
-	public void deleteAccountScreen() {
-		System.out.println("계좌해지 페이지 가기");
-		as.deleteAccountScreen(root, userDTO);
+	// 계좌해지 페이지 출력
+	public void deleteAccountPage() {
+		System.out.println("계좌해지 페이지로 이동");
+		as.deleteAccountPage(root, userDTO);
 	}
 
+	// 메인페이지 출력(일반회원 메인페이지)
 	public void loginMainMenu() {
-		System.out.println("메인메뉴 버튼");
+		System.out.println("메인페이지로 이동");
 		ms.loginMainMenu(root, userDTO);
-
 	}
 
-	public void account() {
-		System.out.println("이전페이지 버튼");
-		as.accountScreen(root, userDTO);
-
+	// 계좌페이지 출력
+	public void accountPage() {
+		System.out.println("계좌페이지로 이동");
+		as.accountPage(root, userDTO);
 	}
 
+	// 계좌 입금
 	public void accountDeposit() {
-		System.out.println("입금하기");
+		System.out.println("계좌입금하기");
 		as.updateAccountDeposit(root, userDTO);
-		account();
+		// 계좌페이지 출력
+		accountPage();
 	}
-	
+
+	// 계좌 해지
 	public void deleteAccount() {
 		System.out.println("계좌해지하기");
 		as.deleteAccount(root, userDTO);
-		account();
+		// 계좌페이지 출력
+		accountPage();
 	}
 
 }

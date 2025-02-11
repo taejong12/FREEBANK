@@ -7,11 +7,9 @@ import main.user.UserDTO;
 
 public interface AccountService {
 
-	String createAccountAndDuplicationCheck(); // 계좌번호 생성/중복체크
+	String createAccountAndDuplicationCheck(); // 계좌번호 생성과 중복체크
 
 	void insertAccount(UserDTO userDTO); // 계좌개설
-
-	void selectAccount(UserDTO usdrDTO); // 계좌조회
 
 	void updateAccountDeposit(Parent root, UserDTO userDTO); // 계좌입금
 
@@ -19,17 +17,16 @@ public interface AccountService {
 
 	void deleteAccount(Parent root, UserDTO userDTO); // 계좌해지
 
-	void accountScreen(Parent root, UserDTO userDTO);	//계좌 메뉴 페이지
+	void accountPage(Parent root, UserDTO userDTO); // 계좌페이지 출력
 
-	void selectAccountListScreen(Parent root, UserDTO userDTO);	//계좌 리스트 조회 화면
+	void selectAccountListPage(Parent root, UserDTO userDTO); // 계좌목록 페이지 출력
 
-	List<AccountDTO> selectUserAccountByID(String userId);	//유저의 계좌번호 목록 조회
+	List<AccountDTO> selectUserAccountByID(String userId); // 유저의 계좌번호 목록 조회
 
-	void updateAccountDepositScreen(Parent root, UserDTO userDTO);	//계좌입금 화면
+	void updateAccountDepositPage(Parent root, UserDTO userDTO); // 계좌입금 페이지 출력
 
-	void updateAccountWithdrawalScreen(Parent root, UserDTO userDTO);	//계좌출금 화면
+	void updateAccountWithdrawalPage(Parent root, UserDTO userDTO); // 계좌출금 페이지 출력
 
-	void deleteAccountScreen(Parent root, UserDTO userDTO);	//계좌해지 화면
-
+	void deleteAccountPage(Parent root, UserDTO userDTO); // 계좌해지 페이지 출력
 
 }

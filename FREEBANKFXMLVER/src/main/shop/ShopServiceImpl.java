@@ -5,7 +5,6 @@ import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.user.UserDTO;
 
@@ -13,32 +12,32 @@ public class ShopServiceImpl implements ShopService {
 
 	ShopDAO sd = new ShopDAO();
 
-	// 쇼핑몰 화면
-	public void shopListPage(Parent root, UserDTO userDTO) {
+	// 쇼핑몰 페이지 출력
+	public void shopPage(Parent root, UserDTO userDTO) {
 
-		Stage shopListPage = (Stage) root.getScene().getWindow();
+		Stage shopPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopListPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopPage.fxml"));
 
 		try {
 
-			Parent shopListPageRoot = loader.load();
+			Parent shopPageRoot = loader.load();
 
-			ShopController shopListPageCtrl = loader.getController();
+			ShopController shopPageCtrl = loader.getController();
 
-			shopListPageCtrl.setRoot(shopListPageRoot);
-			shopListPageCtrl.setUser(userDTO);
+			shopPageCtrl.setRoot(shopPageRoot);
+			shopPageCtrl.setUser(userDTO);
 			// 쇼핑몰 리스트 출력
-			shopListPageCtrl.selectShopList();
+			shopPageCtrl.selectShopList();
 
-			shopListPage.setScene(new Scene(shopListPageRoot));
-			shopListPage.setTitle("쇼핑몰목록페이지");
-			shopListPage.show();
+			shopPage.setScene(new Scene(shopPageRoot));
+			shopPage.setTitle("쇼핑몰 페이지");
+			shopPage.show();
 
-			shopListPageCtrl.showUserInfo();
+			shopPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
-			System.out.println("쇼핑몰목록페이지 출력 실패");
+			System.out.println("쇼핑몰 페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -49,29 +48,29 @@ public class ShopServiceImpl implements ShopService {
 		return sd.selectShopList();
 	}
 
-	// 상품 상세 화면 이동
-	public void shopDetail(Parent root, ShopDTO shop, UserDTO userDTO) {
+	// 쇼핑몰 상세페이지 출력
+	public void shopDetailPage(Parent root, ShopDTO shop, UserDTO userDTO) {
 		System.out.println("상품 상세 페이지 이동: " + shop.getShopName());
 
-		Stage shopDetail = (Stage) root.getScene().getWindow();
+		Stage shopDetailPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopDetail.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopDetailPage.fxml"));
 
 		try {
 
-			Parent shopDetailRoot = loader.load();
+			Parent shopDetailPageRoot = loader.load();
 
-			ShopController shopDetailCtrl = loader.getController();
+			ShopController shopDetailPageCtrl = loader.getController();
 
-			shopDetailCtrl.setRoot(shopDetailRoot);
-			shopDetailCtrl.setUser(userDTO);
-			shopDetailCtrl.setShop(shop);
-			
-			shopDetail.setScene(new Scene(shopDetailRoot));
-			shopDetail.setTitle("쇼핑몰상세페이지");
-			shopDetail.show();
+			shopDetailPageCtrl.setRoot(shopDetailPageRoot);
+			shopDetailPageCtrl.setUser(userDTO);
+			shopDetailPageCtrl.setShop(shop);
 
-			shopDetailCtrl.showUserInfo();
+			shopDetailPage.setScene(new Scene(shopDetailPageRoot));
+			shopDetailPage.setTitle("쇼핑몰상세페이지");
+			shopDetailPage.show();
+
+			shopDetailPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
 			System.out.println("쇼핑몰 상세페이지 출력 실패");
@@ -79,6 +78,5 @@ public class ShopServiceImpl implements ShopService {
 		}
 
 	}
-
 
 }

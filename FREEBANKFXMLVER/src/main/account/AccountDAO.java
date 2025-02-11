@@ -32,6 +32,7 @@ public class AccountDAO {
 		int accountCheck = 0;
 
 		String sql = "select count(*) from FREEBANKACCOUNT where FREEBANKACCOUNT_ACCOUNT=?";
+
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
@@ -42,8 +43,6 @@ public class AccountDAO {
 			while (rs.next()) {
 				accountCheck = rs.getInt(1);
 			}
-
-			return accountCheck;
 		} catch (Exception e) {
 			System.out.println("계좌 중복 체크 조회 실패");
 			e.printStackTrace();
@@ -55,7 +54,7 @@ public class AccountDAO {
 	public int insertAccount(AccountDTO accountDTO) {
 
 		int result = 0;
-		
+
 		String sql = "insert into FREEBANKACCOUNT(FREEBANKACCOUNT_ACCOUNT, FREEBANKUSER_ID) values(?, ?)";
 
 		try {
@@ -69,7 +68,7 @@ public class AccountDAO {
 			System.out.println("계좌 개설 실패");
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
@@ -166,15 +165,10 @@ public class AccountDAO {
 			pstmt.setInt(1, accountDTO.getAccountBalance());
 			pstmt.setString(2, accountDTO.getAccountAccount());
 
-			int result = pstmt.executeUpdate();
-			
-			if(result >=1) {
-				System.out.println("입/출금 처리 완료");
-			}
-			
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("계좌 잔고 업데이트 실패");
+			System.out.println("계좌잔고 업데이트 실패");
 			e.printStackTrace();
 		}
 	}
@@ -191,21 +185,20 @@ public class AccountDAO {
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("계좌 해지 실패");
+			System.out.println("계좌해지 실패");
 			e.printStackTrace();
 		}
 	}
 
-	
-	//유저 아이디로 계좌 조회
-	public List<AccountDTO> selectUserAccountByID(String userId) {
+	// 유저 아이디로 계좌 조회
+	public List<AccountDTO> selectUserAccountById(String userId) {
 
 		List<AccountDTO> accountDTOList = new ArrayList<AccountDTO>();
 
 		String sql = "select * from FREEBANKACCOUNT where FREEBANKUSER_ID=?";
 
 		try {
-			
+
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			ResultSet rs = pstmt.executeQuery();
@@ -220,21 +213,12 @@ public class AccountDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("AccountDAO.selectUserAccountByID 에러(유저 아이디로 계좌 조회)");
+			System.out.println("회원 아이디로 계좌 조회 실패");
 			e.printStackTrace();
 		}
 
 		return accountDTOList;
-		
-		
-	}
 
-	public List<AccountDTO> accountListByUserId(String userId){
-		List<AccountDTO> accountList = new ArrayList<AccountDTO>();
-		
-		
-		
-		return accountList;
 	}
 
 }

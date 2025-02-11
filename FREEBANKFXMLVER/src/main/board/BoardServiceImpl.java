@@ -1,5 +1,5 @@
 package main.board;
 
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
 }

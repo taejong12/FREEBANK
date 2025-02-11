@@ -7,10 +7,10 @@ import main.user.UserDTO;
 
 public interface ShopService {
 
-	void shopListPage(Parent root, UserDTO userDTO);	//쇼핑몰 화면
+	void shopPage(Parent root, UserDTO userDTO); // 쇼핑몰 페이지 화면 출력
 
-	List<ShopDTO> selectShopList();	//쇼핑몰 리스트
+	List<ShopDTO> selectShopList(); // 쇼핑몰 리스트
 
-	void shopDetail(Parent root, ShopDTO shop, UserDTO userDTO);	//쇼핑몰 상세페이지
+	void shopDetailPage(Parent root, ShopDTO shop, UserDTO userDTO); // 쇼핑몰 상세페이지 화면 출력
 
 }

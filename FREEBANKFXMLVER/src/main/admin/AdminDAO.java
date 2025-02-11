@@ -47,7 +47,6 @@ public class AdminDAO {
 			System.out.println("공지사항 등록 실패");
 			e.printStackTrace();
 		}
-
 		return result;
 	}
 
@@ -130,13 +129,14 @@ public class AdminDAO {
 		}
 
 		return result;
-
 	}
 
+	// 계좌조회
 	public List<AccountDTO> selectAccountListAll() {
 		List<AccountDTO> accountList = new ArrayList<AccountDTO>();
+
 		String sql = "select * from FREEBANKACCOUNT order by FREEBANKACCOUNT_CREATE desc";
-		
+
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
@@ -160,7 +160,7 @@ public class AdminDAO {
 			System.out.println("계좌가 존재하지 않습니다.");
 			e.printStackTrace();
 		}
-		
+
 		return accountList;
 	}
 
