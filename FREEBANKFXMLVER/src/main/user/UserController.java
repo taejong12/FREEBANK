@@ -37,13 +37,13 @@ public class UserController {
 	private Text userCreateText;
 	@FXML
 	private Text userUpdateText;
-
+	@FXML
+	private Text userSexText;
+	
 	@FXML
 	private TextField userNameTextField;
 	@FXML
 	private TextField userAgeTextField;
-	@FXML
-	private TextField userSexTextField;
 	@FXML
 	private TextField userEmailTextField;
 
@@ -116,37 +116,42 @@ public class UserController {
 		}
 	}
 
+	// 1.비회원상태
 	// 회원가입 페이지 출력
 	public void joinPage() {
 		System.out.println("회원가입 페이지로 이동");
 		us.joinPage(root);
 	}
 
+	// 1.비회원상태
 	// 메인페이지로 이동(비로그인 상태)
 	public void mainMenu() {
 		System.out.println("메인페이지로 이동");
-		userDTO = new UserDTO();
 		ms.mainMenu(root, userDTO);
 	}
 
+	// 2.회원로그인상태
 	// 회원메뉴페이지
 	public void loginMainMenu() {
 		System.out.println("일반회원메뉴페이지로 이동");
 		ms.loginMainMenu(root, userDTO);
 	}
 
+	// 2.회원로그인상태
 	// 회원구매내역 목록페이지 출력
-	public void userPLListPage() {
+	public void userPurchaseListPage() {
 		System.out.println("회원구매내역 목록페이지로 이동");
-		us.userPLListPage(root, userDTO);
+		us.userPurchaseListPage(root, userDTO);
 	}
 
+	// 2.회원로그인상태
 	// 회원정보페이지 출력
 	public void userInfoDetailPage() {
 		System.out.println("회원정보페이지로 이동");
 		us.userInfoDetailPage(root, userDTO);
 	}
 
+	// 2.회원로그인 상태
 	// 마이페이지 출력
 	public void userInfoPage() {
 		System.out.println("마이페이지로 이동");
@@ -178,7 +183,7 @@ public class UserController {
 		userIdText.setText(String.valueOf(userDTO.getUserId()));
 		userNameTextField.setText(userDTO.getUserName());
 		userAgeTextField.setText(String.valueOf(userDTO.getUserAge()));
-		userSexTextField.setText(String.valueOf(userDTO.getUserSex()));
+		userSexText.setText(String.valueOf(userDTO.getUserSex()));
 		userEmailTextField.setText(userDTO.getUserEmail());
 		userCreditRatingText.setText(String.valueOf(userDTO.getUserCreditRating()));
 		userTotalText.setText(String.valueOf(userDTO.getUserTotal()));
@@ -193,6 +198,16 @@ public class UserController {
 			// 수정/삭제 완료
 			System.out.println("수정/삭제 완료");
 			mainMenu();
+			
+			Alert alertInfo = new Alert(AlertType.INFORMATION);
+
+			alertInfo.setTitle("로그아웃");
+			alertInfo.setHeaderText(null);
+			alertInfo.setContentText("로그아웃됩니다.");
+
+			// 확인 버튼을 누를 때까지 대기
+			alertInfo.showAndWait();
+			
 		} else {
 			// 마이페이지로 이동
 			userInfoPage();
@@ -205,16 +220,16 @@ public class UserController {
 		List<PurchaseListDTO> purchaseListByUserId = us.selectUserPLByID(userDTO.getUserId());
 
 		ObservableList<PurchaseListDTO> purchaseListList = FXCollections.observableArrayList(purchaseListByUserId);
-		
+
 		userPurchaseListIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListId"));
 		userPurchaseListUserIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListUserId"));
 		userPurchaseListAccountColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListAccount"));
 		userPurchaseListShopIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListShopId"));
 		userPurchaseListShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListShopName"));
 		userPurchaseListTotalpaymentColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalpayment"));
-		userPurchaseListTotalshopcountColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalshopcount"));
+		userPurchaseListTotalshopcountColumn
+				.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalshopcount"));
 		userPurchaseListCreateColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListCreate"));
-
 
 		userPurchaseListTable.setItems(purchaseListList);
 	}

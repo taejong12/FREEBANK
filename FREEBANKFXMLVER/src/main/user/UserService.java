@@ -17,7 +17,7 @@ public interface UserService {
 
 	void userInfoPage(Parent root, UserDTO userDTO); // 마이페이지 출력
 
-	void userPLListPage(Parent root, UserDTO userDTO); // 회원구매내역 목록페이지 출력
+	void userPurchaseListPage(Parent root, UserDTO userDTO); // 회원구매내역 목록페이지 출력
 
 	void userInfoDetailPage(Parent root, UserDTO userDTO); // 회원정보페이지 출력
 

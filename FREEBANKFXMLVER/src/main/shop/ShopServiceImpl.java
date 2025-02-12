@@ -20,7 +20,7 @@ public class ShopServiceImpl implements ShopService {
 	AccountDAO ad = new AccountDAO();
 	UserDAO ud = new UserDAO();
 
-	// 상품 페이지 출력(비로그인)
+	// 상품 목록페이지 출력(비로그인)
 	public void shopListPage(Parent root, UserDTO userDTO) {
 
 		Stage shopListPage = (Stage) root.getScene().getWindow();
@@ -35,17 +35,43 @@ public class ShopServiceImpl implements ShopService {
 
 			shopListPageCtrl.setRoot(shopListPageRoot);
 			shopListPageCtrl.setUser(userDTO);
-			// 상품 리스트 출력
+			// 상품 목록 출력
 			shopListPageCtrl.selectShopList();
 
 			shopListPage.setScene(new Scene(shopListPageRoot));
-			shopListPage.setTitle("상품목록 페이지");
+			shopListPage.setTitle("상품목록 페이지(비회원)");
 			shopListPage.show();
 
-			shopListPageCtrl.showUserInfo();
+		} catch (Exception e) {
+			System.out.println("상품목록 페이지(비회원) 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 상품 목록페이지 출력(회원로그인)
+	public void shopLoginListPage(Parent root, UserDTO userDTO) {
+		Stage shopLoginListPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopLoginListPage.fxml"));
+
+		try {
+
+			Parent shopLoginListPageRoot = loader.load();
+
+			ShopController shopLoginListPageCtrl = loader.getController();
+
+			shopLoginListPageCtrl.setRoot(shopLoginListPageRoot);
+			shopLoginListPageCtrl.setUser(userDTO);
+			// 상품 리스트 출력
+			shopLoginListPageCtrl.selectShopListLogin();
+
+			shopLoginListPage.setScene(new Scene(shopLoginListPageRoot));
+			shopLoginListPage.setTitle("상품목록 페이지(회원)");
+			shopLoginListPage.show();
 
 		} catch (Exception e) {
-			System.out.println("상품목록 페이지 출력 실패");
+			System.out.println("상품목록 페이지(회원로그인) 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -56,10 +82,8 @@ public class ShopServiceImpl implements ShopService {
 		return sd.selectShopList();
 	}
 
-	// 상품 상세페이지 출력
+	// 상품 상세페이지 출력(비로그인)
 	public void shopDetailPage(Parent root, ShopDTO shop, UserDTO userDTO) {
-		System.out.println("상품 상세 페이지 이동: " + shop.getShopName());
-
 		Stage shopDetailPage = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopDetailPage.fxml"));
@@ -77,13 +101,40 @@ public class ShopServiceImpl implements ShopService {
 			shopDetailPageCtrl.selectShopDtailInfo();
 
 			shopDetailPage.setScene(new Scene(shopDetailPageRoot));
-			shopDetailPage.setTitle("상품상세페이지");
+			shopDetailPage.setTitle("상품상세페이지(비회원)");
 			shopDetailPage.show();
 
-			shopDetailPageCtrl.showUserInfo();
+		} catch (Exception e) {
+			System.out.println("상품 상세페이지(비회원) 출력 실패");
+			e.printStackTrace();
+		}
+
+	}
+
+	// 상품 상세페이지 출력(회원로그인)
+	public void shopLoginDetailPage(Parent root, ShopDTO shop, UserDTO userDTO) {
+		Stage shopLoginDetailPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopLoginDetailPage.fxml"));
+
+		try {
+
+			Parent shopLoginDetailPageRoot = loader.load();
+
+			ShopController shopLoginDetailPageCtrl = loader.getController();
+
+			shopLoginDetailPageCtrl.setRoot(shopLoginDetailPageRoot);
+			shopLoginDetailPageCtrl.setUser(userDTO);
+			shopLoginDetailPageCtrl.setShop(shop);
+			// 상품 상세페이지 정보
+			shopLoginDetailPageCtrl.selectShopDtailInfo();
+
+			shopLoginDetailPage.setScene(new Scene(shopLoginDetailPageRoot));
+			shopLoginDetailPage.setTitle("상품상세페이지(회원)");
+			shopLoginDetailPage.show();
 
 		} catch (Exception e) {
-			System.out.println("상품 상세페이지 출력 실패");
+			System.out.println("상품 상세페이지(회원) 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -110,8 +161,6 @@ public class ShopServiceImpl implements ShopService {
 			userShopPayPage.setScene(new Scene(userShopPayPageRoot));
 			userShopPayPage.setTitle("상품결제페이지");
 			userShopPayPage.show();
-
-			userShopPayPageCtrl.showUserInfo();
 
 		} catch (Exception e) {
 			System.out.println("상품결제페이지 출력 실패");
@@ -172,8 +221,34 @@ public class ShopServiceImpl implements ShopService {
 						// 구매내역 목록 추가
 						sd.insertShopPLInfo(purchaseListDTO);
 
-						// 신용등급 수정
-						
+						// 구매내역 총결제금액 합 = 회원 누적금액
+						int sumTotalPayment = sd.sumTotalPayment(userDTO.getUserId());
+
+						int userCreditRating = 5;
+
+						if (sumTotalPayment < 100000) {
+							System.out.println("신용등급: 5");
+							userCreditRating = 5;
+						} else if (sumTotalPayment >= 100000 && sumTotalPayment < 200000) {
+							System.out.println("신용등급: 4");
+							userCreditRating = 4;
+						} else if (sumTotalPayment >= 200000 && sumTotalPayment < 300000) {
+							System.out.println("신용등급: 3");
+							userCreditRating = 3;
+						} else if (sumTotalPayment >= 300000 && sumTotalPayment < 400000) {
+							System.out.println("신용등급: 2");
+							userCreditRating = 2;
+						} else if (sumTotalPayment >= 400000) {
+							System.out.println("신용등급: 1");
+							userCreditRating = 1;
+						}
+
+						userDTO.setUserCreditRating(userCreditRating);
+						userDTO.setUserTotal(sumTotalPayment);
+
+						// 누적금액합산, 신용도변경(회원 테이블 업데이트)
+						sd.updateUserTotalAndCreditRating(userDTO);
+
 						payCheck = false;
 
 						Alert alertInfo = new Alert(AlertType.INFORMATION);
@@ -210,6 +285,19 @@ public class ShopServiceImpl implements ShopService {
 		textPayUserPwd.clear();
 
 		return payCheck;
+	}
+
+	// 비회원 결제 버튼
+	public void userShopPayLoginPage(Parent root, UserDTO userDTO) {
+
+		Alert alertError = new Alert(AlertType.ERROR);
+		alertError.setTitle("결제실패");
+		alertError.setHeaderText(null);
+		alertError.setContentText("결제시 로그인 필수");
+
+		// 확인 버튼을 누를 때까지 대기
+		alertError.showAndWait();
+
 	}
 
 }

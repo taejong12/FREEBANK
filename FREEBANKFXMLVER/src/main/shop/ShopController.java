@@ -17,6 +17,8 @@ import javafx.util.Callback;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
 import main.user.UserDTO;
+import main.user.UserService;
+import main.user.UserServiceImpl;
 
 public class ShopController {
 
@@ -25,6 +27,7 @@ public class ShopController {
 	MenuService ms = new MenuServiceImple();
 	ShopService ss = new ShopServiceImpl();
 	ShopDTO shopDTO;
+	UserService us = new UserServiceImpl();
 
 	// 상품 목록 바인딩
 	@FXML
@@ -71,31 +74,59 @@ public class ShopController {
 		this.userDTO = userDTO;
 	}
 
-	public void showUserInfo() {
-		if (userDTO != null) {
-			System.out.println("현재 로그인한 사용자: " + userDTO.getUserId());
-		} else {
-			System.out.println("로그인 정보 없음");
-		}
-	}
-
-	public void showShopInfo() {
-		if (shopDTO != null) {
-			System.out.println("상품아이디: " + shopDTO.getShopId());
-			System.out.println("상품이름: " + shopDTO.getShopName());
-			System.out.println("상품설명: " + shopDTO.getShopContents());
-			System.out.println("상품가격: " + shopDTO.getShopPrice());
-			System.out.println("상품회원아이디: " + shopDTO.getShopUserId());
-		} else {
-			System.out.println("로그인 정보 없음");
-		}
-	}
-
+	// ShopDTO 저장
 	public void setShop(ShopDTO shop) {
 		this.shopDTO = shop;
 	}
 
-	// 상품 리스트
+	// 1.메인페이지(비로그인 기능)
+	// 상품 목록 페이지 이동(비로그인)
+	public void shopListPage() {
+		System.out.println("상품 목록 페이지로 이동(비로그인)");
+		ss.shopListPage(root, userDTO);
+	}
+
+	// 1.메인페이지(비로그인 기능)
+	// 비로그인 상태 - 결제 버튼 클릭 - 로그인 페이지
+	public void userShopPayLoginPage() {
+		System.out.println("로그인 후 결제 가능");
+		ss.userShopPayLoginPage(root, userDTO);
+		us.loginPage(root);
+	}
+
+	// 1.메인페이지(비로그인 기능)
+	// 메인페이지 출력(비로그인) - 상품목록(이전페이지) - 로그인(이전페이지) - 회원가입(이전페이지)
+	public void mainMenu() {
+		System.out.println("메인페이지로 이동");
+		ms.mainMenu(root, userDTO);
+	}
+
+	// 2.로그인 후 기능
+	// 회원메인페이지
+	public void loginMainMenu() {
+		System.out.println("회원메인페이지(로그인)로 이동");
+		ms.loginMainMenu(root, userDTO);
+	}
+
+	// 2.로그인 후 기능
+	// 상품목록페이지
+	public void shopLoginListPage() {
+		System.out.println("상품 목록 페이지로 이동(회원로그인)");
+		ss.shopLoginListPage(root, userDTO);
+	}
+
+	// 2.로그인 후 기능
+	// 상품 결제하기
+	public void userShopPayment() {
+		System.out.println("상품 결제하기");
+		boolean result = ss.userShopPayment(root, shopDTO, userDTO);
+		if (!result) {
+			shopLoginListPage();
+		}
+	}
+
+	// 3.화면출력
+	// 상품 목록(비로그인)
 	public void selectShopList() {
 
 		List<ShopDTO> selectShopList = ss.selectShopList();
@@ -135,13 +166,49 @@ public class ShopController {
 		shopListTable.setItems(shopList);
 	}
 
-	// 메인페이지 출력(비로그인) 로그아웃
-	public void mainMenu() {
-		System.out.println("메인페이지로 이동");
-		ms.mainMenu(root, userDTO);
+	// 3.화면출력
+	// 상품목록(회원로그인)
+	public void selectShopListLogin() {
+
+		List<ShopDTO> selectShopList = ss.selectShopList();
+		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
+
+		shopIdColumn.setCellValueFactory(new PropertyValueFactory<>("shopId"));
+		shopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+		shopPriceColumn.setCellValueFactory(new PropertyValueFactory<>("shopPrice"));
+
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		shopNameColumn.setCellFactory(new Callback<TableColumn<ShopDTO, String>, TableCell<ShopDTO, String>>() {
+			public TableCell<ShopDTO, String> call(TableColumn<ShopDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							ShopDTO shop = getTableView().getItems().get(getIndex());
+							ss.shopLoginDetailPage(root, shop, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+
+		shopListTable.setItems(shopList);
 	}
 
-	// 상품 결제페이지 출력
+	// 3.화면출력
+	// 상품 결제페이지
 	public void userShopPayPage() {
 		System.out.println("결제페이지로 이동");
 
@@ -156,15 +223,7 @@ public class ShopController {
 		ss.userShopPayPage(root, userDTO, shopDTO);
 	}
 
-	// 상품 결제하기
-	public void userShopPayment() {
-		System.out.println("상품 결제하기");
-		boolean result = ss.userShopPayment(root, shopDTO, userDTO);
-		if(!result) {
-			shopLoginListPage();
-		}
-	}
-
+	// 3.화면출력
 	// 상품 상세페이지 정보
 	public void selectShopDtailInfo() {
 		System.out.println("상품 상세페이지 정보");
@@ -174,6 +233,7 @@ public class ShopController {
 		shopPrice.setText(String.valueOf(shopDTO.getShopPrice()));
 	}
 
+	// 3.화면출력
 	// 상품 결제페이지 정보
 	public void selectShopPayInfo() {
 
@@ -196,22 +256,5 @@ public class ShopController {
 		System.out.println("상품갯수: " + shopTotalShopCountText.getText());
 		System.out.println("상품결제금액: " + shopTotalPayment.getText());
 
-	}
-	
-	// 상품 목록 페이지 이동(비로그인)
-	public void shopListPage() {
-		System.out.println("상품 목록 페이지로 이동");
-		ss.shopListPage(root, userDTO);
-	}
-
-	// 회원메뉴페이지
-	public void loginMainMenu() {
-		System.out.println("일반회원메뉴페이지로 이동");
-		ms.loginMainMenu(root, userDTO);
-	}
-	
-	// 로그인 상품리스트 페이지
-	public void shopLoginListPage() {
-		
 	}
 }

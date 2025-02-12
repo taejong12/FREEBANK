@@ -89,15 +89,14 @@ public class UserDAO {
 	public int updateUserInfo(UserDTO userDTO) {
 		int result = 0;
 
-		String sql = "update FREEBANKUSER set FREEBANKUSER_NAME=?, FREEBANKUSER_AGE=?, FREEBANKUSER_SEX=?, FREEBANKUSER_EMAIL=?, FREEBANKUSER_UPDATE=SYSDATE where FREEBANKUSER_ID=?";
+		String sql = "update FREEBANKUSER set FREEBANKUSER_NAME=?, FREEBANKUSER_AGE=?, FREEBANKUSER_EMAIL=?, FREEBANKUSER_UPDATE=SYSDATE where FREEBANKUSER_ID=?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userDTO.getUserName());
 			pstmt.setInt(2, userDTO.getUserAge());
-			pstmt.setString(3, userDTO.getUserSex());
-			pstmt.setString(4, userDTO.getUserEmail());
-			pstmt.setString(5, userDTO.getUserId());
+			pstmt.setString(3, userDTO.getUserEmail());
+			pstmt.setString(4, userDTO.getUserId());
 
 			result = pstmt.executeUpdate();
 

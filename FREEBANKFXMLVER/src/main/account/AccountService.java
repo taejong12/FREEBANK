@@ -19,14 +19,14 @@ public interface AccountService {
 
 	void accountPage(Parent root, UserDTO userDTO); // 계좌페이지 출력
 
-	void selectAccountListPage(Parent root, UserDTO userDTO); // 계좌목록 페이지 출력
+	void accountListSelectPage(Parent root, UserDTO userDTO); // 계좌목록 페이지 출력
 
 	List<AccountDTO> selectUserAccountByID(String userId); // 유저의 계좌번호 목록 조회
 
-	void updateAccountDepositPage(Parent root, UserDTO userDTO); // 계좌입금 페이지 출력
+	void accountDepositUpdatePage(Parent root, UserDTO userDTO); // 계좌입금 페이지 출력
 
-	void updateAccountWithdrawalPage(Parent root, UserDTO userDTO); // 계좌출금 페이지 출력
+	void accountWithdrawalUpdatePage(Parent root, UserDTO userDTO); // 계좌출금 페이지 출력
 
-	void deleteAccountPage(Parent root, UserDTO userDTO); // 계좌해지 페이지 출력
+	void accountDeletePage(Parent root, UserDTO userDTO); // 계좌해지 페이지 출력
 
 }

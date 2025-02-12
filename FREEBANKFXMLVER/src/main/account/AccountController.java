@@ -79,21 +79,27 @@ public class AccountController {
 	}
 
 	// 계좌목록 페이지 출력
-	public void selectAccountListPage() {
+	public void accountListSelectPage() {
 		System.out.println("계좌목록 페이지로 이동");
-		as.selectAccountListPage(root, userDTO);
+		as.accountListSelectPage(root, userDTO);
 	}
 
 	// 계좌입금 페이지 출력
-	public void updateAccountDepositPage() {
+	public void accountDepositUpdatePage() {
 		System.out.println("계좌입금 페이지로 이동");
-		as.updateAccountDepositPage(root, userDTO);
+		as.accountDepositUpdatePage(root, userDTO);
 	}
 
 	// 계좌출금 페이지 출력
-	public void updateAccountWithdrawalPage() {
+	public void accountWithdrawalUpdatePage() {
 		System.out.println("계좌출금 페이지로 이동");
-		as.updateAccountWithdrawalPage(root, userDTO);
+		as.accountWithdrawalUpdatePage(root, userDTO);
+	}
+
+	// 계좌해지 페이지 출력
+	public void accountDeletePage() {
+		System.out.println("계좌해지 페이지로 이동");
+		as.accountDeletePage(root, userDTO);
 	}
 
 	// 계좌 출금
@@ -104,15 +110,9 @@ public class AccountController {
 		accountPage();
 	}
 
-	// 계좌해지 페이지 출력
-	public void deleteAccountPage() {
-		System.out.println("계좌해지 페이지로 이동");
-		as.deleteAccountPage(root, userDTO);
-	}
-
 	// 메인페이지 출력(일반회원 메인페이지)
 	public void loginMainMenu() {
-		System.out.println("메인페이지로 이동");
+		System.out.println("회원메인페이지(로그인)로 이동");
 		ms.loginMainMenu(root, userDTO);
 	}
 

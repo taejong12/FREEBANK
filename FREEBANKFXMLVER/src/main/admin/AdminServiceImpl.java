@@ -133,25 +133,23 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 관리자 공지사항 등록 화면
-	public void insertAdminBoardPage(Parent root, UserDTO userDTO) {
-		Stage insertAdminBoardPage = (Stage) root.getScene().getWindow();
+	public void adminBoardInsertPage(Parent root, UserDTO userDTO) {
+		Stage adminBoardInsertPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/insertAdminBoardPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminBoardInsertPage.fxml"));
 
 		try {
 
-			Parent insertAdminBoardPageRoot = loader.load();
+			Parent adminBoardInsertPageRoot = loader.load();
 
-			AdminController insertAdminBoardPageCtrl = loader.getController();
+			AdminController adminBoardInsertPageCtrl = loader.getController();
 
-			insertAdminBoardPageCtrl.setRoot(insertAdminBoardPageRoot);
-			insertAdminBoardPageCtrl.setUser(userDTO);
+			adminBoardInsertPageCtrl.setRoot(adminBoardInsertPageRoot);
+			adminBoardInsertPageCtrl.setUser(userDTO);
 
-			insertAdminBoardPage.setScene(new Scene(insertAdminBoardPageRoot));
-			insertAdminBoardPage.setTitle("공지사항 등록페이지");
-			insertAdminBoardPage.show();
-
-			insertAdminBoardPageCtrl.showUserInfo();
+			adminBoardInsertPage.setScene(new Scene(adminBoardInsertPageRoot));
+			adminBoardInsertPage.setTitle("공지사항 등록페이지");
+			adminBoardInsertPage.show();
 
 		} catch (Exception e) {
 			System.out.println("공지사항 등록페이지 출력 실패");
@@ -161,26 +159,24 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 관리자 공지사항 목록 화면
-	public void selectAdminBoardListPage(Parent root, UserDTO userDTO) {
-		Stage selectAdminBoardListPage = (Stage) root.getScene().getWindow();
+	public void adminBoardListPage(Parent root, UserDTO userDTO) {
+		Stage adminBoardListPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/selectAdminBoardListPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminBoardListPage.fxml"));
 
 		try {
 
-			Parent selectAdminBoardListPageRoot = loader.load();
+			Parent adminBoardListPageRoot = loader.load();
 
-			AdminController selectAdminBoardListPageCtrl = loader.getController();
+			AdminController adminBoardListPageCtrl = loader.getController();
 
-			selectAdminBoardListPageCtrl.setRoot(selectAdminBoardListPageRoot);
-			selectAdminBoardListPageCtrl.setUser(userDTO);
-			selectAdminBoardListPageCtrl.selectAdminBoardList();
+			adminBoardListPageCtrl.setRoot(adminBoardListPageRoot);
+			adminBoardListPageCtrl.setUser(userDTO);
+			adminBoardListPageCtrl.selectAdminBoardList();
 
-			selectAdminBoardListPage.setScene(new Scene(selectAdminBoardListPageRoot));
-			selectAdminBoardListPage.setTitle("공지사항 목록페이지");
-			selectAdminBoardListPage.show();
-
-			selectAdminBoardListPageCtrl.showUserInfo();
+			adminBoardListPage.setScene(new Scene(adminBoardListPageRoot));
+			adminBoardListPage.setTitle("공지사항 목록페이지");
+			adminBoardListPage.show();
 
 		} catch (Exception e) {
 			System.out.println("공지사항 등록페이지 출력 실패");
@@ -236,65 +232,29 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 공지사항 상세페이지 출력
-	public void adminBoardDetail(Parent root, BoardDTO boardDTO, UserDTO userDTO) {
+	public void adminBoardDetailPage(Parent root, BoardDTO boardDTO, UserDTO userDTO) {
 
-		System.out.println("공지사항 상세페이지 이동: " + boardDTO.getBoardTitle());
+		Stage adminBoardDetailPage = (Stage) root.getScene().getWindow();
 
-		Stage adminBoardDetail = (Stage) root.getScene().getWindow();
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminBoardDetail.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminBoardDetailPage.fxml"));
 
 		try {
 
-			Parent adminBoardDetailRoot = loader.load();
+			Parent adminBoardDetailPageRoot = loader.load();
 
-			AdminController adminBoardDetailCtrl = loader.getController();
+			AdminController adminBoardDetailPageCtrl = loader.getController();
 
-			adminBoardDetailCtrl.setRoot(adminBoardDetailRoot);
-			adminBoardDetailCtrl.setUser(userDTO);
-			adminBoardDetailCtrl.setBoard(boardDTO);
-			adminBoardDetailCtrl.selectAdminBoardInfo();
+			adminBoardDetailPageCtrl.setRoot(adminBoardDetailPageRoot);
+			adminBoardDetailPageCtrl.setUser(userDTO);
+			adminBoardDetailPageCtrl.setBoard(boardDTO);
+			adminBoardDetailPageCtrl.selectAdminBoardInfo();
 
-			adminBoardDetail.setScene(new Scene(adminBoardDetailRoot));
-			adminBoardDetail.setTitle("공지사항 상세페이지");
-			adminBoardDetail.show();
-
-			adminBoardDetailCtrl.showUserInfo();
+			adminBoardDetailPage.setScene(new Scene(adminBoardDetailPageRoot));
+			adminBoardDetailPage.setTitle("공지사항 상세페이지");
+			adminBoardDetailPage.show();
 
 		} catch (Exception e) {
 			System.out.println("공지사항 상세페이지 출력 실패");
-			e.printStackTrace();
-		}
-
-	}
-
-	// 공지사항 수정페이지 출력
-	public void updateAdminBoardPage(Parent root, UserDTO userDTO, BoardDTO boardDTO) {
-
-		Stage updateAdminBoardPage = (Stage) root.getScene().getWindow();
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/updateAdminBoardPage.fxml"));
-
-		try {
-
-			Parent updateAdminBoardPageRoot = loader.load();
-
-			AdminController updateAdminBoardPageCtrl = loader.getController();
-
-			updateAdminBoardPageCtrl.setRoot(updateAdminBoardPageRoot);
-			updateAdminBoardPageCtrl.setUser(userDTO);
-			updateAdminBoardPageCtrl.setBoard(boardDTO);
-			// 공지사항번호, 공지사항작성자, 공지사항작성일, 공지사항수정일
-			updateAdminBoardPageCtrl.updateAdminBoardInfo();
-
-			updateAdminBoardPage.setScene(new Scene(updateAdminBoardPageRoot));
-			updateAdminBoardPage.setTitle("공지사항 수정페이지");
-			updateAdminBoardPage.show();
-
-			updateAdminBoardPageCtrl.showUserInfo();
-
-		} catch (Exception e) {
-			System.out.println("공지사항 수정페이지 출력 실패");
 			e.printStackTrace();
 		}
 
@@ -328,11 +288,11 @@ public class AdminServiceImpl implements AdminService {
 	public void updateAdminBoard(Parent root, UserDTO userDTO, BoardDTO boardDTO) {
 
 		// 제목
-		TextField textBoardTitle = (TextField) root.lookup("#boardTitle");
+		TextField textBoardTitle = (TextField) root.lookup("#boardTitleTextField");
 		String boardTitle = textBoardTitle.getText();
 
 		// 내용
-		TextField textBoardContent = (TextField) root.lookup("#boardContent");
+		TextField textBoardContent = (TextField) root.lookup("#boardContentTextField");
 		String boardContent = textBoardContent.getText();
 
 		boardDTO.setBoardTitle(boardTitle);
@@ -368,25 +328,23 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 상품 등록페이지 출력
-	public void insertAdminShopPage(Parent root, UserDTO userDTO) {
-		Stage insertAdminShopPage = (Stage) root.getScene().getWindow();
+	public void adminShopInsertPage(Parent root, UserDTO userDTO) {
+		Stage adminShopInsertPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/insertAdminShopPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminShopInsertPage.fxml"));
 
 		try {
 
-			Parent insertAdminShopPageRoot = loader.load();
+			Parent adminShopInsertPageRoot = loader.load();
 
-			AdminController insertAdminShopPageCtrl = loader.getController();
+			AdminController adminShopInsertPageCtrl = loader.getController();
 
-			insertAdminShopPageCtrl.setRoot(insertAdminShopPageRoot);
-			insertAdminShopPageCtrl.setUser(userDTO);
+			adminShopInsertPageCtrl.setRoot(adminShopInsertPageRoot);
+			adminShopInsertPageCtrl.setUser(userDTO);
 
-			insertAdminShopPage.setScene(new Scene(insertAdminShopPageRoot));
-			insertAdminShopPage.setTitle("상품 등록페이지");
-			insertAdminShopPage.show();
-
-			insertAdminShopPageCtrl.showUserInfo();
+			adminShopInsertPage.setScene(new Scene(adminShopInsertPageRoot));
+			adminShopInsertPage.setTitle("상품 등록페이지");
+			adminShopInsertPage.show();
 
 		} catch (Exception e) {
 			System.out.println("상품 등록페이지 출력 실패");
@@ -456,26 +414,24 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 구매내역 목록페이지 출력
-	public void adminPLPage(Parent root, UserDTO userDTO) {
-		Stage adminPLPage = (Stage) root.getScene().getWindow();
+	public void adminPurchaseListPage(Parent root, UserDTO userDTO) {
+		Stage adminPurchaseListPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminPLPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminPurchaseListPage.fxml"));
 
 		try {
 
-			Parent adminPLPageRoot = loader.load();
+			Parent adminPurchaseListPageRoot = loader.load();
 
-			AdminController adminPLPageCtrl = loader.getController();
+			AdminController adminPurchaseListPageCtrl = loader.getController();
 
-			adminPLPageCtrl.setRoot(adminPLPageRoot);
-			adminPLPageCtrl.setUser(userDTO);
-			adminPLPageCtrl.selectAdminPLListAll();
+			adminPurchaseListPageCtrl.setRoot(adminPurchaseListPageRoot);
+			adminPurchaseListPageCtrl.setUser(userDTO);
+			adminPurchaseListPageCtrl.selectAdminPLListAll();
 
-			adminPLPage.setScene(new Scene(adminPLPageRoot));
-			adminPLPage.setTitle("구매내역 목록페이지");
-			adminPLPage.show();
-
-			adminPLPageCtrl.showUserInfo();
+			adminPurchaseListPage.setScene(new Scene(adminPurchaseListPageRoot));
+			adminPurchaseListPage.setTitle("구매내역 목록페이지");
+			adminPurchaseListPage.show();
 
 		} catch (Exception e) {
 			System.out.println("구매내역 목록페이지 출력 실패");
@@ -573,37 +529,6 @@ public class AdminServiceImpl implements AdminService {
 		return ad.selectAdminShopListAll();
 	}
 
-	// 상품 수정페이지 출력
-	public void updateAdminShopPage(Parent root, UserDTO userDTO, ShopDTO shopDTO) {
-		Stage updateAdminShopPage = (Stage) root.getScene().getWindow();
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/updateAdminShopPage.fxml"));
-
-		try {
-
-			Parent updateAdminShopPageRoot = loader.load();
-
-			AdminController updateAdminShopPageCtrl = loader.getController();
-
-			updateAdminShopPageCtrl.setRoot(updateAdminShopPageRoot);
-			updateAdminShopPageCtrl.setUser(userDTO);
-			updateAdminShopPageCtrl.setShop(shopDTO);
-			// 상품 수정페이지 정보
-			updateAdminShopPageCtrl.updateAdminDetailShopInfo();
-
-			updateAdminShopPage.setScene(new Scene(updateAdminShopPageRoot));
-			updateAdminShopPage.setTitle("상품 수정페이지");
-			updateAdminShopPage.show();
-
-			updateAdminShopPageCtrl.showUserInfo();
-
-		} catch (Exception e) {
-			System.out.println("상품 수정페이지 출력 실패");
-			e.printStackTrace();
-		}
-
-	}
-
 	// 상품 삭제하기
 	public void deleteAdminShop(ShopDTO shopDTO) {
 
@@ -635,15 +560,15 @@ public class AdminServiceImpl implements AdminService {
 	public void updateAdminShop(Parent root, ShopDTO shopDTO, UserDTO userDTO) {
 
 		// 상품이름
-		TextField textShopName = (TextField) root.lookup("#adminDetailShopNameTextField");
+		TextField textShopName = (TextField) root.lookup("#shopNameTextField");
 		String shopName = textShopName.getText();
 
 		// 상품설명
-		TextField textShopContents = (TextField) root.lookup("#adminDetailShopContentsTextField");
+		TextField textShopContents = (TextField) root.lookup("#shopContentsTextField");
 		String shopContents = textShopContents.getText();
 
 		// 상품가격
-		TextField textShopPrice = (TextField) root.lookup("#adminDetailShopPriceTextField");
+		TextField textShopPrice = (TextField) root.lookup("#shopPriceTextField");
 		int shopPrice = Integer.parseInt(textShopPrice.getText());
 
 		shopDTO.setShopUserId(userDTO.getUserId());

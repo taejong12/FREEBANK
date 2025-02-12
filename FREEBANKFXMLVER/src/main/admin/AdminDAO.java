@@ -114,7 +114,7 @@ public class AdminDAO {
 
 		int result = 0;
 
-		String sql = "update FREEBANKBOARD set FREEBANKBOARD_TITLE=?, FREEBANKBOARD_AUTHOR=?, FREEBANKBOARD_CONTENT=? where FREEBANKBOARD_ID=?";
+		String sql = "update FREEBANKBOARD set FREEBANKBOARD_TITLE=?, FREEBANKBOARD_AUTHOR=?, FREEBANKBOARD_CONTENT=?, FREEBANKBOARD_UPDATE=SYSDATE where FREEBANKBOARD_ID=?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);

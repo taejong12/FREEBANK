@@ -25,7 +25,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="구매내역목록페이지" onAction="#userPLListPage">
+            <Button mnemonicParsing="false" text="구매내역목록페이지" onAction="#userPurchaseListPage">
                <font>
                   <Font size="18.0" />
                </font>

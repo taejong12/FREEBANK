@@ -25,12 +25,12 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="계좌목록 페이지" onAction="#selectAccountListPage">
+            <Button mnemonicParsing="false" text="계좌목록 페이지" onAction="#accountListSelectPage">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="계좌입금 페이지" onAction="#updateAccountDepositPage">
+            <Button mnemonicParsing="false" text="계좌입금 페이지" onAction="#accountDepositUpdatePage">
                <font>
                   <Font size="18.0" />
                </font>
@@ -39,12 +39,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" text="계좌출금 페이지" onAction="#updateAccountWithdrawalPage">
+            <Button mnemonicParsing="false" text="계좌출금 페이지" onAction="#accountWithdrawalUpdatePage">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="계좌해지 페이지" onAction="#deleteAccountPage">
+            <Button mnemonicParsing="false" text="계좌해지 페이지" onAction="#accountDeletePage">
                <font>
                   <Font size="18.0" />
                </font>

@@ -36,37 +36,50 @@ public class MenuController {
 		}
 	}
 
+	// 1.메인페이지(비로그인)
 	// 상품목록 페이지 출력
 	public void shopListPage() {
-		System.out.println("상품목록 페이지로 이동");
+		System.out.println("상품목록 페이지(비회원)로 이동");
 		ss.shopListPage(root, userDTO);
 	}
 
+	// 1.메인페이지(비로그인)
 	// 로그인 페이지 출력
 	public void loginPage() {
 		System.out.println("로그인 페이지로 이동");
 		us.loginPage(root);
 	}
 
+	// 1.메인페이지(비로그인)
 	// 회원가입 페이지 출력
 	public void joinPage() {
 		System.out.println("회원가입 페이지로 이동");
 		us.joinPage(root);
 	}
 
+	// 2.회원메인페이지(회원로그인)
 	// 계좌 페이지 출력
 	public void accountPage() {
 		System.out.println("계좌 페이지로 이동");
 		as.accountPage(root, userDTO);
 	}
 
+	// 2.회원메인페이지(회원로그인)
+	// 상품목록 페이지 출력
+	public void shopLoginListPage() {
+		System.out.println("상품목록 페이지(회원)로 이동");
+		ss.shopLoginListPage(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
 	// 마이페이지 출력
 	public void userInfoPage() {
 		System.out.println("마이페이지로 이동");
 		us.userInfoPage(root, userDTO);
 	}
 
-	// 로그아웃(비로그인 메인페이지로 이동)
+	// 2.회원메인페이지(회원로그인)
+	// 로그아웃(메인페이지로 이동)(비로그인 상태로 변경)
 	public void logout() {
 		System.out.println("일반회원 로그아웃");
 		userDTO = new UserDTO();

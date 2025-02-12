@@ -337,28 +337,26 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	// 계좌목록페이지 출력
-	public void selectAccountListPage(Parent root, UserDTO userDTO) {
+	public void accountListSelectPage(Parent root, UserDTO userDTO) {
 
-		Stage selectAccountListPage = (Stage) root.getScene().getWindow();
+		Stage accountListSelectPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/account/selectAccountListPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/account/accountListSelectPage.fxml"));
 
 		try {
 
-			Parent selectAccountListPageRoot = loader.load();
+			Parent accountListSelectPageRoot = loader.load();
 
-			AccountController selectAccountListPageCtrl = loader.getController();
+			AccountController accountListSelectPageCtrl = loader.getController();
 
-			selectAccountListPageCtrl.setRoot(selectAccountListPageRoot);
-			selectAccountListPageCtrl.setUser(userDTO);
+			accountListSelectPageCtrl.setRoot(accountListSelectPageRoot);
+			accountListSelectPageCtrl.setUser(userDTO);
 			// 계좌 리스트 출력하기
-			selectAccountListPageCtrl.selectAccountList();
+			accountListSelectPageCtrl.selectAccountList();
 
-			selectAccountListPage.setScene(new Scene(selectAccountListPageRoot));
-			selectAccountListPage.setTitle("계좌목록페이지");
-			selectAccountListPage.show();
-
-			selectAccountListPageCtrl.showUserInfo();
+			accountListSelectPage.setScene(new Scene(accountListSelectPageRoot));
+			accountListSelectPage.setTitle("계좌목록페이지");
+			accountListSelectPage.show();
 
 		} catch (Exception e) {
 			System.out.println("계좌목록페이지 출력 실패)");
@@ -373,26 +371,24 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	// 계좌입금 페이지 출력
-	public void updateAccountDepositPage(Parent root, UserDTO userDTO) {
+	public void accountDepositUpdatePage(Parent root, UserDTO userDTO) {
 
-		Stage updateAccountDepositPage = (Stage) root.getScene().getWindow();
+		Stage accountDepositUpdatePage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/account/updateAccountDepositPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/account/accountDepositUpdatePage.fxml"));
 
 		try {
 
-			Parent updateAccountDepositPageRoot = loader.load();
+			Parent accountDepositUpdatePageRoot = loader.load();
 
-			AccountController updateAccountDepositPageCtrl = loader.getController();
+			AccountController accountDepositUpdatePageCtrl = loader.getController();
 
-			updateAccountDepositPageCtrl.setRoot(updateAccountDepositPageRoot);
-			updateAccountDepositPageCtrl.setUser(userDTO);
+			accountDepositUpdatePageCtrl.setRoot(accountDepositUpdatePageRoot);
+			accountDepositUpdatePageCtrl.setUser(userDTO);
 
-			updateAccountDepositPage.setScene(new Scene(updateAccountDepositPageRoot));
-			updateAccountDepositPage.setTitle("계좌입금 페이지");
-			updateAccountDepositPage.show();
-
-			updateAccountDepositPageCtrl.showUserInfo();
+			accountDepositUpdatePage.setScene(new Scene(accountDepositUpdatePageRoot));
+			accountDepositUpdatePage.setTitle("계좌입금 페이지");
+			accountDepositUpdatePage.show();
 
 		} catch (Exception e) {
 			System.out.println("계좌입금 페이지 출력 실패");
@@ -402,27 +398,25 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	// 계좌출금 페이지 출력
-	public void updateAccountWithdrawalPage(Parent root, UserDTO userDTO) {
+	public void accountWithdrawalUpdatePage(Parent root, UserDTO userDTO) {
 
-		Stage updateAccountWithdrawalPage = (Stage) root.getScene().getWindow();
+		Stage accountWithdrawalUpdatePage = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/main/fxml/account/updateAccountWithdrawalPage.fxml"));
+				getClass().getResource("/main/fxml/account/accountWithdrawalUpdatePage.fxml"));
 
 		try {
 
-			Parent accountWithdrawalRoot = loader.load();
+			Parent accountWithdrawalUpdatePageRoot = loader.load();
 
-			AccountController accountWithdrawalCtrl = loader.getController();
+			AccountController accountWithdrawalUpdatePageCtrl = loader.getController();
 
-			accountWithdrawalCtrl.setRoot(accountWithdrawalRoot);
-			accountWithdrawalCtrl.setUser(userDTO);
+			accountWithdrawalUpdatePageCtrl.setRoot(accountWithdrawalUpdatePageRoot);
+			accountWithdrawalUpdatePageCtrl.setUser(userDTO);
 
-			updateAccountWithdrawalPage.setScene(new Scene(accountWithdrawalRoot));
-			updateAccountWithdrawalPage.setTitle("계좌출금 페이지");
-			updateAccountWithdrawalPage.show();
-
-			accountWithdrawalCtrl.showUserInfo();
+			accountWithdrawalUpdatePage.setScene(new Scene(accountWithdrawalUpdatePageRoot));
+			accountWithdrawalUpdatePage.setTitle("계좌출금 페이지");
+			accountWithdrawalUpdatePage.show();
 
 		} catch (Exception e) {
 			System.out.println("계좌출금 페이지 출력 실패");
@@ -432,26 +426,24 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	// 계좌해지 페이지 출력
-	public void deleteAccountPage(Parent root, UserDTO userDTO) {
+	public void accountDeletePage(Parent root, UserDTO userDTO) {
 
-		Stage deleteAccountPage = (Stage) root.getScene().getWindow();
+		Stage accountDeletePage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/account/deleteAccountPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/account/accountDeletePage.fxml"));
 
 		try {
 
-			Parent deleteAccountPageRoot = loader.load();
+			Parent accountDeletePageRoot = loader.load();
 
-			AccountController deleteAccountPageCtrl = loader.getController();
+			AccountController accountDeletePageCtrl = loader.getController();
 
-			deleteAccountPageCtrl.setRoot(deleteAccountPageRoot);
-			deleteAccountPageCtrl.setUser(userDTO);
+			accountDeletePageCtrl.setRoot(accountDeletePageRoot);
+			accountDeletePageCtrl.setUser(userDTO);
 
-			deleteAccountPage.setScene(new Scene(deleteAccountPageRoot));
-			deleteAccountPage.setTitle("계좌해지 페이지");
-			deleteAccountPage.show();
-
-			deleteAccountPageCtrl.showUserInfo();
+			accountDeletePage.setScene(new Scene(accountDeletePageRoot));
+			accountDeletePage.setTitle("계좌해지 페이지");
+			accountDeletePage.show();
 
 		} catch (Exception e) {
 			System.out.println("계좌해지 페이지 출력 실패");

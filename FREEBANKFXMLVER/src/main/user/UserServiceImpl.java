@@ -192,9 +192,9 @@ public class UserServiceImpl implements UserService {
 	// 마이페이지 출력
 	public void userInfoPage(Parent root, UserDTO userDTO) {
 
-		//수정후업데이트
+		// 수정후업데이트
 		userDTO = ud.selectUserInfoById(userDTO.getUserId());
-		
+
 		Stage userInfoPage = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/userInfoPage.fxml"));
@@ -220,25 +220,25 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// 회원구매내역 목록페이지 출력
-	public void userPLListPage(Parent root, UserDTO userDTO) {
-		Stage userPLListPage = (Stage) root.getScene().getWindow();
+	public void userPurchaseListPage(Parent root, UserDTO userDTO) {
+		Stage userPurchaseListPage = (Stage) root.getScene().getWindow();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/userPLListPage.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/user/userPurchaseListPage.fxml"));
 
 		try {
 
-			Parent userPLListPageRoot = loader.load();
+			Parent userPurchaseListPageRoot = loader.load();
 
-			UserController userPLListPageCtrl = loader.getController();
+			UserController userPurchaseListPageCtrl = loader.getController();
 
-			userPLListPageCtrl.setRoot(userPLListPageRoot);
-			userPLListPageCtrl.setUser(userDTO);
+			userPurchaseListPageCtrl.setRoot(userPurchaseListPageRoot);
+			userPurchaseListPageCtrl.setUser(userDTO);
 			// 구매내역 목록출력
-			userPLListPageCtrl.selectUserPLList();
+			userPurchaseListPageCtrl.selectUserPLList();
 
-			userPLListPage.setScene(new Scene(userPLListPageRoot));
-			userPLListPage.setTitle("구매내역 목록페이지");
-			userPLListPage.show();
+			userPurchaseListPage.setScene(new Scene(userPurchaseListPageRoot));
+			userPurchaseListPage.setTitle("구매내역 목록페이지");
+			userPurchaseListPage.show();
 
 		} catch (Exception e) {
 			System.out.println("구매내역 목록페이지 출력 에러");
@@ -284,21 +284,15 @@ public class UserServiceImpl implements UserService {
 			TextField textUserAge = (TextField) root.lookup("#userAgeTextField");
 			int userAge = Integer.parseInt(textUserAge.getText());
 
-			TextField textUserSex = (TextField) root.lookup("#userSexTextField");
-			String userSex = textUserSex.getText();
-
 			TextField textUserEmail = (TextField) root.lookup("#userEmailTextField");
 			String userEmail = textUserEmail.getText();
 
 			System.out.println("수정 이름: " + userName);
 			System.out.println("수정 나이: " + userAge);
-			System.out.println("수정 성별: " + userSex);
 			System.out.println("수정 이메일: " + userEmail);
 
 			userDTO.setUserName(userName);
 			userDTO.setUserAge(userAge);
-			// 수정필요
-			userDTO.setUserSex("Y");
 			userDTO.setUserEmail(userEmail);
 		}
 
@@ -388,7 +382,7 @@ public class UserServiceImpl implements UserService {
 		UserDTO user = ud.selectUserInfoById(userDTO.getUserId());
 
 		boolean userIdPwdCheck = false;
-		
+
 		if (user.getUserId().equals(userId) && user.getUserPwd().equals(userPwd)) {
 			System.out.println("아이디/비밀번호 일치");
 			if (userDTO.getUserInfoUDCheck().equals("U")) {
@@ -415,12 +409,10 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return userIdPwdCheck;
-		
 	}
 
 	// 회원 구매내역 목록조회
 	public List<PurchaseListDTO> selectUserPLByID(String userId) {
 		return ud.selectUserPLByID(userId);
 	}
-
 }
