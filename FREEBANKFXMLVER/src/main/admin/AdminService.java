@@ -60,6 +60,6 @@ public interface AdminService {
 
 	List<UserDTO> selectAdminUserListAll(); // 회원 목록 조회
 
-	List<PurchaseListDTO> selectAdminPLListAll(); // 구매내역 목록조회
+	List<PurchaseListDTO> selectAdminPurchaseListAll(); // 구매내역 목록조회
 
 }

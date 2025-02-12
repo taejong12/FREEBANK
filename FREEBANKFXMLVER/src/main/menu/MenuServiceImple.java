@@ -54,6 +54,9 @@ public class MenuServiceImple implements MenuService {
 
 			loginMainMenuCtrl.setRoot(loginMainMenuRoot);
 			loginMainMenuCtrl.setUser(userDTO);
+			loginMainMenuCtrl.loginUserId();
+			loginMainMenuCtrl.selectBoardList();
+			loginMainMenuCtrl.selectShopList();			
 
 			loginMainMenu.setScene(new Scene(loginMainMenuRoot));
 			loginMainMenu.setTitle("일반회원 메인페이지");
@@ -82,7 +85,9 @@ public class MenuServiceImple implements MenuService {
 
 			adminMainMenuCtrl.setRoot(adminMainMenuRoot);
 			adminMainMenuCtrl.setUser(userDTO);
-
+			adminMainMenuCtrl.selectBoardList();
+			adminMainMenuCtrl.selectShopList();
+			
 			adminMainMenu.setScene(new Scene(adminMainMenuRoot));
 			adminMainMenu.setTitle("관리자 메인페이지");
 			adminMainMenu.show();

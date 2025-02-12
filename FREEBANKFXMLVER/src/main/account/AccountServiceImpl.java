@@ -385,7 +385,8 @@ public class AccountServiceImpl implements AccountService {
 
 			accountDepositUpdatePageCtrl.setRoot(accountDepositUpdatePageRoot);
 			accountDepositUpdatePageCtrl.setUser(userDTO);
-
+			accountDepositUpdatePageCtrl.selectAccount();
+			
 			accountDepositUpdatePage.setScene(new Scene(accountDepositUpdatePageRoot));
 			accountDepositUpdatePage.setTitle("계좌입금 페이지");
 			accountDepositUpdatePage.show();
@@ -413,6 +414,7 @@ public class AccountServiceImpl implements AccountService {
 
 			accountWithdrawalUpdatePageCtrl.setRoot(accountWithdrawalUpdatePageRoot);
 			accountWithdrawalUpdatePageCtrl.setUser(userDTO);
+			accountWithdrawalUpdatePageCtrl.selectAccount();
 
 			accountWithdrawalUpdatePage.setScene(new Scene(accountWithdrawalUpdatePageRoot));
 			accountWithdrawalUpdatePage.setTitle("계좌출금 페이지");
@@ -440,6 +442,7 @@ public class AccountServiceImpl implements AccountService {
 
 			accountDeletePageCtrl.setRoot(accountDeletePageRoot);
 			accountDeletePageCtrl.setUser(userDTO);
+			accountDeletePageCtrl.selectAccount();
 
 			accountDeletePage.setScene(new Scene(accountDeletePageRoot));
 			accountDeletePage.setTitle("계좌해지 페이지");

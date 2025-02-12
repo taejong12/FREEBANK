@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import main.account.AccountDAO;
 import main.account.AccountDTO;
@@ -157,6 +158,7 @@ public class ShopServiceImpl implements ShopService {
 			userShopPayPageCtrl.setShop(shopDTO);
 			// 상품 결제페이지 정보
 			userShopPayPageCtrl.selectShopPayInfo();
+			userShopPayPageCtrl.accountList();
 
 			userShopPayPage.setScene(new Scene(userShopPayPageRoot));
 			userShopPayPage.setTitle("상품결제페이지");
@@ -177,7 +179,7 @@ public class ShopServiceImpl implements ShopService {
 		TextField textPayUserId = (TextField) root.lookup("#shopPayUserId");
 		String shopPayUserId = textPayUserId.getText();
 
-		TextField textPayUserPwd = (TextField) root.lookup("#shopPayUserPwd");
+		PasswordField textPayUserPwd = (PasswordField) root.lookup("#shopPayUserPwd");
 		String shopPayUserPwd = textPayUserPwd.getText();
 
 		System.out.println("계좌번호: " + shopPayAccount);

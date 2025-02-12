@@ -313,9 +313,9 @@ public class AdminDAO {
 	}
 
 	// 구매내역 목록조회
-	public List<PurchaseListDTO> selectAdminPLListAll() {
-		List<PurchaseListDTO> pLList = new ArrayList<PurchaseListDTO>();
-		
+	public List<PurchaseListDTO> selectAdminPurchaseListAll() {
+		List<PurchaseListDTO> purchaseList = new ArrayList<PurchaseListDTO>();
+
 		String sql = "select * from FREEBANKPURCHASELIST order by FREEBANKPURCHASELIST_ID desc";
 
 		try {
@@ -338,7 +338,7 @@ public class AdminDAO {
 				purchaseListDTO.setPurchaseListTotalpayment(rs.getInt(6));
 				purchaseListDTO.setPurchaseListTotalshopcount(rs.getInt(7));
 				purchaseListDTO.setPurchaseListCreate(rs.getDate(8));
-				pLList.add(purchaseListDTO);
+				purchaseList.add(purchaseListDTO);
 			}
 
 		} catch (Exception e) {
@@ -346,6 +346,6 @@ public class AdminDAO {
 			e.printStackTrace();
 		}
 
-		return pLList;
+		return purchaseList;
 	}
 }

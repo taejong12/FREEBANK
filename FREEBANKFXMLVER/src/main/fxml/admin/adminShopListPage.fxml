@@ -3,42 +3,71 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.admin.AdminController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.admin.AdminController">
    <children>
-      <TableView fx:id="adminShopListTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
-        <columns>
-            <TableColumn fx:id="shopIdColumn" prefWidth="100.0" text="상품번호" />
-          <TableColumn fx:id="shopNameColumn" prefWidth="100.0" text="상품이름" />
-            <TableColumn fx:id="shopContentsColumn" prefWidth="100.0" text="상품설명" />
-          <TableColumn fx:id="shopPriceColumn" prefWidth="100.0" text="가격" />
-            <TableColumn fx:id="shopAdminIdColumn" prefWidth="100.0" text="관리자아이디" />
-            <TableColumn fx:id="shopCreateColumn" prefWidth="100.0" text="등록일" />
-            <TableColumn fx:id="shopUpdateColumn" prefWidth="100.0" text="수정일" />
-        </columns>
+      <ImageView blendMode="DARKEN" fitHeight="85.0" fitWidth="335.0" layoutX="377.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resource/BANK.jpeg" />
+         </image>
+      </ImageView>
+      <Text layoutX="387.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MALL" textAlignment="CENTER" wrappingWidth="346.0">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="50.0" />
+         </font>
+      </Text>
+      <TableView fx:id="adminShopListTable" layoutX="131.0" layoutY="191.0" prefHeight="436.0" prefWidth="858.0">
+         <columns>
+            <TableColumn fx:id="shopIdColumn" prefWidth="59.0" text="상품번호" />
+            <TableColumn fx:id="shopNameColumn" prefWidth="97.0" text="상품이름" />
+            <TableColumn fx:id="shopContentsColumn" prefWidth="201.0" text="상품설명" />
+            <TableColumn fx:id="shopPriceColumn" prefWidth="95.0" text="가격" />
+            <TableColumn fx:id="shopAdminIdColumn" prefWidth="81.0" text="관리자 아이디" />
+            <TableColumn fx:id="shopCreateColumn" prefWidth="161.0" text="등록일" />
+            <TableColumn fx:id="shopUpdateColumn" prefWidth="163.0" text="수정일" />
+         </columns>
       </TableView>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
-         <children>
-            <Button mnemonicParsing="false" onAction="#adminShopPage" text="이전페이지">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
+      <Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
+      <Button alignment="CENTER_RIGHT" layoutX="873.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="USER" textAlignment="RIGHT">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="961.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: 0;" text="LOGOUT">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER_RIGHT" layoutX="737.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="632.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="BOARD">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#adminShopPage">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Text layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
-</GridPane>
+</Pane>

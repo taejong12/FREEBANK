@@ -1,8 +1,21 @@
 package main.menu;
 
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import main.account.AccountService;
 import main.account.AccountServiceImpl;
+import main.board.BoardDTO;
+import main.board.BoardService;
+import main.board.BoardServiceImpl;
+import main.shop.ShopDTO;
 import main.shop.ShopService;
 import main.shop.ShopServiceImpl;
 import main.user.UserDTO;
@@ -17,7 +30,23 @@ public class MenuController {
 	MenuService ms = new MenuServiceImple();
 	AccountService as = new AccountServiceImpl();
 	ShopService ss = new ShopServiceImpl();
+	BoardService bs = new BoardServiceImpl();
 
+	// 공지사항 목록
+	@FXML
+	TableView<BoardDTO> mainBoardTable;
+	@FXML
+	private TableColumn<BoardDTO, String> mainBoardTitleColumn;
+	
+	// 상품 목록
+	@FXML
+	TableView<ShopDTO> mainShopTable;
+	@FXML
+	private TableColumn<ShopDTO, String> mainShopNameColumn;
+	
+	@FXML
+	private Text loginUserId;
+	
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
@@ -84,6 +113,34 @@ public class MenuController {
 		System.out.println("일반회원 로그아웃");
 		userDTO = new UserDTO();
 		ms.mainMenu(root, userDTO);
+	}
+
+	// 상단 로그인 아이디 출력
+	public void loginUserId() {
+		loginUserId.setText(userDTO.getUserId());
+	}
+
+	// 공지사항 목록
+	public void selectBoardList() {
+		List<BoardDTO> selectBoardList = bs.selectBoardList();
+		
+		ObservableList<BoardDTO> boardList = FXCollections.observableArrayList(selectBoardList);
+
+		mainBoardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
+
+		mainBoardTable.setItems(boardList);
+		
+	}
+
+	// 상품 목록
+	public void selectShopList() {
+		List<ShopDTO> selectShopList = ss.selectShopList();
+		
+		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
+		
+		mainShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+
+		mainShopTable.setItems(shopList);
 	}
 
 }

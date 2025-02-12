@@ -138,4 +138,17 @@ public class AccountController {
 		accountPage();
 	}
 
+	// 계좌 목록 보여주기(입금, 출금, 해지)
+	public void selectAccount() {
+		
+		List<AccountDTO> accountListByUserId = as.selectUserAccountByID(userDTO.getUserId());
+
+		accountAccountColumn.setCellValueFactory(new PropertyValueFactory<>("accountAccount"));
+		accountBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("accountBalance"));
+
+		ObservableList<AccountDTO> accountDTOList = FXCollections.observableArrayList(accountListByUserId);
+
+		accountTableView.setItems(accountDTOList);
+	}
+
 }

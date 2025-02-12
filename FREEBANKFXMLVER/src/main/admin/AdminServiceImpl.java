@@ -427,7 +427,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminPurchaseListPageCtrl.setRoot(adminPurchaseListPageRoot);
 			adminPurchaseListPageCtrl.setUser(userDTO);
-			adminPurchaseListPageCtrl.selectAdminPLListAll();
+			adminPurchaseListPageCtrl.selectAdminPurchaseListAll();
 
 			adminPurchaseListPage.setScene(new Scene(adminPurchaseListPageRoot));
 			adminPurchaseListPage.setTitle("구매내역 목록페이지");
@@ -602,8 +602,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// 구매내역 목록조회
-	public List<PurchaseListDTO> selectAdminPLListAll() {
-		return ad.selectAdminPLListAll();
+	public List<PurchaseListDTO> selectAdminPurchaseListAll() {
+		return ad.selectAdminPurchaseListAll();
 	}
 
 }

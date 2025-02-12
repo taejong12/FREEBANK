@@ -2,127 +2,142 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.user.UserController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원아이디" GridPane.halignment="CENTER">
+<Pane blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.user.UserController">
+	<children>
+		<ImageView blendMode="DARKEN" fitHeight="85.0" fitWidth="335.0" layoutX="377.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../resource/BANK.jpeg" />
+			</image>
+		</ImageView>
+		<Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
+		<Button alignment="CENTER_RIGHT" layoutX="836.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT">
+			<font>
+				<Font name="Franklin Gothic Heavy Italic" size="22.0" />
+			</font>
+		</Button>
+		<Button alignment="CENTER" layoutX="968.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: 0;" text="LOGOUT">
+			<font>
+				<Font name="Franklin Gothic Heavy Italic" size="22.0" />
+			</font>
+		</Button>
+		<Button layoutX="634.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: 0;" text="FREEBANK MALL" textAlignment="CENTER">
+			<font>
+				<Font name="Franklin Gothic Heavy Italic" size="22.0" />
+			</font>
+		</Button>
+		<Text layoutX="369.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MY PAGE" textAlignment="CENTER" wrappingWidth="346.0">
+			<font>
+				<Font name="Franklin Gothic Heavy Italic" size="50.0" />
+			</font>
+		</Text>
+		<Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" onAction="#userInfoPage" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK">
+			<font>
+				<Font name="Franklin Gothic Heavy Italic" size="22.0" />
+			</font>
+		</Button>
+      <Text layoutX="354.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="아이디">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
+         </font></Text>
+      <Text layoutX="368.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="이름">
+         <font>
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원이름" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Text layoutX="354.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="이메일">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원나이" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Text layoutX="322.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="신용도 등급">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원성별" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Text layoutX="340.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="누적금액">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원이메일" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Text layoutX="368.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="성별">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원신용등급" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Text layoutX="368.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="나이">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원누적금액" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Text layoutX="340.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="수정날짜">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원생성일" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <Text layoutX="340.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="가입날짜">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원수정일" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+      <Text fx:id="userIdText" layoutX="630.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="2" GridPane.rowIndex="9">
-         <children>
-            <Button mnemonicParsing="false" onAction="#updateUserInfoCheck" text="회원수정(회원인증)">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#deleteUserInfoCheck" text="회원삭제(회원인증)">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#userInfoPage" text="취소">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <Text fx:id="userIdText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Text fx:id="userCreditRatingText" layoutX="598.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="userNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField fx:id="userAgeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="userEmailTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Text fx:id="userCreditRatingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Text fx:id="userTotalText" layoutX="616.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="userTotalText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Text fx:id="userSexText" layoutX="644.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="userCreateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <Text fx:id="userUpdateText" layoutX="620.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="userUpdateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+      <Text fx:id="userCreateText" layoutX="616.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="userSexText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <TextField fx:id="userNameTextField" layoutX="584.0" layoutY="191.0" prefHeight="29.0" prefWidth="161.0" />
+      <TextField fx:id="userAgeTextField" layoutX="584.0" layoutY="291.0" prefHeight="29.0" prefWidth="161.0" />
+      <TextField fx:id="userEmailTextField" layoutX="584.0" layoutY="391.0" prefHeight="29.0" prefWidth="161.0" />
+      <Button layoutX="285.0" layoutY="638.0" mnemonicParsing="false" onAction="#updateUserInfoCheck" prefHeight="57.0" prefWidth="207.0" style="-fx-background-color: #000000;" text="회원수정" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="561.0" layoutY="638.0" mnemonicParsing="false" onAction="#deleteUserInfoCheck" prefHeight="57.0" prefWidth="207.0" style="-fx-background-color: #000000;" text="회원삭제" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Text layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="20.0" />
          </font>
       </Text>
-   </children>
-</GridPane>
+      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+	</children>
+</Pane>

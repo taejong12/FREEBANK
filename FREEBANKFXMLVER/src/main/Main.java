@@ -21,6 +21,8 @@ public class Main extends Application {
 		
 		MenuController menuCtrl = loader.getController();
 		menuCtrl.setRoot(mainRoot);
+		menuCtrl.selectBoardList();
+		menuCtrl.selectShopList();		
 		
 		stage.setScene(new Scene(mainRoot));
 		stage.setTitle("메인페이지");
@@ -30,5 +32,4 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 }

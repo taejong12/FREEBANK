@@ -1,5 +1,6 @@
 package main.shop;
 
+import java.sql.Date;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -7,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,6 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import main.account.AccountDTO;
+import main.account.AccountService;
+import main.account.AccountServiceImpl;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
 import main.user.UserDTO;
@@ -28,6 +33,7 @@ public class ShopController {
 	ShopService ss = new ShopServiceImpl();
 	ShopDTO shopDTO;
 	UserService us = new UserServiceImpl();
+	AccountService as = new AccountServiceImpl();
 
 	// 상품 목록 바인딩
 	@FXML
@@ -63,7 +69,15 @@ public class ShopController {
 	@FXML
 	private TextField shopPayUserId;
 	@FXML
-	private TextField shopPayUserPwd;
+	private PasswordField shopPayUserPwd;
+
+	// 계좌 리스트 바인딩
+	@FXML
+	TableView<AccountDTO> accountTableView;
+	@FXML
+	private TableColumn<AccountDTO, String> accountAccountColumn;
+	@FXML
+	private TableColumn<AccountDTO, Integer> accountBalanceColumn;
 
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -237,11 +251,9 @@ public class ShopController {
 	// 상품 결제페이지 정보
 	public void selectShopPayInfo() {
 
-		// 이름, 설명, 가격, 갯수, 결제금액
+		// 이름, 갯수, 결제금액
 		System.out.println("상품 결제페이지 정보");
 		shopName.setText(shopDTO.getShopName());
-		shopContents.setText(shopDTO.getShopContents());
-		shopPrice.setText(String.valueOf(shopDTO.getShopPrice()));
 		shopTotalShopCountText.setText(String.valueOf(shopDTO.getShopTotalShopCount()));
 
 		// 총결제금액
@@ -251,10 +263,22 @@ public class ShopController {
 		shopTotalPayment.setText(String.valueOf(shopDTO.getShopTotalPayment()));
 
 		System.out.println("상품이름: " + shopName.getText());
-		System.out.println("상품설명: " + shopContents.getText());
-		System.out.println("상품가격: " + shopPrice.getText());
 		System.out.println("상품갯수: " + shopTotalShopCountText.getText());
 		System.out.println("상품결제금액: " + shopTotalPayment.getText());
+
+	}
+
+	// 계좌 목록 조회
+	public void accountList() {
+
+		List<AccountDTO> accountListByUserId = as.selectUserAccountByID(userDTO.getUserId());
+
+		accountAccountColumn.setCellValueFactory(new PropertyValueFactory<>("accountAccount"));
+		accountBalanceColumn.setCellValueFactory(new PropertyValueFactory<>("accountBalance"));
+
+		ObservableList<AccountDTO> accountDTOList = FXCollections.observableArrayList(accountListByUserId);
+
+		accountTableView.setItems(accountDTOList);
 
 	}
 }

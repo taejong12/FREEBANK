@@ -2,86 +2,111 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.user.UserController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.user.UserController">
    <children>
-      <TextField fx:id="userId" promptText="아이디 입력" GridPane.columnIndex="1" />
-      <TextField fx:id="userName" promptText="이름 입력" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField fx:id="userAge" promptText="나이 입력" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField fx:id="userSex" promptText="성별 입력" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <TextField fx:id="userEmail" promptText="이메일 입력" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="아이디" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER">
+      <ImageView blendMode="DARKEN" fitHeight="85.0" fitWidth="335.0" layoutX="377.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resource/BANK.jpeg" />
+         </image>
+      </ImageView>
+      <Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
+      <Text layoutX="377.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP PAGE" textAlignment="CENTER" wrappingWidth="346.0">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="50.0" />
+         </font>
+      </Text>
+      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#mainMenu">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <TextField alignment="CENTER" layoutX="377.0" layoutY="224.0" prefHeight="42.0" prefWidth="346.0" promptText="ID" fx:id="userId">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <PasswordField alignment="CENTER" layoutX="377.0" layoutY="283.0" prefHeight="42.0" prefWidth="346.0" promptText="Password" fx:id="userPwd">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+      <PasswordField alignment="CENTER" layoutX="377.0" layoutY="344.0" prefHeight="42.0" prefWidth="346.0" promptText="Password Check" fx:id="userPwdCh">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+      <RadioButton layoutX="433.0" layoutY="584.0" mnemonicParsing="false" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </RadioButton>
+      <TextField alignment="CENTER" layoutX="377.0" layoutY="404.0" prefHeight="42.0" prefWidth="346.0" promptText="Name" fx:id="userName">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField alignment="CENTER" layoutX="376.0" layoutY="464.0" prefHeight="42.0" prefWidth="346.0" promptText="Age" fx:id="userAge">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <RadioButton layoutX="572.0" layoutY="584.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" fx:id="userSexCheck">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </RadioButton>
+      <TextField alignment="CENTER" layoutX="376.0" layoutY="524.0" prefHeight="42.0" prefWidth="346.0" promptText="Email" fx:id="userEmail">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Button layoutX="352.0" layoutY="618.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="396.0" style="-fx-background-color: #0d0d0d;" text="SIGN UP" textFill="#fffdfd" onAction="#insertJoin">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="24.0" />
+         </font>
+      </Button>
+      <Text layoutX="284.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="아이디">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Text layoutX="284.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="이메일">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호확인" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Text layoutX="293.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="나이">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="이름" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Text layoutX="291.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="이름">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="나이" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Text layoutX="253.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호 확인">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="성별" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Text layoutX="271.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="이메일" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnSpan="3" GridPane.rowIndex="7">
-         <children>
-            <Button mnemonicParsing="false" onAction="#insertJoin" text="완료">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#mainMenu" text="취소">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <PasswordField fx:id="userPwd" promptText="비밀번호 입력" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <PasswordField fx:id="userPwdCh" promptText="비밀번호 확인 입력" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
-</GridPane>
+</Pane>

@@ -17,10 +17,14 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import main.account.AccountDTO;
 import main.board.BoardDTO;
+import main.board.BoardService;
+import main.board.BoardServiceImpl;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
 import main.shop.PurchaseListDTO;
 import main.shop.ShopDTO;
+import main.shop.ShopService;
+import main.shop.ShopServiceImpl;
 import main.user.UserDTO;
 
 public class AdminController {
@@ -32,6 +36,8 @@ public class AdminController {
 	BoardDTO boardDTO;
 	AccountDTO accountDTO;
 	ShopDTO shopDTO;
+	BoardService bs = new BoardServiceImpl();
+	ShopService ss = new ShopServiceImpl();
 
 	// 공지사항 목록 화면 컬럼
 	@FXML
@@ -130,6 +136,38 @@ public class AdminController {
 	private TextField shopContentsTextField;
 	@FXML
 	private TextField shopPriceTextField;
+
+	// 구매내역 목록
+	@FXML
+	TableView<PurchaseListDTO> adminPurchaseListTable;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> adminPurchaseListIdColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> adminPurchaseListUserIdColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> adminPurchaseListAccountColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> adminPurchaseListShopIdColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> adminPurchaseListShopNameColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> adminPurchaseListTotalpaymentColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, Integer> adminPurchaseListTotalshopcountColumn;
+	@FXML
+	private TableColumn<PurchaseListDTO, String> adminPurchaseListCreateColumn;
+
+	// 공지사항 목록
+	@FXML
+	TableView<BoardDTO> mainBoardTable;
+	@FXML
+	private TableColumn<BoardDTO, String> mainBoardTitleColumn;
+
+	// 상품 목록
+	@FXML
+	TableView<ShopDTO> mainShopTable;
+	@FXML
+	private TableColumn<ShopDTO, String> mainShopNameColumn;
 
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -441,15 +479,45 @@ public class AdminController {
 	}
 
 	// 구매내역 목록조회
-	public void selectAdminPLListAll() {
+	public void selectAdminPurchaseListAll() {
 
-		List<PurchaseListDTO> selectPLList = as.selectAdminPLListAll();
+		List<PurchaseListDTO> selectPurchaseList = as.selectAdminPurchaseListAll();
+
+		ObservableList<PurchaseListDTO> purchaseList = FXCollections.observableArrayList(selectPurchaseList);
+
+		adminPurchaseListIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListId"));
+		adminPurchaseListUserIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListUserId"));
+		adminPurchaseListAccountColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListAccount"));
+		adminPurchaseListShopIdColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListShopId"));
+		adminPurchaseListShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListShopName"));
+		adminPurchaseListTotalpaymentColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalpayment"));
+		adminPurchaseListTotalshopcountColumn
+				.setCellValueFactory(new PropertyValueFactory<>("purchaseListTotalshopcount"));
+		adminPurchaseListCreateColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseListCreate"));
+
+		adminPurchaseListTable.setItems(purchaseList);
 
 	}
 
-	// 사진 저장(미정)
-	public void insertShopImage() {
+	// 공지사항 목록
+	public void selectBoardList() {
+		List<BoardDTO> selectBoardList = bs.selectBoardList();
 
+		ObservableList<BoardDTO> boardList = FXCollections.observableArrayList(selectBoardList);
+
+		mainBoardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
+
+		mainBoardTable.setItems(boardList);
 	}
 
+	// 상품 목록
+	public void selectShopList() {
+		List<ShopDTO> selectShopList = ss.selectShopList();
+
+		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
+
+		mainShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+
+		mainShopTable.setItems(shopList);
+	}
 }

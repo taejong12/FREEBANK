@@ -39,7 +39,7 @@ public class UserController {
 	private Text userUpdateText;
 	@FXML
 	private Text userSexText;
-	
+
 	@FXML
 	private TextField userNameTextField;
 	@FXML
@@ -198,7 +198,7 @@ public class UserController {
 			// 수정/삭제 완료
 			System.out.println("수정/삭제 완료");
 			mainMenu();
-			
+
 			Alert alertInfo = new Alert(AlertType.INFORMATION);
 
 			alertInfo.setTitle("로그아웃");
@@ -207,7 +207,7 @@ public class UserController {
 
 			// 확인 버튼을 누를 때까지 대기
 			alertInfo.showAndWait();
-			
+
 		} else {
 			// 마이페이지로 이동
 			userInfoPage();

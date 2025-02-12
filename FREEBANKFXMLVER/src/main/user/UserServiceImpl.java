@@ -8,7 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import main.shop.PurchaseListDTO;
@@ -72,6 +74,8 @@ public class UserServiceImpl implements UserService {
 
 		UserDTO userDTO = new UserDTO();
 
+		RadioButton userSexCheck = (RadioButton) root.lookup("#userSexCheck");
+		
 		TextField id = (TextField) root.lookup("#userId");
 		String userId = id.getText();
 
@@ -87,8 +91,12 @@ public class UserServiceImpl implements UserService {
 		TextField age = (TextField) root.lookup("#userAge");
 		int userAge = Integer.parseInt(age.getText());
 
-		TextField sex = (TextField) root.lookup("#userSex");
-		String userSex = sex.getText();
+		String userSex;
+		if(userSexCheck.isSelected()) {
+			userSex="Y";
+		}else {
+			userSex="X";
+		}
 
 		TextField email = (TextField) root.lookup("#userEmail");
 		String userEmail = email.getText();
@@ -113,7 +121,7 @@ public class UserServiceImpl implements UserService {
 		userDTO.setUserName(userName);
 		userDTO.setUserAge(userAge);
 		// 수정필요
-		userDTO.setUserSex("X");
+		userDTO.setUserSex(userSex);
 		userDTO.setUserEmail(userEmail);
 
 		int result = ud.insertUser(userDTO);
