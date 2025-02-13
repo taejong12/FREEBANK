@@ -34,6 +34,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminBoardPageCtrl.setRoot(adminBoardPageRoot);
 			adminBoardPageCtrl.setUser(userDTO);
+			adminBoardPageCtrl.loginUserId();
 
 			adminBoardPage.setScene(new Scene(adminBoardPageRoot));
 			adminBoardPage.setTitle("공지사항 관리페이지");
@@ -63,6 +64,7 @@ public class AdminServiceImpl implements AdminService {
 			adminAccountPageCtrl.setRoot(adminAccountPageRoot);
 			adminAccountPageCtrl.setUser(userDTO);
 			adminAccountPageCtrl.selectAdminAccountList();
+			adminAccountPageCtrl.loginUserId();
 
 			adminAccountPage.setScene(new Scene(adminAccountPageRoot));
 			adminAccountPage.setTitle("계좌 관리페이지");
@@ -91,6 +93,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminShopPageCtrl.setRoot(adminShopPageRoot);
 			adminShopPageCtrl.setUser(userDTO);
+			adminShopPageCtrl.loginUserId();
 
 			adminShopPage.setScene(new Scene(adminShopPageRoot));
 			adminShopPage.setTitle("상품 관리페이지");
@@ -119,6 +122,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminUserPageCtrl.setRoot(adminUserPageRoot);
 			adminUserPageCtrl.setUser(userDTO);
+			adminUserPageCtrl.loginUserId();
 
 			adminUserPage.setScene(new Scene(adminUserPageRoot));
 			adminUserPage.setTitle("회원 관리페이지");
@@ -146,6 +150,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminBoardInsertPageCtrl.setRoot(adminBoardInsertPageRoot);
 			adminBoardInsertPageCtrl.setUser(userDTO);
+			adminBoardInsertPageCtrl.loginUserId();
 
 			adminBoardInsertPage.setScene(new Scene(adminBoardInsertPageRoot));
 			adminBoardInsertPage.setTitle("공지사항 등록페이지");
@@ -173,6 +178,7 @@ public class AdminServiceImpl implements AdminService {
 			adminBoardListPageCtrl.setRoot(adminBoardListPageRoot);
 			adminBoardListPageCtrl.setUser(userDTO);
 			adminBoardListPageCtrl.selectAdminBoardList();
+			adminBoardListPageCtrl.loginUserId();
 
 			adminBoardListPage.setScene(new Scene(adminBoardListPageRoot));
 			adminBoardListPage.setTitle("공지사항 목록페이지");
@@ -248,6 +254,7 @@ public class AdminServiceImpl implements AdminService {
 			adminBoardDetailPageCtrl.setUser(userDTO);
 			adminBoardDetailPageCtrl.setBoard(boardDTO);
 			adminBoardDetailPageCtrl.selectAdminBoardInfo();
+			adminBoardDetailPageCtrl.loginUserId();
 
 			adminBoardDetailPage.setScene(new Scene(adminBoardDetailPageRoot));
 			adminBoardDetailPage.setTitle("공지사항 상세페이지");
@@ -341,6 +348,7 @@ public class AdminServiceImpl implements AdminService {
 
 			adminShopInsertPageCtrl.setRoot(adminShopInsertPageRoot);
 			adminShopInsertPageCtrl.setUser(userDTO);
+			adminShopInsertPageCtrl.loginUserId();
 
 			adminShopInsertPage.setScene(new Scene(adminShopInsertPageRoot));
 			adminShopInsertPage.setTitle("상품 등록페이지");
@@ -369,6 +377,7 @@ public class AdminServiceImpl implements AdminService {
 			adminShopListPageCtrl.setUser(userDTO);
 			// 상품 목록 조회
 			adminShopListPageCtrl.selectAdminShopList();
+			adminShopListPageCtrl.loginUserId();
 
 			adminShopListPage.setScene(new Scene(adminShopListPageRoot));
 			adminShopListPage.setTitle("상품 조회페이지");
@@ -399,6 +408,7 @@ public class AdminServiceImpl implements AdminService {
 			adminUserListPageCtrl.setUser(userDTO);
 			// 회원 목록 출력
 			adminUserListPageCtrl.selectAdminUserListAll();
+			adminUserListPageCtrl.loginUserId();
 
 			adminUserListPage.setScene(new Scene(adminUserListPageRoot));
 			adminUserListPage.setTitle("회원 목록페이지");
@@ -428,6 +438,7 @@ public class AdminServiceImpl implements AdminService {
 			adminPurchaseListPageCtrl.setRoot(adminPurchaseListPageRoot);
 			adminPurchaseListPageCtrl.setUser(userDTO);
 			adminPurchaseListPageCtrl.selectAdminPurchaseListAll();
+			adminPurchaseListPageCtrl.loginUserId();
 
 			adminPurchaseListPage.setScene(new Scene(adminPurchaseListPageRoot));
 			adminPurchaseListPage.setTitle("구매내역 목록페이지");
@@ -493,8 +504,6 @@ public class AdminServiceImpl implements AdminService {
 	// 상품 상세페이지 출력
 	public void adminShopDetailPage(Parent root, ShopDTO shopDTO, UserDTO userDTO) {
 
-		System.out.println("상품 상세페이지 이동: " + shopDTO.getShopName());
-
 		Stage adminShopDetailPage = (Stage) root.getScene().getWindow();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/admin/adminShopDetailPage.fxml"));
@@ -510,6 +519,7 @@ public class AdminServiceImpl implements AdminService {
 			adminShopDetailPageCtrl.setShop(shopDTO);
 			// 상품 상세페이지 정보
 			adminShopDetailPageCtrl.adminDetailShopInfo();
+			adminShopDetailPageCtrl.loginUserId();
 
 			adminShopDetailPage.setScene(new Scene(adminShopDetailPageRoot));
 			adminShopDetailPage.setTitle("상품 상세페이지");

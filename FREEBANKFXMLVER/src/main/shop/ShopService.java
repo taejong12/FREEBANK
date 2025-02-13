@@ -3,6 +3,7 @@ package main.shop;
 import java.util.List;
 
 import javafx.scene.Parent;
+import main.board.BoardDTO;
 import main.user.UserDTO;
 
 public interface ShopService {
@@ -22,5 +23,9 @@ public interface ShopService {
 	void userShopPayLoginPage(Parent root, UserDTO userDTO); // 비로그인 상태 결제버튼 클릭(로그인창)
 
 	void shopLoginDetailPage(Parent root, ShopDTO shop, UserDTO userDTO); // 상품 상세페이지 화면 출력(회원로그인)
+
+	void shopMainDetailPage(Parent root, ShopDTO shop, UserDTO userDTO); // 메인 페이지(비회원) 상품 목록 상세 페이지
+
+	void shopMainUserDetailPage(Parent root, ShopDTO shop, UserDTO userDTO); // 메인 페이지(회원) 상품 목록 상세 페이지
 
 }

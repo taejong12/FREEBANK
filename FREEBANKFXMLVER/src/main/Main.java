@@ -19,10 +19,10 @@ public class Main extends Application {
 		
 		Parent mainRoot = loader.load();
 		
-		MenuController menuCtrl = loader.getController();
-		menuCtrl.setRoot(mainRoot);
-		menuCtrl.selectBoardList();
-		menuCtrl.selectShopList();		
+		MenuController mainMenuCtrl = loader.getController();
+		mainMenuCtrl.setRoot(mainRoot);
+		mainMenuCtrl.selectBoardList();
+		mainMenuCtrl.selectShopList();		
 		
 		stage.setScene(new Scene(mainRoot));
 		stage.setTitle("메인페이지");

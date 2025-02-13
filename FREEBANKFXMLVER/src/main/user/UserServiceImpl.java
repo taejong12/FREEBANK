@@ -215,6 +215,7 @@ public class UserServiceImpl implements UserService {
 
 			userInfoPageCtrl.setRoot(userInfoPageRoot);
 			userInfoPageCtrl.setUser(userDTO);
+			userInfoPageCtrl.loginUserId();
 
 			userInfoPage.setScene(new Scene(userInfoPageRoot));
 			userInfoPage.setTitle("마이페이지");
@@ -243,6 +244,7 @@ public class UserServiceImpl implements UserService {
 			userPurchaseListPageCtrl.setUser(userDTO);
 			// 구매내역 목록출력
 			userPurchaseListPageCtrl.selectUserPLList();
+			userPurchaseListPageCtrl.loginUserId();
 
 			userPurchaseListPage.setScene(new Scene(userPurchaseListPageRoot));
 			userPurchaseListPage.setTitle("구매내역 목록페이지");
@@ -271,6 +273,7 @@ public class UserServiceImpl implements UserService {
 			userInfoDetailPageCtrl.setUser(userDTO);
 			// 회원정보 출력
 			userInfoDetailPageCtrl.selectUserInfo();
+			userInfoDetailPageCtrl.loginUserId();
 
 			userInfoDetailPage.setScene(new Scene(userInfoDetailPageRoot));
 			userInfoDetailPage.setTitle("회원정보페이지");
@@ -316,6 +319,7 @@ public class UserServiceImpl implements UserService {
 
 			userIdPwdCheckPageCtrl.setRoot(userIdPwdCheckPageRoot);
 			userIdPwdCheckPageCtrl.setUser(userDTO);
+			userIdPwdCheckPageCtrl.loginUserId();
 
 			userIdPwdCheckPage.setScene(new Scene(userIdPwdCheckPageRoot));
 			userIdPwdCheckPage.setTitle("회원수정/삭제 인증페이지");
@@ -399,6 +403,8 @@ public class UserServiceImpl implements UserService {
 				userIdPwdCheck = true;
 			} else if (userDTO.getUserInfoUDCheck().equals("D")) {
 				System.out.println("회원정보 삭제");
+				deleteUserPurchaseList(userDTO.getUserId());
+				deleteUserAccount(userDTO.getUserId());
 				deleteUserInfo(userDTO);
 				userIdPwdCheck = true;
 			} else {
@@ -423,4 +429,15 @@ public class UserServiceImpl implements UserService {
 	public List<PurchaseListDTO> selectUserPLByID(String userId) {
 		return ud.selectUserPLByID(userId);
 	}
+	
+	// 구매내역 삭제
+	private void deleteUserPurchaseList(String userId) {
+		ud.deleteUserPurchaseList(userId);
+	}
+
+	// 계좌 삭제
+	private void deleteUserAccount(String userId) {
+		ud.deleteUserAccount(userId);	
+	}
+
 }

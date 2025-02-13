@@ -20,27 +20,17 @@
          </image>
       </ImageView>
       <Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
-      <Button alignment="CENTER" layoutX="964.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: 0;" text="SIGN UP" onAction="#joinPage">
-         <font>
-            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
-         </font>
-      </Button>
-      <Text layoutX="322.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FREEBANK MALL" textAlignment="CENTER" wrappingWidth="438.0">
+      <Text layoutX="322.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FREEBANK MALL" textAlignment="CENTER" wrappingWidth="438.0">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="50.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#shopListPage">
+      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#loginMainMenu">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="865.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="LOGIN" textAlignment="RIGHT" onAction="#loginPage">
-         <font>
-            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
-         </font>
-      </Button>
-      <Button layoutX="330.0" layoutY="609.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="429.0" style="-fx-background-color: #0d0d0d;" text="결제페이지" textFill="#fffdfd" onAction="#userShopPayLoginPage">
+      <Button layoutX="330.0" layoutY="609.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="429.0" style="-fx-background-color: #0d0d0d;" text="결제페이지" textFill="#fffdfd" onAction="#userShopPayPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="24.0" />
          </font>
@@ -78,22 +68,22 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopId" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Text fx:id="mainUserDetailShopId" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Text fx:id="mainUserDetailShopName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopContents" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Text fx:id="mainUsaerDetailShopContents" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Text fx:id="mainUserDetailShopPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <font>
                   <Font size="20.0" />
                </font>
@@ -106,6 +96,36 @@
          </font>
       </TextField>
       <Text layoutX="356.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="수량선택">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button alignment="CENTER_RIGHT" layoutX="853.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: 0;" text="MY PAGE" textAlignment="RIGHT" onAction="#userInfoPage">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="969.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="112.0" style="-fx-background-color: 0;" text="LOGOUT" onAction="#logout">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="550.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: 0;" text="FREEBANK MALL" textAlignment="CENTER" onAction="#shopLoginListPage">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER_RIGHT" layoutX="742.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT" onAction="#accountPage">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Text layoutX="14.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="45.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" fx:id="loginUserId">
          <font>
             <Font size="20.0" />
          </font>

@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import main.account.AccountDAO;
 import main.account.AccountDTO;
+import main.admin.AdminController;
 import main.user.UserDAO;
 import main.user.UserDTO;
 
@@ -66,6 +67,7 @@ public class ShopServiceImpl implements ShopService {
 			shopLoginListPageCtrl.setUser(userDTO);
 			// 상품 리스트 출력
 			shopLoginListPageCtrl.selectShopListLogin();
+			shopLoginListPageCtrl.loginUserId();
 
 			shopLoginListPage.setScene(new Scene(shopLoginListPageRoot));
 			shopLoginListPage.setTitle("상품목록 페이지(회원)");
@@ -129,6 +131,7 @@ public class ShopServiceImpl implements ShopService {
 			shopLoginDetailPageCtrl.setShop(shop);
 			// 상품 상세페이지 정보
 			shopLoginDetailPageCtrl.selectShopDtailInfo();
+			shopLoginDetailPageCtrl.loginUserId();
 
 			shopLoginDetailPage.setScene(new Scene(shopLoginDetailPageRoot));
 			shopLoginDetailPage.setTitle("상품상세페이지(회원)");
@@ -159,6 +162,7 @@ public class ShopServiceImpl implements ShopService {
 			// 상품 결제페이지 정보
 			userShopPayPageCtrl.selectShopPayInfo();
 			userShopPayPageCtrl.accountList();
+			userShopPayPageCtrl.loginUserId();
 
 			userShopPayPage.setScene(new Scene(userShopPayPageRoot));
 			userShopPayPage.setTitle("상품결제페이지");
@@ -300,6 +304,68 @@ public class ShopServiceImpl implements ShopService {
 		// 확인 버튼을 누를 때까지 대기
 		alertError.showAndWait();
 
+	}
+
+	// 메인 페이지(비회원) 상품 목록 상세 페이지
+	public void shopMainDetailPage(Parent root, ShopDTO shopDTO, UserDTO userDTO) {
+		Stage shopMainDetailPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopMainDetailPage.fxml"));
+
+		try {
+
+			Parent shopMainDetailPageRoot = loader.load();
+
+			ShopController shopMainDetailPageCtrl = loader.getController();
+
+			shopMainDetailPageCtrl.setRoot(shopMainDetailPageRoot);
+			shopMainDetailPageCtrl.setUser(userDTO);
+			shopMainDetailPageCtrl.setShop(shopDTO);
+			// 상품 상세페이지 정보
+			shopMainDetailPageCtrl.mainDetailShopInfo();
+			
+
+			shopMainDetailPage.setScene(new Scene(shopMainDetailPageRoot));
+			shopMainDetailPage.setTitle("상품 상세페이지(메인페이지(비회원))");
+			shopMainDetailPage.show();
+
+
+		} catch (Exception e) {
+			System.out.println("상품 상세페이지(메인페이지(비회원)) 출력 실패");
+			e.printStackTrace();
+		}
+	}
+
+	// 메인 페이지(회원) 상품 목록 상세 페이지
+	public void shopMainUserDetailPage(Parent root, ShopDTO shopDTO, UserDTO userDTO) {
+		Stage shopMainUserDetailPage = (Stage) root.getScene().getWindow();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/fxml/shop/shopMainUserDetailPage.fxml"));
+
+		try {
+
+			Parent shopMainUserDetailPageRoot = loader.load();
+
+			ShopController shopMainUserDetailPageCtrl = loader.getController();
+
+			shopMainUserDetailPageCtrl.setRoot(shopMainUserDetailPageRoot);
+			shopMainUserDetailPageCtrl.setUser(userDTO);
+			shopMainUserDetailPageCtrl.setShop(shopDTO);
+			// 상품 상세페이지 정보
+			shopMainUserDetailPageCtrl.mainUserDetailShopInfo();
+			shopMainUserDetailPageCtrl.loginUserId();
+			
+
+			shopMainUserDetailPage.setScene(new Scene(shopMainUserDetailPageRoot));
+			shopMainUserDetailPage.setTitle("상품 상세페이지(메인페이지(회원))");
+			shopMainUserDetailPage.show();
+
+
+		} catch (Exception e) {
+			System.out.println("상품 상세페이지(메인페이지(회원)) 출력 실패");
+			e.printStackTrace();
+		}
+		
 	}
 
 }

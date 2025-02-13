@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.shop.ShopController">
+<Pane blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView blendMode="DARKEN" fitHeight="85.0" fitWidth="335.0" layoutX="377.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,33 +20,18 @@
          </image>
       </ImageView>
       <Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
-      <Button alignment="CENTER" layoutX="964.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: 0;" text="SIGN UP" onAction="#joinPage">
-         <font>
-            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
-         </font>
-      </Button>
-      <Text layoutX="322.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FREEBANK MALL" textAlignment="CENTER" wrappingWidth="438.0">
+      <Text layoutX="322.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MALL" textAlignment="CENTER" wrappingWidth="438.0">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="50.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#shopListPage">
+      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
-         </font>
-      </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="865.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="LOGIN" textAlignment="RIGHT" onAction="#loginPage">
-         <font>
-            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
-         </font>
-      </Button>
-      <Button layoutX="330.0" layoutY="609.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="429.0" style="-fx-background-color: #0d0d0d;" text="결제페이지" textFill="#fffdfd" onAction="#userShopPayLoginPage">
-         <font>
-            <Font name="Franklin Gothic Heavy Italic" size="24.0" />
          </font>
       </Button>
       <Text layoutX="787.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <GridPane layoutX="245.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="312.0" prefWidth="600.0">
+      <GridPane layoutX="245.0" layoutY="206.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="312.0" prefWidth="600.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -100,15 +85,50 @@
             </Text>
          </children>
       </GridPane>
-      <TextField fx:id="shopTotalShopCount" alignment="CENTER" layoutX="611.0" layoutY="529.0" prefHeight="38.0" prefWidth="176.0" promptText="수량 입력">
+      <TextField alignment="CENTER" layoutX="611.0" layoutY="552.0" prefHeight="38.0" prefWidth="176.0" promptText="수량 입력">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text layoutX="356.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="수량선택">
+      <Text layoutX="356.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="수량선택">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
+      <Text layoutX="14.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="45.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button alignment="CENTER_RIGHT" layoutX="887.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="USER" textAlignment="RIGHT">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="969.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="112.0" style="-fx-background-color: 0;" text="LOGOUT">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="678.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="CENTER">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER_RIGHT" layoutX="761.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT">
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="575.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="105.0" style="-fx-background-color: 0;" text="BOARD" >
+         <font>
+            <Font name="Franklin Gothic Heavy Italic" size="22.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

@@ -30,7 +30,7 @@
             <Font name="Franklin Gothic Heavy Italic" size="50.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#shopListPage">
+      <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#mainMenu">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
@@ -78,29 +78,29 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopId" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Text fx:id="mainDetailShopId" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Text fx:id="mainDetailShopName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopContents" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Text fx:id="mainDetailShopContents" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="shopPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Text fx:id="mainDetailShopPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
          </children>
       </GridPane>
-      <TextField fx:id="shopTotalShopCount" alignment="CENTER" layoutX="611.0" layoutY="529.0" prefHeight="38.0" prefWidth="176.0" promptText="수량 입력">
+      <TextField alignment="CENTER" layoutX="611.0" layoutY="529.0" prefHeight="38.0" prefWidth="176.0" promptText="수량 입력">
          <font>
             <Font size="20.0" />
          </font>

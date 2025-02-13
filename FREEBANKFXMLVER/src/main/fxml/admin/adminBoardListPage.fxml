@@ -41,12 +41,12 @@
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="676.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="RIGHT">
+      <Button alignment="CENTER_RIGHT" layoutX="676.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="RIGHT" onAction="#adminShopPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="881.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="USER" textAlignment="RIGHT">
+      <Button alignment="CENTER_RIGHT" layoutX="881.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="USER" textAlignment="RIGHT" onAction="#adminUserPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
@@ -56,12 +56,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" fx:id="loginUserId">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" layoutX="763.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: 0;" text="ACCOUNT">
+      <Button alignment="CENTER" layoutX="763.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: 0;" text="ACCOUNT" onAction="#adminAccountPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>

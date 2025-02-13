@@ -79,6 +79,35 @@ public class ShopController {
 	@FXML
 	private TableColumn<AccountDTO, Integer> accountBalanceColumn;
 
+	// 상단 아이디
+	@FXML
+	private Text loginUserId;
+
+	// 메인페이지(비회원) 상품 상세페이지 컬럼
+	@FXML
+	private Text mainDetailShopId;
+	@FXML
+	private Text mainDetailShopName;
+	@FXML
+	private Text mainDetailShopContents;
+	@FXML
+	private Text mainDetailShopPrice;
+
+	// 메인페이지(회원) 상품 상세페이지 컬럼
+	@FXML
+	private Text mainUserDetailShopId;
+	@FXML
+	private Text mainUserDetailShopName;
+	@FXML
+	private Text mainUsaerDetailShopContents;
+	@FXML
+	private Text mainUserDetailShopPrice;
+
+	// 상단 로그인
+	public void loginUserId() {
+		loginUserId.setText(userDTO.getUserId());
+	}
+
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
@@ -105,7 +134,20 @@ public class ShopController {
 	public void userShopPayLoginPage() {
 		System.out.println("로그인 후 결제 가능");
 		ss.userShopPayLoginPage(root, userDTO);
+		loginPage();
+	}
+
+	// 1.메인페이지(비로그인 기능)
+	// 로그인 페이지
+	public void loginPage() {
 		us.loginPage(root);
+	}
+
+	// 1.메인페이지(비로그인)
+	// 회원가입 페이지 출력
+	public void joinPage() {
+		System.out.println("회원가입 페이지로 이동");
+		us.joinPage(root);
 	}
 
 	// 1.메인페이지(비로그인 기능)
@@ -137,6 +179,28 @@ public class ShopController {
 		if (!result) {
 			shopLoginListPage();
 		}
+	}
+
+	// 2.회원
+	// 계좌페이지 출력
+	public void accountPage() {
+		System.out.println("계좌페이지로 이동");
+		as.accountPage(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 마이페이지 출력
+	public void userInfoPage() {
+		System.out.println("마이페이지로 이동");
+		us.userInfoPage(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 로그아웃(메인페이지로 이동)(비로그인 상태로 변경)
+	public void logout() {
+		System.out.println("일반회원 로그아웃");
+		userDTO = new UserDTO();
+		ms.mainMenu(root, userDTO);
 	}
 
 	// 3.화면출력
@@ -280,5 +344,21 @@ public class ShopController {
 
 		accountTableView.setItems(accountDTOList);
 
+	}
+
+	// 메인페이지(비회원) 상품 상세페이지
+	public void mainDetailShopInfo() {
+		mainDetailShopId.setText(String.valueOf(shopDTO.getShopId()));
+		mainDetailShopName.setText(shopDTO.getShopName());
+		mainDetailShopContents.setText(shopDTO.getShopContents());
+		mainDetailShopPrice.setText(String.valueOf(shopDTO.getShopPrice()));
+	}
+
+	// 메인페이지(회원) 상품 상세페이지
+	public void mainUserDetailShopInfo() {
+		mainUserDetailShopId.setText(String.valueOf(shopDTO.getShopId()));
+		mainUserDetailShopName.setText(shopDTO.getShopName());
+		mainUsaerDetailShopContents.setText(shopDTO.getShopContents());
+		mainUserDetailShopPrice.setText(String.valueOf(shopDTO.getShopPrice()));
 	}
 }

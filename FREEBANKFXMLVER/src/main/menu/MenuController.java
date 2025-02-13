@@ -6,10 +6,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 import main.account.AccountService;
 import main.account.AccountServiceImpl;
 import main.board.BoardDTO;
@@ -37,16 +40,16 @@ public class MenuController {
 	TableView<BoardDTO> mainBoardTable;
 	@FXML
 	private TableColumn<BoardDTO, String> mainBoardTitleColumn;
-	
+
 	// 상품 목록
 	@FXML
 	TableView<ShopDTO> mainShopTable;
 	@FXML
 	private TableColumn<ShopDTO, String> mainShopNameColumn;
-	
+
 	@FXML
 	private Text loginUserId;
-	
+
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
@@ -123,22 +126,152 @@ public class MenuController {
 	// 공지사항 목록
 	public void selectBoardList() {
 		List<BoardDTO> selectBoardList = bs.selectBoardList();
-		
+
 		ObservableList<BoardDTO> boardList = FXCollections.observableArrayList(selectBoardList);
 
 		mainBoardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
 
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		mainBoardTitleColumn.setCellFactory(new Callback<TableColumn<BoardDTO, String>, TableCell<BoardDTO, String>>() {
+			public TableCell<BoardDTO, String> call(TableColumn<BoardDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							BoardDTO boardDTO = getTableView().getItems().get(getIndex());
+							bs.boardMainDetailPage(root, boardDTO, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+
 		mainBoardTable.setItems(boardList);
-		
+
 	}
 
-	// 상품 목록
+	// 메인페이지(회원) 공지사항 목록
+	public void selectBoardListUser() {
+		List<BoardDTO> selectBoardList = bs.selectBoardList();
+
+		ObservableList<BoardDTO> boardList = FXCollections.observableArrayList(selectBoardList);
+
+		mainBoardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
+
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		mainBoardTitleColumn.setCellFactory(new Callback<TableColumn<BoardDTO, String>, TableCell<BoardDTO, String>>() {
+			public TableCell<BoardDTO, String> call(TableColumn<BoardDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							BoardDTO boardDTO = getTableView().getItems().get(getIndex());
+							bs.boardMainUserDetailPage(root, boardDTO, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+
+		mainBoardTable.setItems(boardList);
+	}
+
+	// 메인페이지(비회원) 상품 목록
 	public void selectShopList() {
 		List<ShopDTO> selectShopList = ss.selectShopList();
-		
+
 		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
-		
+
 		mainShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		mainShopNameColumn.setCellFactory(new Callback<TableColumn<ShopDTO, String>, TableCell<ShopDTO, String>>() {
+			public TableCell<ShopDTO, String> call(TableColumn<ShopDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							ShopDTO shop = getTableView().getItems().get(getIndex());
+							ss.shopMainDetailPage(root, shop, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+
+		mainShopTable.setItems(shopList);
+	}
+
+	// 메인페이지(회원) 상품 목록
+	public void selectShopListUser() {
+		List<ShopDTO> selectShopList = ss.selectShopList();
+
+		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
+
+		mainShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		mainShopNameColumn.setCellFactory(new Callback<TableColumn<ShopDTO, String>, TableCell<ShopDTO, String>>() {
+			public TableCell<ShopDTO, String> call(TableColumn<ShopDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							ShopDTO shop = getTableView().getItems().get(getIndex());
+							ss.shopMainUserDetailPage(root, shop, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
 
 		mainShopTable.setItems(shopList);
 	}

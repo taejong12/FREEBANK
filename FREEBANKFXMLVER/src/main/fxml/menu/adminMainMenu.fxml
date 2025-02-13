@@ -114,7 +114,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="45.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+      <Text layoutX="45.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" fx:id="loginUserId">
          <font>
             <Font size="20.0" />
          </font>
@@ -128,17 +128,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="mainBoardTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10;">
+            <TableView fx:id="adminMainBoardTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10;">
                <columns>
-                  <TableColumn fx:id="mainBoardTitleColumn" prefWidth="448.0" text="공지사항" />
+                  <TableColumn fx:id="adminMainBoardTitleColumn" prefWidth="448.0" text="공지사항" />
                </columns>
                <GridPane.margin>
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </TableView>
-            <TableView fx:id="mainShopTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10;" GridPane.rowIndex="1">
+            <TableView fx:id="adminMainShopTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10;" GridPane.rowIndex="1">
                <columns>
-                  <TableColumn fx:id="mainShopNameColumn" prefWidth="448.0" text="상품" />
+                  <TableColumn fx:id="adminMainShopNameColumn" prefWidth="448.0" text="상품" />
                </columns>
                <GridPane.margin>
                   <Insets top="5.0" />

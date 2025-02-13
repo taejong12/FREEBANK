@@ -18,12 +18,12 @@
          </image>
       </ImageView>
       <Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
-      <Button alignment="CENTER" layoutX="968.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: 0;" text="LOGOUT">
+      <Button alignment="CENTER" layoutX="968.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: 0;" text="LOGOUT" onAction="#adminLogout">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button layoutX="766.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="CENTER">
+      <Button layoutX="766.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="CENTER" onAction="#adminShopPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
@@ -33,29 +33,29 @@
             <Font name="Franklin Gothic Heavy Italic" size="50.0" />
          </font>
       </Text>
-      <Button alignment="CENTER_RIGHT" layoutX="840.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT">
+      <Button alignment="CENTER_RIGHT" layoutX="840.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT" onAction="#adminAccountPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" layoutX="666.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="BOARD">
+      <Button alignment="CENTER" layoutX="666.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="BOARD" onAction="#adminBoardPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <TableView fx:id="userListTable" layoutX="11.0" layoutY="195.0" prefHeight="470.0" prefWidth="1062.0">
+      <TableView fx:id="adminUserListTable" layoutX="11.0" layoutY="195.0" prefHeight="470.0" prefWidth="1062.0">
         <columns>
-          <TableColumn fx:id="userIdColumn" prefWidth="95.0" text="아이디" />
-          <TableColumn fx:id="userNameColumn" prefWidth="67.0" text="이름" />
-            <TableColumn fx:id="userPwdColumn" prefWidth="115.0" text="비밀번호" />
-            <TableColumn fx:id="userAgeColumn" prefWidth="31.0" text="나이" />
-            <TableColumn fx:id="userSexColumn" prefWidth="31.0" text="성별" />
-            <TableColumn fx:id="userAdminColumn" prefWidth="43.0" text="관리자" />
-            <TableColumn fx:id="userCreditRatingColumn" prefWidth="53.0" text="신용등급" />
-            <TableColumn fx:id="userTotalColumn" prefWidth="111.0" text="누적금액" />
-            <TableColumn fx:id="userEmailColumn" prefWidth="243.0" text="이메일" />
-            <TableColumn fx:id="userCreateColumn" prefWidth="134.0" text="가입날짜" />
-            <TableColumn fx:id="userUpdateColumn" prefWidth="138.0" text="수정날짜" />
+          <TableColumn fx:id="adminUserIdColumn" prefWidth="95.0" text="아이디" />
+          <TableColumn fx:id="adminUserNameColumn" prefWidth="67.0" text="이름" />
+            <TableColumn fx:id="adminUserPwdColumn" prefWidth="115.0" text="비밀번호" />
+            <TableColumn fx:id="adminUserAgeColumn" prefWidth="31.0" text="나이" />
+            <TableColumn fx:id="adminUserSexColumn" prefWidth="31.0" text="성별" />
+            <TableColumn fx:id="adminUserAdminColumn" prefWidth="43.0" text="관리자" />
+            <TableColumn fx:id="adminUserCreditRatingColumn" prefWidth="53.0" text="신용등급" />
+            <TableColumn fx:id="adminUserTotalColumn" prefWidth="111.0" text="누적금액" />
+            <TableColumn fx:id="adminUserEmailColumn" prefWidth="243.0" text="이메일" />
+            <TableColumn fx:id="adminUserCreateColumn" prefWidth="134.0" text="가입날짜" />
+            <TableColumn fx:id="adminUserUpdateColumn" prefWidth="138.0" text="수정날짜" />
         </columns>
       </TableView>
       <Button alignment="CENTER" layoutY="11.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="89.0" style="-fx-background-color: 0;" text="BACK" onAction="#adminUserPage">
@@ -68,7 +68,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" fx:id="loginUserId">
          <font>
             <Font size="20.0" />
          </font>

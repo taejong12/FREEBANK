@@ -10,9 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
+import main.shop.ShopService;
+import main.shop.ShopServiceImpl;
 import main.user.UserDTO;
+import main.user.UserService;
+import main.user.UserServiceImpl;
 
 public class AccountController {
 
@@ -20,6 +25,8 @@ public class AccountController {
 	UserDTO userDTO;
 	AccountService as = new AccountServiceImpl();
 	MenuService ms = new MenuServiceImple();
+	ShopService ss = new ShopServiceImpl();
+	UserService us = new UserServiceImpl();
 
 	// 계좌 리스트 바인딩
 	@FXML
@@ -32,6 +39,10 @@ public class AccountController {
 	private TableColumn<AccountDTO, Date> accountCreateColumn;
 	@FXML
 	private TableColumn<AccountDTO, String> accountIdColumn;
+
+	// 상단 아이디
+	@FXML
+	private Text loginUserId;
 
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -140,7 +151,7 @@ public class AccountController {
 
 	// 계좌 목록 보여주기(입금, 출금, 해지)
 	public void selectAccount() {
-		
+
 		List<AccountDTO> accountListByUserId = as.selectUserAccountByID(userDTO.getUserId());
 
 		accountAccountColumn.setCellValueFactory(new PropertyValueFactory<>("accountAccount"));
@@ -149,6 +160,33 @@ public class AccountController {
 		ObservableList<AccountDTO> accountDTOList = FXCollections.observableArrayList(accountListByUserId);
 
 		accountTableView.setItems(accountDTOList);
+	}
+
+	// 상단 로그인
+	public void loginUserId() {
+		loginUserId.setText(userDTO.getUserId());
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 상품목록 페이지 출력
+	public void shopLoginListPage() {
+		System.out.println("상품목록 페이지(회원)로 이동");
+		ss.shopLoginListPage(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 마이페이지 출력
+	public void userInfoPage() {
+		System.out.println("마이페이지로 이동");
+		us.userInfoPage(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 로그아웃(메인페이지로 이동)(비로그인 상태로 변경)
+	public void logout() {
+		System.out.println("일반회원 로그아웃");
+		userDTO = new UserDTO();
+		ms.mainMenu(root, userDTO);
 	}
 
 }

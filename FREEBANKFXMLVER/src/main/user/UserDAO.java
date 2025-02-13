@@ -159,4 +159,37 @@ public class UserDAO {
 		return pLList;
 	}
 
+	// 구매내역 삭제
+	public void deleteUserPurchaseList(String userId) {
+		
+		String sql = "delete from FREEBANKPURCHASELIST where FREEBANKPURCHASELIST_USERID=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("구매내역 삭제실패");
+			e.printStackTrace();
+		}
+		
+	}
+
+	// 계좌 삭제
+	public void deleteUserAccount(String userId) {
+		String sql = "delete from FREEBANKACCOUNT where FREEBANKUSER_ID=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("계좌삭제실패");
+			e.printStackTrace();
+		}
+		
+	}
+
 }

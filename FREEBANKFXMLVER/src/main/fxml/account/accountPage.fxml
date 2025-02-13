@@ -46,7 +46,7 @@
          </font>
       </Button>
       <Line endX="865.0" layoutX="217.0" layoutY="106.0" startX="-217.0" />
-      <Button alignment="CENTER" layoutX="968.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: 0;" text="LOGOUT">
+      <Button alignment="CENTER" layoutX="968.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: 0;" text="LOGOUT" onAction="#logout">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
@@ -56,12 +56,12 @@
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="756.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="RIGHT">
+      <Button alignment="CENTER_RIGHT" layoutX="756.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: 0;" text="MALL" textAlignment="RIGHT" onAction="#shopLoginListPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="846.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: 0;" text="MY PAGE" textAlignment="RIGHT">
+      <Button alignment="CENTER_RIGHT" layoutX="846.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: 0;" text="MY PAGE" textAlignment="RIGHT" onAction="#userInfoPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" fx:id="loginUserId">
          <font>
             <Font size="20.0" />
          </font>

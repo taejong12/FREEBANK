@@ -79,29 +79,29 @@ public class AdminController {
 
 	// 회원 목록 출력
 	@FXML
-	TableView<UserDTO> userListTable;
+	TableView<UserDTO> adminUserListTable;
 	@FXML
-	private TableColumn<UserDTO, String> userIdColumn;
+	private TableColumn<UserDTO, String> adminUserIdColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userNameColumn;
+	private TableColumn<UserDTO, String> adminUserNameColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userPwdColumn;
+	private TableColumn<UserDTO, String> adminUserPwdColumn;
 	@FXML
-	private TableColumn<UserDTO, Integer> userAgeColumn;
+	private TableColumn<UserDTO, Integer> adminUserAgeColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userSexColumn;
+	private TableColumn<UserDTO, String> adminUserSexColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userEmailColumn;
+	private TableColumn<UserDTO, String> adminUserEmailColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userAdminColumn;
+	private TableColumn<UserDTO, String> adminUserAdminColumn;
 	@FXML
-	private TableColumn<UserDTO, Integer> userCreditRatingColumn;
+	private TableColumn<UserDTO, Integer> adminUserCreditRatingColumn;
 	@FXML
-	private TableColumn<UserDTO, Integer> userTotalColumn;
+	private TableColumn<UserDTO, Integer> adminUserTotalColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userCreateColumn;
+	private TableColumn<UserDTO, String> adminUserCreateColumn;
 	@FXML
-	private TableColumn<UserDTO, String> userUpdateColumn;
+	private TableColumn<UserDTO, String> adminUserUpdateColumn;
 
 	// 상품 목록 출력 테이블
 	@FXML
@@ -159,15 +159,24 @@ public class AdminController {
 
 	// 공지사항 목록
 	@FXML
-	TableView<BoardDTO> mainBoardTable;
+	TableView<BoardDTO> adminMainBoardTable;
 	@FXML
-	private TableColumn<BoardDTO, String> mainBoardTitleColumn;
+	private TableColumn<BoardDTO, String> adminMainBoardTitleColumn;
 
 	// 상품 목록
 	@FXML
-	TableView<ShopDTO> mainShopTable;
+	TableView<ShopDTO> adminMainShopTable;
 	@FXML
-	private TableColumn<ShopDTO, String> mainShopNameColumn;
+	private TableColumn<ShopDTO, String> adminMainShopNameColumn;
+
+	// 상단 아이디
+	@FXML
+	private Text loginUserId;
+
+	// 상단 로그인
+	public void loginUserId() {
+		loginUserId.setText(userDTO.getUserId());
+	}
 
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -369,19 +378,19 @@ public class AdminController {
 
 		ObservableList<UserDTO> userList = FXCollections.observableArrayList(selectUserList);
 
-		userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
-		userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
-		userPwdColumn.setCellValueFactory(new PropertyValueFactory<>("userPwd"));
-		userAgeColumn.setCellValueFactory(new PropertyValueFactory<>("userAge"));
-		userSexColumn.setCellValueFactory(new PropertyValueFactory<>("userSex"));
-		userEmailColumn.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
-		userAdminColumn.setCellValueFactory(new PropertyValueFactory<>("userAdmin"));
-		userCreditRatingColumn.setCellValueFactory(new PropertyValueFactory<>("userCreditRating"));
-		userTotalColumn.setCellValueFactory(new PropertyValueFactory<>("userTotal"));
-		userCreateColumn.setCellValueFactory(new PropertyValueFactory<>("userCreate"));
-		userUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("userUpdate"));
+		adminUserIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
+		adminUserNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
+		adminUserPwdColumn.setCellValueFactory(new PropertyValueFactory<>("userPwd"));
+		adminUserAgeColumn.setCellValueFactory(new PropertyValueFactory<>("userAge"));
+		adminUserSexColumn.setCellValueFactory(new PropertyValueFactory<>("userSex"));
+		adminUserEmailColumn.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+		adminUserAdminColumn.setCellValueFactory(new PropertyValueFactory<>("userAdmin"));
+		adminUserCreditRatingColumn.setCellValueFactory(new PropertyValueFactory<>("userCreditRating"));
+		adminUserTotalColumn.setCellValueFactory(new PropertyValueFactory<>("userTotal"));
+		adminUserCreateColumn.setCellValueFactory(new PropertyValueFactory<>("userCreate"));
+		adminUserUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("userUpdate"));
 
-		userListTable.setItems(userList);
+		adminUserListTable.setItems(userList);
 	}
 
 	// 상품등록하기
@@ -453,13 +462,6 @@ public class AdminController {
 		shopCreateText.setText(String.valueOf(shopDTO.getShopCreate()));
 		shopUpdateText.setText(String.valueOf(shopDTO.getShopUpdate()));
 
-		System.out.println("상품번호: " + shopIdText.getText());
-		System.out.println("상품이름: " + shopNameTextField.getText());
-		System.out.println("상품설명: " + shopContentsTextField.getText());
-		System.out.println("상품가격: " + shopPriceTextField.getText());
-		System.out.println("상품관리자아이디: " + shopAdminIdText.getText());
-		System.out.println("상품등록일: " + shopCreateText.getText());
-		System.out.println("상품수정일: " + shopUpdateText.getText());
 	}
 
 	// 상품삭제하기
@@ -499,25 +501,80 @@ public class AdminController {
 
 	}
 
-	// 공지사항 목록
-	public void selectBoardList() {
+	// 관리자 메인페이지 공지사항 목록
+	public void adminMainBoardList() {
+
 		List<BoardDTO> selectBoardList = bs.selectBoardList();
 
 		ObservableList<BoardDTO> boardList = FXCollections.observableArrayList(selectBoardList);
 
-		mainBoardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
+		adminMainBoardTitleColumn.setCellValueFactory(new PropertyValueFactory<>("boardTitle"));
 
-		mainBoardTable.setItems(boardList);
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		adminMainBoardTitleColumn.setCellFactory(new Callback<TableColumn<BoardDTO, String>, TableCell<BoardDTO, String>>() {
+			public TableCell<BoardDTO, String> call(TableColumn<BoardDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							BoardDTO boardDTO = getTableView().getItems().get(getIndex());
+							as.adminBoardDetailPage(root, boardDTO, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+		adminMainBoardTable.setItems(boardList);
 	}
 
-	// 상품 목록
-	public void selectShopList() {
+	// 관리자 메인페이지 상품 목록
+	public void adminMainShopList() {
+
 		List<ShopDTO> selectShopList = ss.selectShopList();
 
 		ObservableList<ShopDTO> shopList = FXCollections.observableArrayList(selectShopList);
 
-		mainShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
+		adminMainShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("shopName"));
 
-		mainShopTable.setItems(shopList);
+		// 상품이름을 Hyperlink로 변환하는 커스텀 Cell 설정
+		adminMainShopNameColumn.setCellFactory(new Callback<TableColumn<ShopDTO, String>, TableCell<ShopDTO, String>>() {
+			public TableCell<ShopDTO, String> call(TableColumn<ShopDTO, String> param) {
+				return new TableCell<>() {
+					private final Hyperlink link = new Hyperlink();
+
+					{
+						link.setOnAction(event -> {
+							ShopDTO shopDTO = getTableView().getItems().get(getIndex());
+							as.adminShopDetailPage(root, shopDTO, userDTO);
+						});
+					}
+
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty || item == null) {
+							setGraphic(null);
+						} else {
+							link.setText(item);
+							setGraphic(link);
+						}
+					}
+				};
+			}
+		});
+
+		adminMainShopTable.setItems(shopList);
 	}
 }

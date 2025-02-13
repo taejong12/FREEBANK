@@ -15,9 +15,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import main.account.AccountDTO;
+import main.account.AccountService;
+import main.account.AccountServiceImpl;
 import main.menu.MenuService;
 import main.menu.MenuServiceImple;
 import main.shop.PurchaseListDTO;
+import main.shop.ShopService;
+import main.shop.ShopServiceImpl;
 
 public class UserController {
 
@@ -25,6 +29,8 @@ public class UserController {
 	UserService us = new UserServiceImpl();
 	MenuService ms = new MenuServiceImple();
 	UserDTO userDTO = new UserDTO();
+	AccountService as = new AccountServiceImpl();
+	ShopService ss = new ShopServiceImpl();
 
 	// 회원 상세페이지 컬럼
 	@FXML
@@ -66,6 +72,10 @@ public class UserController {
 	private TableColumn<PurchaseListDTO, Integer> userPurchaseListTotalshopcountColumn;
 	@FXML
 	private TableColumn<PurchaseListDTO, String> userPurchaseListCreateColumn;
+
+	// 상단 아이디
+	@FXML
+	private Text loginUserId;
 
 	public void setRoot(Parent loginRoot) {
 		this.root = loginRoot;
@@ -234,4 +244,29 @@ public class UserController {
 		userPurchaseListTable.setItems(purchaseListList);
 	}
 
+	// 상단 로그인
+	public void loginUserId() {
+		loginUserId.setText(userDTO.getUserId());
+	}
+
+	// 계좌페이지 출력
+	public void accountPage() {
+		System.out.println("계좌페이지로 이동");
+		as.accountPage(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 로그아웃(메인페이지로 이동)(비로그인 상태로 변경)
+	public void logout() {
+		System.out.println("일반회원 로그아웃");
+		userDTO = new UserDTO();
+		ms.mainMenu(root, userDTO);
+	}
+
+	// 2.회원메인페이지(회원로그인)
+	// 상품목록 페이지 출력
+	public void shopLoginListPage() {
+		System.out.println("상품목록 페이지(회원)로 이동");
+		ss.shopLoginListPage(root, userDTO);
+	}
 }

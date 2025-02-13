@@ -30,7 +30,7 @@
             <TableColumn fx:id="shopPriceColumn" prefWidth="200.0" text="상품가격" />
          </columns>
       </TableView>
-      <Button alignment="CENTER" layoutX="965.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: 0;" text="SIGN UP" >
+      <Button alignment="CENTER" layoutX="965.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: 0;" text="SIGN UP" onAction="#joinPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
@@ -40,7 +40,7 @@
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER_RIGHT" layoutX="866.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="LOGIN" textAlignment="RIGHT" >
+      <Button alignment="CENTER_RIGHT" layoutX="866.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: 0;" text="LOGIN" textAlignment="RIGHT" onAction="#loginPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>

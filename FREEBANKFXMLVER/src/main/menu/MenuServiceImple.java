@@ -26,6 +26,8 @@ public class MenuServiceImple implements MenuService {
 
 			mainMenuCtrl.setRoot(mainMenuRoot);
 			mainMenuCtrl.setUser(userDTO);
+			mainMenuCtrl.selectBoardList();
+			mainMenuCtrl.selectShopList();	
 
 			mainMenu.setScene(new Scene(mainMenuRoot));
 			mainMenu.setTitle("메인페이지");
@@ -55,8 +57,8 @@ public class MenuServiceImple implements MenuService {
 			loginMainMenuCtrl.setRoot(loginMainMenuRoot);
 			loginMainMenuCtrl.setUser(userDTO);
 			loginMainMenuCtrl.loginUserId();
-			loginMainMenuCtrl.selectBoardList();
-			loginMainMenuCtrl.selectShopList();			
+			loginMainMenuCtrl.selectBoardListUser();
+			loginMainMenuCtrl.selectShopListUser();			
 
 			loginMainMenu.setScene(new Scene(loginMainMenuRoot));
 			loginMainMenu.setTitle("일반회원 메인페이지");
@@ -85,8 +87,9 @@ public class MenuServiceImple implements MenuService {
 
 			adminMainMenuCtrl.setRoot(adminMainMenuRoot);
 			adminMainMenuCtrl.setUser(userDTO);
-			adminMainMenuCtrl.selectBoardList();
-			adminMainMenuCtrl.selectShopList();
+			adminMainMenuCtrl.adminMainBoardList();
+			adminMainMenuCtrl.adminMainShopList();
+			adminMainMenuCtrl.loginUserId();
 			
 			adminMainMenu.setScene(new Scene(adminMainMenuRoot));
 			adminMainMenu.setTitle("관리자 메인페이지");
@@ -100,5 +103,4 @@ public class MenuServiceImple implements MenuService {
 		}
 
 	}
-
 }

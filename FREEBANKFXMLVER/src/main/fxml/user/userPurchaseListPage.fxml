@@ -40,22 +40,22 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+      <Text layoutX="45.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" fx:id="loginUserId">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Button alignment="CENTER_RIGHT" layoutX="840.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT">
+      <Button alignment="CENTER_RIGHT" layoutX="840.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: 0;" text="ACCOUNT" textAlignment="RIGHT" onAction="#accountPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" layoutX="967.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="115.0" style="-fx-background-color: 0;" text="LOGOUT">
+      <Button alignment="CENTER" layoutX="967.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="115.0" style="-fx-background-color: 0;" text="LOGOUT" onAction="#logout">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
       </Button>
-      <Button layoutX="635.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="204.0" style="-fx-background-color: 0;" text="FREEBANK MALL" textAlignment="CENTER">
+      <Button layoutX="635.0" layoutY="70.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="204.0" style="-fx-background-color: 0;" text="FREEBANK MALL" textAlignment="CENTER" onAction="#shopLoginListPage">
          <font>
             <Font name="Franklin Gothic Heavy Italic" size="22.0" />
          </font>
