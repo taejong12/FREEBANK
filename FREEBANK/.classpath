@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/dbxow/Downloads/ojdbc17.jar"/>
 	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -47,5 +46,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/dbxow/Desktop/javafx-sdk-17.0.14/lib/ojdbc17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
