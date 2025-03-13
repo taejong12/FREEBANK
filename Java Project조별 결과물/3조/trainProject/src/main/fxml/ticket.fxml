@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ticket.controller.ticketController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="967.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+           <Image url="@../resources/blue.jpg" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="545.0" fitWidth="831.0" layoutX="89.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/back(1).png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="148.0" layoutY="210.0" opacity="0.74" prefHeight="255.0" prefWidth="699.0" style="-fx-background-color: #8d8d8d;">
+         <children>
+            <GridPane layoutX="45.0" layoutY="21.0" prefHeight="157.0" prefWidth="250.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.33331298828125" minWidth="10.0" prefWidth="160.33333333333331" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0000203450521" minWidth="10.0" prefWidth="237.66666666666669" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="20.0" prefWidth="83.0" style="-fx-background-color: #8d8d8d;" text="소요 시간" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label style="-fx-background-color: #8d8d8d;" text="열차명" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-background-color: #8d8d8d;" text="탑승자" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ListView blendMode="ADD" prefHeight="24.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <ListView blendMode="ADD" prefHeight="24.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <ListView blendMode="ADD" prefHeight="24.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </GridPane.margin>
+                  </ListView>
+               </children>
+            </GridPane>
+            <Circle fill="#8d8d8d" layoutY="128.0" radius="52.0" stroke="#8d8d8d" strokeType="INSIDE" />
+            <ImageView fitHeight="86.0" fitWidth="189.0" layoutX="551.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../resources/KakaoTalk_20250207_091837277_03.jpg" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="MULTIPLY" fitHeight="205.0" fitWidth="407.0" layoutY="6.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/map.png" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="277.0" layoutX="464.0" layoutY="114.0" opacity="0.51" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../resources/image.png" />
+               </image>
+            </ImageView>
+            <GridPane layoutX="50.0" layoutY="187.0" prefHeight="47.0" prefWidth="485.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.3333282470703" minWidth="10.0" prefWidth="197.33333333333331" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.6666259765625" minWidth="10.0" prefWidth="109.33333333333331" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="187.33331298828125" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="73.33332697550455" minHeight="10.0" prefHeight="42.333343505859375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="44.66666030883789" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="TrainDeparture" text="서울" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="TrainDestination" text="부산" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="TrainDepartureTime" text="12:21" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="TrainArrivalTime" text="17:25" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="BOTTOM" prefHeight="27.0" prefWidth="48.0" text="→" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="-10.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" />
+               </padding>
+            </GridPane>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView blendMode="MULTIPLY" fitHeight="197.0" fitWidth="382.0" layoutX="212.0" layoutY="32.0" opacity="0.14" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/train(1).png" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="MULTIPLY" fitHeight="57.0" fitWidth="68.0" layoutX="17.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Qr.jpg" />
+               </image>
+            </ImageView>
+            <Line endX="146.33331298828125" layoutX="339.0" layoutY="234.0" startX="-227.66668701171875" strokeWidth="2.0" />
+            <Label layoutY="7.0" prefHeight="14.0" prefWidth="699.0" style="-fx-background-color: black;" text="PinTech Rail--------------------------------------------------------------------------------------------------------------------------------------------------" textFill="WHITE" />
+            <VBox layoutX="308.0" layoutY="37.0" prefHeight="121.0" prefWidth="276.0">
+               <children>
+                  <Label text="Seat.No" textFill="WHITE">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Seat" prefHeight="70.0" prefWidth="300.0" text="0.No">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <ImageView blendMode="LIGHTEN" fitHeight="63.0" fitWidth="104.0" layoutX="490.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logo.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="TrainDuration" layoutX="155.0" layoutY="29.0" prefHeight="29.0" prefWidth="113.0" text="Label" />
+            <Label fx:id="TrainName" layoutX="155.0" layoutY="82.0" prefHeight="29.0" prefWidth="113.0" text="Label" />
+            <Label fx:id="UserName" layoutX="155.0" layoutY="130.0" prefHeight="33.0" prefWidth="113.0" text="Label" />
+         </children>
+      </Pane>
+      <Line endX="585.3333740234375" endY="-1.52587890625E-5" layoutX="269.0" layoutY="161.0" startX="-131.0" startY="-1.52587890625E-5" stroke="#d0d0d0" strokeWidth="5.0" />
+      <Label alignment="TOP_LEFT" layoutX="151.0" layoutY="102.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="229.0" text="Ticket" textFill="WHITE">
+         <font>
+            <Font size="42.0" />
+         </font>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </Label>
+      <HBox layoutX="136.0" layoutY="497.0" prefHeight="63.0" prefWidth="721.0">
+         <children>
+            <Line endX="589.6666259765625" startX="-131.0" startY="-1.52587890625E-5" stroke="#d0d0d0" strokeWidth="5.0">
+               <HBox.margin>
+                  <Insets top="18.0" />
+               </HBox.margin>
+            </Line>
+         </children></HBox>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="793.0" layoutY="82.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mainHome" prefHeight="40.0" prefWidth="69.0" style="-fx-background-radius: 5; -fx-background-color: 0;" text=" 🏠" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="35.0" />
+         </font>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="124.0" layoutY="82.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mainHome" prefHeight="40.0" prefWidth="53.0" style="-fx-background-radius: 5; -fx-background-color: 0;" text="◀" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="31.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </Button>
+      <ImageView blendMode="COLOR_DODGE" fitHeight="150.0" fitWidth="200.0" layoutX="399.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

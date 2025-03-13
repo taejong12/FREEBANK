@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="main.mileage.controller.mileageController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="967.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/blue.jpg" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="545.0" fitWidth="831.0" layoutX="88.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/back(1).png" />
+         </image>
+      </ImageView>
+      <Line endX="585.3333740234375" endY="-1.52587890625E-5" layoutX="269.0" layoutY="176.0" startX="-131.0" startY="-1.52587890625E-5" stroke="#d0d0d0" strokeWidth="5.0" />
+      <Label alignment="TOP_LEFT" layoutX="151.0" layoutY="102.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="229.0" text="Mileage" textFill="WHITE">
+         <font>
+            <Font size="42.0" />
+         </font>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </Label>
+      <Line endX="589.6666259765625" layoutX="269.0" layoutY="495.0" startX="-131.0" startY="-1.52587890625E-5" stroke="#d0d0d0" strokeWidth="5.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="793.0" layoutY="82.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mainHome" prefHeight="40.0" prefWidth="69.0" style="-fx-background-radius: 5; -fx-background-color: 0;" text=" 🏠" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="35.0" />
+         </font>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="124.0" layoutY="82.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mainHome" prefHeight="40.0" prefWidth="53.0" style="-fx-background-radius: 5; -fx-background-color: 0;" text="◀" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="31.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </Button>
+      <TableView layoutX="225.0" layoutY="288.0" prefHeight="193.0" prefWidth="541.0">
+         <columns>
+            <TableColumn prefWidth="270.0" text="적립내역" />
+            <TableColumn prefWidth="269.0" text="사용내역" />
+         </columns>
+      </TableView>
+      <Label layoutX="227.0" layoutY="234.0" prefHeight="13.0" prefWidth="119.0" text="현재 적립 포인트" textFill="WHITE">
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </Label>
+      <TextField layoutX="333.0" layoutY="250.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <TextField layoutX="613.0" layoutY="249.0" prefHeight="25.0" prefWidth="140.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <Label layoutX="512.0" layoutY="234.0" prefHeight="34.0" prefWidth="117.0" text="소멸 예정 포인트" textFill="WHITE">
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </Label>
+      <Label layoutX="227.0" layoutY="200.0" prefHeight="13.0" prefWidth="119.0" text="이름" textFill="WHITE">
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </Label>
+      <TextField layoutX="333.0" layoutY="217.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <ImageView blendMode="COLOR_DODGE" fitHeight="150.0" fitWidth="200.0" layoutX="396.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

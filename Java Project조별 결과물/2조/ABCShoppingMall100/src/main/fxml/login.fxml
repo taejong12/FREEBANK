@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.login.controller.Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.20001220703125" minWidth="10.0" prefWidth="101.40001220703124" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.3999938964844" minWidth="10.0" prefWidth="109.60002441406249" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.3999938964844" minWidth="10.0" prefWidth="107.1999755859375" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.3999938964844" minWidth="10.0" prefWidth="109.19997558593747" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.40000000000003" minWidth="10.0" prefWidth="95.60003662109375" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.60001220703123" minWidth="0.0" prefWidth="111.00003662109373" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="99.6" minHeight="10.0" prefHeight="99.6" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="159.19998779296878" minHeight="10.0" prefHeight="100.4" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="129.59997558593747" minHeight="10.0" prefHeight="104.80001220703122" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="105.60000000000002" minHeight="10.0" prefHeight="88.9999755859375" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="105.60000000000002" minHeight="10.0" prefHeight="61.800024414062534" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label prefHeight="40.0" prefWidth="182.0" text="로그인 페이지" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label prefHeight="43.0" prefWidth="116.0" text="아이디 : " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label prefHeight="46.0" prefWidth="126.0" text=" 암호    : " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtId" prefHeight="46.0" prefWidth="350.0" promptText="아이디를 입력하세요." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </TextField>
+      <PasswordField fx:id="txtPw" prefHeight="47.0" prefWidth="245.0" promptText="비밀번호를 입력하세요." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3">
+         <children>  
+            <Button mnemonicParsing="false" onAction="#infoProc" prefWidth="100.0" text="회원정보" />                                            
+            <Button mnemonicParsing="false" onAction="#loginProc" prefWidth="100.0" text="로그인" />
+            <Button mnemonicParsing="false" onAction="#cancelProc" prefWidth="100.0" text="쇼핑종료" />
+            <Button mnemonicParsing="false" onAction="#membershipProc" prefWidth="100.0" text="회원가입" />
+         </children>
+      </HBox>
+      <HBox prefHeight="32.0" prefWidth="484.0" spacing="30.0" GridPane.columnSpan="6" GridPane.rowIndex="4">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" text="뒤로가기">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="로그인/화원가입">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField alignment="CENTER" prefHeight="26.0" prefWidth="336.0" text="지금 회원가입시 30%할인 쿠폰 증정!" />
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</GridPane>

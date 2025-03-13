@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.category.controller.CategoryController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.4000244140625" minWidth="10.0" prefWidth="72.8000244140625" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.5999755859375" minWidth="10.0" prefWidth="226.4000122070312" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.00002441406247" minWidth="10.0" prefWidth="227.9999877929688" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.80000000000001" minWidth="10.0" prefWidth="70.79997558593755" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="202.20001449584962" minHeight="10.0" prefHeight="48.8" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="237.9999900817871" minHeight="10.0" prefHeight="65.99999389648437" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="195.79999389648438" minHeight="10.0" prefHeight="69.2" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="195.79999389648438" minHeight="10.0" prefHeight="55.00000610351563" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="195.80000915527341" minHeight="10.0" prefHeight="57.3999938964844" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="195.80000915527341" minHeight="10.0" prefHeight="57.20002441406251" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="153.79996337890626" minHeight="10.0" prefHeight="49.79998779296875" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <TextField alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="480.0" text="=== ACCESSORY ===" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="100.0" top="100.0" />
+         </GridPane.margin>
+         <opaqueInsets>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </opaqueInsets>
+      </TextField>
+      <HBox prefHeight="32.0" prefWidth="484.0" spacing="32.0" GridPane.columnSpan="4" GridPane.rowIndex="6">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" text="뒤로가기">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#loginPage" text="로그인/화원가입">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="236.0" text="지금 회원가입시 30%할인 쿠폰 증정!" />
+            <Button mnemonicParsing="false" onAction="#payProc1" text="장바구니">
+               <HBox.margin>
+                  <Insets right="12.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+      <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+         <items>
+            <ImageView fitHeight="121.0" fitWidth="153.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resource/image/악세사리1.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label  contentDisplay="CENTER" text="악세사리 1">
+                     <font>
+                        <Font name="Han Santteut Dotum Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="92.0" text="8000원">
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox fillHeight="false" prefHeight="37.0" prefWidth="101.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#button1" text="장바구니" textFill="#4405f2">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="23.0" top="7.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="20.0" />
+               </padding>
+            </VBox>
+         </items>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </SplitPane>
+      <SplitPane dividerPositions="0.5" prefHeight="166.0" prefWidth="277.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+         <items>
+            <ImageView fitHeight="121.0" fitWidth="153.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resource/image/악세사리2.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label contentDisplay="CENTER" text="악세사리 2">
+                     <font>
+                        <Font name="Han Santteut Dotum Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="92.0" promptText="금액" text="38000원">
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox fillHeight="false" prefHeight="37.0" prefWidth="101.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#button2" text="장바구니" textFill="#4405f2">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="23.0" top="7.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="20.0" />
+               </padding>
+            </VBox>
+         </items>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </SplitPane>
+      <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="3">
+         <items>
+            <ImageView fitHeight="126.0" fitWidth="153.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resource/image/악세사리3.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label contentDisplay="CENTER" text="악세사리 3">
+                     <font>
+                        <Font name="Han Santteut Dotum Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="92.0" promptText="금액" text="7999원">
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox fillHeight="false" prefHeight="37.0" prefWidth="101.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#button3" text="장바구니" textFill="#4405f2">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="23.0" top="7.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="20.0" />
+               </padding>
+            </VBox>
+         </items>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="20.0" top="20.0" />
+         </GridPane.margin>
+      </SplitPane>
+      <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="3">
+         <items>
+            <ImageView fitHeight="126.0" fitWidth="153.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resource/image/악세사리4.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label contentDisplay="CENTER" text="악세사리 4">
+                     <font>
+                        <Font name="Han Santteut Dotum Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="92.0" promptText="금액" text="88000원">
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox fillHeight="false" prefHeight="37.0" prefWidth="101.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#button4" text="장바구니" textFill="#4405f2">
+                           <font>
+                              <Font size="11.0" />
+                              
+                           </font>
+                           <HBox.margin>
+                              <Insets left="23.0" top="7.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="20.0" />
+               </padding>
+            </VBox>
+         </items>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+      </SplitPane>
+   </children>
+</GridPane>

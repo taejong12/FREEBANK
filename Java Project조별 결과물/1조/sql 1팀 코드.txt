@@ -1,0 +1,47 @@
+CREATE TABLE gym_member (
+    id VARCHAR2(50) NOT NULL PRIMARY KEY,
+    pwd VARCHAR2(50) NOT NULL,
+    name VARCHAR2(50) NOT NULL,
+    gender CHAR(1) NOT NULL,
+    age INT NOT NULL,
+    height INT NOT NULL,
+    weight INT NOT NULL,
+    bodyfat INT NOT NULL,
+    met_consumption NUMBER(10,3) NOT NULL,
+    growthfactor_consumption NUMBER(10,3) NOT NULL,
+    total_met_consumption NUMBER(10,3) NOT NULL,
+    total_growthfactor_consumption NUMBER(10,3) NOT NULL,
+    mem_type VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE Gym_Machine (
+    bodyparts VARCHAR2(50) NOT NULL,
+    mY achine VARCHAR2(50) NOT NULL,
+    met float NOT NULL,
+    growthfactor float NOT NULL,
+    CONSTRAINT Gym_Machine PRIMARY KE(bodyparts, machine)
+);
+
+insert into Gym_Machine values('등','스미스 머신 체스트 프레스','5.5','0.15');
+insert into Gym_Machine values('어깨','랫풀다운','6.0','0.18');
+insert into Gym_Machine values('가슴','레그 프레스','7.0','0.22');
+insert into Gym_Machine values('하체','사이드 레이즈','3.8','0.10');
+insert into Gym_Machine values('어깨','스미스 머신 체스트 프레스','5.5','0.15');
+
+insert into Gym_Machine values('등','풀업','8.0','0.25');
+insert into Gym_Machine values('등','원암 로우 머신','5.8','0.18');
+insert into Gym_Machine values('등','랫풀다운','6.0','0.15');
+
+insert into Gym_Machine values('가슴','체스트 프레스','6.5','0.22');
+insert into Gym_Machine values('가슴','펙텍 플라이','5.2','0.15');
+
+insert into Gym_Machine values('어깨','숄더 프레스','6.8','0.2');
+insert into Gym_Machine values('어깨','케이블 레터럴 레이즈','4.5','0.12');
+
+insert into Gym_Machine values('하체','힙 어덕션','4.2','0.14');
+insert into Gym_Machine values('하체','레그컬 익스텐션','5.7','0.19');
+commit;
+
+
+insert intO GYM_MEMBER VALUES('manager','9999','관리자-a','M','27','180','78','15','0','0','0','0','관리자');
+commit;

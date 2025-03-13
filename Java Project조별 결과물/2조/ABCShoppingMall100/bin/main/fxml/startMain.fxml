@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="main.abcshoppingmall.controller.AbcShoppingMallController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b9b2b2" height="193.0" layoutX="-2.0" stroke="#b9b2b2" strokeType="INSIDE" width="294.0" />
+      <ImageView fitHeight="221.0" fitWidth="395.0" layoutY="217.0" pickOnBounds="true">
+         <image>
+            <Image url="@../resource/image/메인페이지.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="257.0" layoutY="119.0" text="ABC">
+         <font>
+            <Font name="SimSun" size="57.0" />
+         </font>
+      </Label>
+      <Label layoutX="128.0" layoutY="187.0" text="SHOPPING MALL">
+         <font>
+            <Font name="SimSun-ExtB" size="57.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="272.0" layoutY="175.0" mnemonicParsing="false" prefHeight="228.0" prefWidth="328.0" style="-fx-background-color: black; -fx-font-size: 20; -fx-font-family: MingLiU_MSCS-ExtB;" onAction="#startPage" text="START" textAlignment="CENTER" textFill="#b9b2b2">
+         <font>
+            <Font name="MingLiU_MSCS-ExtB" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="193.0" fitWidth="143.0" layoutX="457.0" layoutY="-14.0" pickOnBounds="true">
+         <image>
+            <Image url="@../resource/image/메인페이지2.PNG" />
+         </image>
+      </ImageView>
+      <Label layoutX="272.0" layoutY="187.0" text="ING MALL">
+         <font>
+            <Font name="SimSun-ExtB" size="57.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</Pane>

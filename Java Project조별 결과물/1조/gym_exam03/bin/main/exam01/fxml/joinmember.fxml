@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="604.0" maxWidth="600" prefHeight="489.0" prefWidth="400.0" spacing="20" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.exam01.controller.GymController">
+	<!-- Title and message -->
+	<Label alignment="CENTER" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="GYM Register" />
+
+	<!-- Name input fields -->
+	<HBox alignment="CENTER" spacing="20">
+		<VBox>
+			<TextField fx:id="txtName" promptText="Name" style="-fx-pref-width: 200px;" />
+		</VBox>
+	</HBox>
+
+	<!-- id input -->
+	<TextField fx:id="txtId" promptText="ID" style="-fx-pref-width: 400px;" />
+
+	<!-- Password and Confirm Password inputs -->
+	<PasswordField fx:id="txtPwd" promptText="Password" style="-fx-pref-width: 400px;" />
+	<TextField fx:id="txtGender" promptText="Gender(M/F)" />
+	<TextField fx:id="txtAge" promptText="Age" />
+	<TextField fx:id="txtHeight" promptText="Height(cm)" />
+	<TextField fx:id="txtWeight" promptText="Weight(kg)" />
+	<TextField fx:id="txtBodyfat" promptText="BodyFat(%)" />
+	<HBox alignment="CENTER" prefHeight="43.0" prefWidth="400.0">
+		<opaqueInsets>
+			<Insets />
+		</opaqueInsets>
+      <children>
+         <Button onAction="#Back" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" text="Back" />
+      
+      
+      	<!-- Submit Button -->	
+      	<Button onAction="#joinMember" style="-fx-pref-width: 100px; -fx-padding: 10px; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Submit" />
+      </children>
+	</HBox>
+
+	<!-- Signin link -->
+	<HBox alignment="CENTER">
+		<Label text="Already have an account?" />
+		<Button style="-fx-background-color: transparent; -fx-text-fill: #1E90FF; -fx-font-size: 14px; -fx-padding: 0px;" text="Signin" />
+	</HBox>
+</VBox>

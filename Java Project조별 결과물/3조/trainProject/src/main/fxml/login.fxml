@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="main.login.controller.LoginController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="967.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/blue.jpg" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="545.0" fitWidth="831.0" layoutX="88.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/back(1).png" />
+         </image>
+      </ImageView>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="793.0" layoutY="82.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mainHome" prefHeight="40.0" prefWidth="69.0" style="-fx-background-radius: 5; -fx-background-color: 0;" text=" 🏠" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="35.0" />
+         </font>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="124.0" layoutY="82.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mainHome" prefHeight="40.0" prefWidth="53.0" style="-fx-background-radius: 5; -fx-background-color: 0;" text="◀" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Franklin Gothic Heavy" size="31.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </Button>
+      <Line endX="343.66668701171875" layoutX="279.0" layoutY="186.0" startX="109.0" stroke="#d0d0d0" strokeWidth="5.0" />
+      <Label alignment="TOP_LEFT" layoutX="447.0" layoutY="115.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="150.0" text="Login" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </Label>
+      <Line endX="589.6666259765625" layoutX="279.0" layoutY="505.0" startX="-131.0" startY="-1.52587890625E-5" stroke="#d0d0d0" strokeWidth="5.0" />
+      <HBox layoutX="307.0" layoutY="520.0" prefHeight="47.0" prefWidth="401.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#SignUpProc" prefHeight="22.0" prefWidth="160.0" style="-fx-background-color: white;" text="Sign up">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="20.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#CancelProc" prefHeight="22.0" prefWidth="160.0" style="-fx-background-color: white;" text="Cancel">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="20.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <TextField fx:id="txtId" alignment="CENTER" layoutX="447.0" layoutY="249.0" prefHeight="28.0" prefWidth="166.0" promptText="아이디">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txtPw" alignment="CENTER" layoutX="447.0" layoutY="322.0" prefHeight="30.0" prefWidth="166.0" promptText="비밀번호">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </PasswordField>
+      <Button layoutX="447.0" layoutY="397.0" mnemonicParsing="false" onAction="#LoginProc" prefHeight="28.0" prefWidth="136.0" style="-fx-background-color: white;" text="Login">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Button>
+      <ImageView fitHeight="62.0" fitWidth="71.0" layoutX="355.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/person.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="77.0" layoutX="355.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/lock.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+      <ImageView blendMode="COLOR_DODGE" fitHeight="138.0" fitWidth="198.0" layoutX="177.0" layoutY="62.0" onMouseClicked="#mainHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="COLOR_BURN" fitHeight="205.0" fitWidth="507.0" layoutX="496.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/train(1).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

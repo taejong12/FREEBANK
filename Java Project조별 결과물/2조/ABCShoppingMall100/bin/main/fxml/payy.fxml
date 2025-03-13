@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="449.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.pay.Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="62.599985504150396" minHeight="10.0" prefHeight="51.59999389648438" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="62.599985504150396" minHeight="10.0" prefHeight="51.59999389648438" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="142.40000610351564" minHeight="10.0" prefHeight="84.59999389648436" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="141.5999816894531" minHeight="10.0" prefHeight="98.40001831054684" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="128.19999084472653" minHeight="10.0" prefHeight="79.19998168945312" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="56.20001220703125" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dee0e1" height="300.0" stroke="BLACK" strokeType="INSIDE" width="397.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="29.0" />
+         </GridPane.margin>
+      </Rectangle>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="상품번호" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font name="Hancom Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="num1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font name="Hancom Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="운송번호" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font name="Hancom Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="num2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font name="Hancom Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="총 결제 금액" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font name="Hancom Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="sum" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font name="Hancom Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <TextField alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="480.0" text="=== THANK YOU ===" GridPane.columnSpan="2">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="25.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <HBox prefHeight="32.0" prefWidth="484.0" spacing="28.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" text="쇼핑하기">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Button>
+            <TextField alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="236.0" text="재 구매시 20%할인 쿠폰 증정!" />
+            <Button fx:id="backButton1" mnemonicParsing="false" onAction="#delivery" style="-fx-background-color: #4551d1;" text="배송조회" textFill="#fafafa" />
+         </children>
+         <padding>
+            <Insets right="15.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="나의 구매 내역" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <font>
+            <Font name="Hancom Gothic Bold" size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="153.0" />
+         </GridPane.margin>
+      </Text>
+   </children>
+</GridPane>
